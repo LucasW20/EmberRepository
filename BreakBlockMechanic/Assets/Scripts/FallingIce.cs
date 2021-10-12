@@ -8,7 +8,7 @@ public class FallingIce : MonoBehaviour
     GameObject ember;
    
     //Sets the force for the ice to fall
-    Vector2 force = new Vector2(0, -250);
+    Vector2 force = new Vector2(0, -75);
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,9 @@ public class FallingIce : MonoBehaviour
             //The ice is kinematic to so it stays on the ceiling. 
             //Turn that off so it can fall
             Detector.isKinematic = false;
-            Detector.AddForce(force);
+            Detector.drag = 0;
+            Detector.angularDrag = 0;
+            Detector.AddForce(force, ForceMode2D.Impulse);
             //Adds the force declared above so it falls fast
         }
     }
