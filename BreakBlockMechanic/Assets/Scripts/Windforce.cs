@@ -10,7 +10,8 @@ public class Windforce : MonoBehaviour
     Vector2 mouseOrigin;
     Vector2 mouseCurrent;
     // the width of the windbox
-    float width = 2;
+    float width = 3;
+    private int vMax = 250;
 
     GameObject windForceM1;
     PolygonCollider2D windForceCollider;
@@ -97,6 +98,11 @@ public class Windforce : MonoBehaviour
 
         fMag = Mathf.Sqrt((deltaXsq + deltaYsq));
         fMag *= weight;
+
+        if(fMag > vMax)
+        {
+            fMag = vMax;
+        }
 
         return fMag;
     }
