@@ -101,4 +101,6 @@ public class PlayerHealth : MonoBehaviour
     public void resetTime() {
         timePassed = 0f;
     }
+
+    // this is a comment to see how github works
 }
