@@ -8,8 +8,11 @@ public class PlayerHealth : MonoBehaviour
     private float timeMultiplier = 1;
     private float timePassed = 25f;
     private bool isAlive = false;
-    Vector3 campPos;
     public Campfire lastFire;
+
+    GameObject mainCamera;
+    private FollowPlayer followPlayer;
+    private Vector3 mapCenter;
 
     [SerializeField] HealthBar healthBar;
 
@@ -17,8 +20,12 @@ public class PlayerHealth : MonoBehaviour
     {
         healthBar.setMaxHealth(maxPlHealth);
         healthBar.setHealth(timePassed);
-        campPos = GameObject.Find("CampBotLeft").transform.position;
-        //lastFire = GameObject.Find("CampBotLeft");
+
+        mainCamera = GameObject.Find("Main Camera"); 
+        followPlayer = mainCamera.GetComponent<FollowPlayer>();
+        mapCenter = mainCamera.transform.position; // save the center of the map as the initial position of the camera
+        // the main camera should always be centered on the map to start each level, theoretically
+        
     }
 
     void Update()
@@ -56,13 +63,10 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().Sleep();
 
-        //need a variable here so that we can change the z coord for the map. It has to be -10 so that it isn't covered
-        //by other things.
-        campPos = lastFire.transform.position;
-        campPos.z = -10;
+        //Tells the camera to stop following the player
+        followPlayer.setTrackPlayer(false);
 
-        //set the camera to the last fire lit
-        GameObject.Find("Main Camera").transform.position = campPos;
+        followPlayer.setGoToCenter(true); // tells camera to go to center
     }
 
     public void revive(Vector2 location)
@@ -76,11 +80,9 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody2D>().WakeUp();
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
 
-        //set the respawn location for the camera and change the z coord to -10 so it doesn't get covered
-        Vector3 temp = location;
-        temp.z = -10;
-
-        GameObject.Find("Main Camera").transform.position = temp;
+        
+        followPlayer.setGoToCenter(false); // tells camera to stop going to center
+        followPlayer.setTrackPlayer(true); //Tells the camera to follow the player again
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
@@ -102,5 +104,9 @@ public class PlayerHealth : MonoBehaviour
         timePassed = 0f;
     }
 
-    // this is a comment to see how github works
+    // returns the center position of the map
+    public Vector3 getMapCenter()
+    {
+        return mapCenter;
+    }
 }
