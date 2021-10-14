@@ -538,6 +538,9 @@ MonoBehaviour:
   target: {fileID: 675599437}
   maxCameraSize: 26
   minCameraSize: 15
+  mapCenter: {x: 30, y: 11, z: 0}
+  mapHeight: 52
+  mapWidth: 92.444
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -823,7 +826,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675599433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.7, y: 2.6, z: 0}
+  m_LocalPosition: {x: 30, y: 11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
