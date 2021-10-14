@@ -40,7 +40,7 @@ public class Shoot : MonoBehaviour
             //then get the projectiles phyisics engine
             projecPhys = nProjectile.GetComponent<Rigidbody2D>();
 
-            //nProjectile.transform.Rotate();
+            //nProjectile.transform.Rotate(calculateAngle());
 
             //then apply the force based on where the mouse location is
             projecPhys.AddForce((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * moveForce, ForceMode2D.Impulse);
