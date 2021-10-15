@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.UI;
 
 /***
  * Attached to the Ember/Player to track the amount of points they have and abilities
@@ -12,20 +11,28 @@ using UnityEngine;
  */
 public class PlayerPoints : MonoBehaviour {
 
-    public int currPoints;
+    private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
+    public Text abilityText;
+    Color textColor;
 
-    // Start is called before the first frame update
     void Start() {
-        currPoints = 0;
-
+        textColor = abilityText.color;   
     }
 
-    // Update is called once per frame
-    void Update() {
-        
+    //returns the amount of points the player has. Used for comparing to the abilities point requirement
+    public int getPoints() { return currPoints; }
+
+    //TODO implement fade in and fade out text letting the player know when they get a point and loose a point
+
+    //increments the amount of points the player has by 1. Used when a new fire is lit.
+    public void incrementPoints() {
+        currPoints++;
+        Debug.Log("Point gained! Total = " + currPoints);
     }
 
-
+    //decrements the amount of points the player has by 1. Used when a fire is snuffed.
+    public void decrementPoints() { 
+        currPoints--;
+        Debug.Log("Point lost. Total = " + currPoints);
+    }
 }
-
-

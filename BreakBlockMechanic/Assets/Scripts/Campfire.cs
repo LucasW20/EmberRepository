@@ -68,6 +68,9 @@ public class Campfire : MonoBehaviour {
             scriptHolder.GetComponent<CampfireTracker>().increaseNumFiresLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
+            //increment the player points
+            ember.GetComponent<PlayerPoints>().incrementPoints();
+
             //when the fire is lit change the embers last fire lit variable to this one
             GameObject.Find("Ember").GetComponent<PlayerHealth>().lastFire = this;
 
@@ -86,6 +89,9 @@ public class Campfire : MonoBehaviour {
             this.GetComponent<Animator>().SetBool("lightFire", false);
             scriptHolder.GetComponent<CampfireTracker>().decreaseNumFireLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
+
+            //decrement the player points
+            ember.GetComponent<PlayerPoints>().decrementPoints();
         }
     }
 }

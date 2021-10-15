@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour
     public GameObject prefab;   //the object used for the projectile. Set in unity
     GameObject nProjectile;     //the object for the projectile
     Rigidbody2D projecPhys;     //the physics engine for the projectile
+    private int pointRequirement = 2;    //the required amount of points to use this ability
     
     // Start is called before the first frame update
     void Start() {
@@ -29,7 +30,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //if the player presses the F key then shoot a projectile 
-        if (Input.GetKeyDown("f") && !existingProjectile) {
+        if (Input.GetKeyDown("f") && !existingProjectile && ember.GetComponent<PlayerPoints>().getPoints() >= pointRequirement) {
             //log for debugging
             //Debug.Log("Clicked F for FIRE!");
 
@@ -55,37 +56,37 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    //change to work for projectile
-    private float calculateAngle() {
-        // set default angle to 90 (maybe bad practice)
-        float angle = 90;
-        float slope;
+    ////change to work for projectile
+    //private float calculateAngle() {
+    //    // set default angle to 90 (maybe bad practice)
+    //    float angle = 90;
+    //    float slope;
 
-        Vector2 point1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 point2 = ember.transform.position;
+    //    Vector2 point1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    Vector2 point2 = ember.transform.position;
 
-        // slope of line between mouse origin and mouse current
-        if (point2.x != point1.x) {
-            slope = ((point2.y - point1.y) / (point2.x - point1.x));
+    //    // slope of line between mouse origin and mouse current
+    //    if (point2.x != point1.x) {
+    //        slope = ((point2.y - point1.y) / (point2.x - point1.x));
 
-            // if the line is going to the left or straight up, angle = 0 + angle
-            if (point1.x - point2.x <= 0) {
-                // calculates angle as ArcTan of slope. Atan returns answer in radians. Multiplies by 180/pi to convert to degrees
-                angle = (Mathf.Atan(slope) * 180 / Mathf.PI);
-            }
+    //        // if the line is going to the left or straight up, angle = 0 + angle
+    //        if (point1.x - point2.x <= 0) {
+    //            // calculates angle as ArcTan of slope. Atan returns answer in radians. Multiplies by 180/pi to convert to degrees
+    //            angle = (Mathf.Atan(slope) * 180 / Mathf.PI);
+    //        }
 
-            // if the line is going to the right, angle = 180 + angle
-            else {
-                // calculates angle as ArcTan of slope. Atan returns answer in radians. Multiplies by 180/pi to convert to degrees
-                angle = 180 + Mathf.Atan(slope) * 180 / Mathf.PI;
-            }
-        } else if (point2.y > point1.y) {
-            angle = 90;
-        } else if (point2.y <= point1.y) {
-            angle = 270;
-        }
+    //        // if the line is going to the right, angle = 180 + angle
+    //        else {
+    //            // calculates angle as ArcTan of slope. Atan returns answer in radians. Multiplies by 180/pi to convert to degrees
+    //            angle = 180 + Mathf.Atan(slope) * 180 / Mathf.PI;
+    //        }
+    //    } else if (point2.y > point1.y) {
+    //        angle = 90;
+    //    } else if (point2.y <= point1.y) {
+    //        angle = 270;
+    //    }
 
-        // return the angle
-        return angle;
-    }
+    //    // return the angle
+    //    return angle;
+    //}
 }
