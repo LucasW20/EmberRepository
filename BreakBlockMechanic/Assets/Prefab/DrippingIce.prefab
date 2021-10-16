@@ -95,4 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad49be6787cb6e440a085dead2998c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firesRequired: 0
+  firesRequiredStg1: 2
+  firesRequiredStg2: 3
+  dripFrequencyStg1: 3
+  dripFrequencyStg2: 1
+  prefab: {fileID: 6065849738125663150, guid: 725d87362e9fc7a418e4d7964d2c9d0d, type: 3}
