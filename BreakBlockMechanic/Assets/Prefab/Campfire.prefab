@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1734640171420307948}
   - component: {fileID: 1734640171420307949}
   - component: {fileID: 6734824749200244808}
+  - component: {fileID: 42002733011276019}
   m_Layer: 0
   m_Name: Campfire
-  m_TagString: Untagged
+  m_TagString: CampFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -1.8}
   m_SpriteTilingProperty:
@@ -142,3 +143,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6188e11fcbb35d940aaeb37e8c94c5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!249 &42002733011276019
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734640171420307954}
+  m_Enabled: 0
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_UseGlobalAngle: 0
+  m_ForceAngle: 90
+  m_ForceMagnitude: 20
+  m_ForceVariation: 0
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0

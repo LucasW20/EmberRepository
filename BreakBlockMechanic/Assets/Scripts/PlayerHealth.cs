@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] HealthBar healthBar;
 
+    bool touchingCampfire = false;
+
     void Start()
     {
         healthBar.setMaxHealth(maxPlHealth);
@@ -42,6 +44,12 @@ public class PlayerHealth : MonoBehaviour
         else
         {
 
+        }
+
+        if(touchingCampfire) // if the player is touching a campfire
+        {
+            // reset the time on health
+            GameObject.Find("Ember").GetComponent<PlayerHealth>().resetTime();
         }
 
     }
@@ -92,11 +100,26 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("CampFire")) // if player is touching a campfire
+        {
+            touchingCampfire = true; // track it
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) {
             Debug.Log("No Longer Touching Ground!");
             timeMultiplier = 1;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("CampFire"))
+        {
+            touchingCampfire = false;
         }
     }
 

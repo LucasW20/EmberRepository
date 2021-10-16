@@ -10,7 +10,12 @@ public class Campfire : MonoBehaviour {
 
     bool isLit;
     bool mouseIsOver;
-    
+
+    Vector2 unLitBoxColOffset;
+    Vector2 unLitBoxColSize;
+    Vector2 litBoxColOffset;
+    Vector2 litBoxColSize;
+
     // Start is called before the first frame update
     void Start() {
         ember = GameObject.Find("Ember");
@@ -20,6 +25,11 @@ public class Campfire : MonoBehaviour {
         fireLocation = this.transform.position;
         mouseIsOver = false;
         isLit = false;
+
+        unLitBoxColOffset = new Vector2(0, -1.8f);
+        unLitBoxColSize = new Vector2(3, 1.5f);
+        litBoxColOffset = new Vector2(0, 0f);
+        litBoxColSize = new Vector2(3, 5f);
     }
 
     // Update is called once per frame
@@ -76,6 +86,13 @@ public class Campfire : MonoBehaviour {
 
             //when lit restore the embers time/health
             GameObject.Find("Ember").GetComponent<PlayerHealth>().resetTime();
+
+            // change collider size
+            GetComponent<BoxCollider2D>().size = litBoxColSize;
+            GetComponent<BoxCollider2D>().offset = litBoxColOffset;
+            // make fire blow upwards
+            GetComponent<AreaEffector2D>().enabled = true;
+
         }
     }
 
@@ -92,6 +109,12 @@ public class Campfire : MonoBehaviour {
 
             //decrement the player points
             ember.GetComponent<PlayerPoints>().decrementPoints();
+
+            // change collider size
+            GetComponent<BoxCollider2D>().size = unLitBoxColSize;
+            GetComponent<BoxCollider2D>().offset = unLitBoxColOffset;
+            // disable upward wind effect
+            GetComponent<AreaEffector2D>().enabled = false;
         }
     }
 }
