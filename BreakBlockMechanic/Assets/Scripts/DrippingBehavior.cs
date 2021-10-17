@@ -28,6 +28,9 @@ public class DrippingBehavior : MonoBehaviour
         // if the number of fires lit is at least the value of stg1 and under the value of stg2
         if (campfireTracker.getNumfiresLit() >= firesRequiredStg1 && campfireTracker.getNumfiresLit() < firesRequiredStg2)
         {
+            //unmute the continuous sound
+            GetComponent<AudioSource>().mute = false;
+            
             timePassed += Time.deltaTime; // track time
             if (timePassed > dripFrequencyStg1) // if enough time has passed
             {

@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioClip iceIndicator;
     public static AudioClip fallingIce;
     public static AudioClip snuffFire;
+    public static AudioClip droplet;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour {
         iceIndicator = Resources.Load<AudioClip>("iceIndicator");
         fallingIce = Resources.Load<AudioClip>("IceFall");
         snuffFire = Resources.Load<AudioClip>("extinguish");
+        droplet = Resources.Load<AudioClip>("droplet");
 
         //get the audiosource we're playing from 
         audioSrc = GetComponent<AudioSource>();
@@ -62,6 +64,11 @@ public class AudioManager : MonoBehaviour {
                 break;
             case "snuffFire":
                 audioSrc.PlayOneShot(snuffFire);
+                break;
+            case "droplet":
+                audioSrc.spatialBlend = 1;
+                audioSrc.PlayOneShot(droplet);
+                audioSrc.spatialBlend = 0;
                 break;
             default:
                 //do nothing

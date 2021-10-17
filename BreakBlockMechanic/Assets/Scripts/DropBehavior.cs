@@ -26,6 +26,10 @@ public class DropBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        //play drip sound
+        GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("droplet"));
+        
         // if the object collides with the player
         if(collision.gameObject.CompareTag("Player"))
         {
