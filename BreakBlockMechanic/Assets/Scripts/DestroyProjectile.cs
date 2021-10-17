@@ -57,6 +57,9 @@ public class DestroyProjectile : MonoBehaviour {
             } else {
                 Debug.Log("Unexpected breaker hit!");
             }
+
+            //play breaking sound
+            AudioManager.PlaySound("breakingIce");
         }
     }
 }

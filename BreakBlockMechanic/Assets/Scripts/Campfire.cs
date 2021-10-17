@@ -93,6 +93,9 @@ public class Campfire : MonoBehaviour {
             // make fire blow upwards
             GetComponent<AreaEffector2D>().enabled = true;
 
+            //play ignite fire and continuous fire 
+            AudioManager.PlaySound("ignite");
+            GetComponent<AudioSource>().mute = false;
         }
     }
 
@@ -115,6 +118,10 @@ public class Campfire : MonoBehaviour {
             GetComponent<BoxCollider2D>().offset = unLitBoxColOffset;
             // disable upward wind effect
             GetComponent<AreaEffector2D>().enabled = false;
+
+            //stop the fire sound and play the snuff fire sound
+            GetComponent<AudioSource>().mute = true;
+            AudioManager.PlaySound("snuffFire");
         }
     }
 }

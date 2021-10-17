@@ -12,11 +12,13 @@ using UnityEngine.UI;
 public class PlayerPoints : MonoBehaviour {
 
     private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
-    public Text abilityText;
-    Color textColor;
 
-    void Start() {
-        textColor = abilityText.color;   
+    private void Update() {
+        //cheat code! get 1000 points. used for when the devs dont wanna collect all them points to test something. REMOVE FOR FINAL
+        if (Input.GetKeyDown("l")) {
+            currPoints = 1000;
+            Debug.Log("1k points gained! Cheater!");
+        }
     }
 
     //returns the amount of points the player has. Used for comparing to the abilities point requirement

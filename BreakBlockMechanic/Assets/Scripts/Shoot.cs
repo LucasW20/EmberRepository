@@ -25,6 +25,7 @@ public class Shoot : MonoBehaviour
         ember = GameObject.Find("Ember");
     }
 
+    [HideInInspector]
     public bool existingProjectile = false;
 
     // Update is called once per frame
