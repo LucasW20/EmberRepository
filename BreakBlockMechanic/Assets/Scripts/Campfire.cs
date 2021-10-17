@@ -60,12 +60,16 @@ public class Campfire : MonoBehaviour {
 
     private void OnMouseDown() {
         Debug.Log("Clicked!");
-        if (isLit) {
-            //ember.GetComponent<PlayerHealth>().deathEffect();
-            ember.GetComponent<PlayerHealth>().revive(fireLocation);
-        }
         if(!isLit) {
            lightFirstFire_SH.lightFirstFire(this);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if (isLit && mouseIsOver) // only revive if mouse is over the campfire when released
+        {
+            ember.GetComponent<PlayerHealth>().revive(fireLocation);
         }
     }
 
