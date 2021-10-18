@@ -47,7 +47,7 @@ public class Windforce : MonoBehaviour
             // enable polygon collider
             windForceCollider.enabled = true;
             // enable line renderer
-            windVectorVisual.enabled = true;
+            //windVectorVisual.enabled = true;
             // enable area effector
             windForceEffector.enabled = true;
             // get mouse position
@@ -72,7 +72,7 @@ public class Windforce : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) {
             // disable collider, effecftor, and line renderer
             windForceCollider.enabled = false;
-            windVectorVisual.enabled = false;
+            //windVectorVisual.enabled = false;
             windForceEffector.enabled = false;
         }
     }
