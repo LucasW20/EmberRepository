@@ -75,6 +75,8 @@ public class PlayerHealth : MonoBehaviour
         followPlayer.setTrackPlayer(false);
 
         followPlayer.setGoToCenter(true); // tells camera to go to center
+
+        GetComponent<PlayerLives>().loseLives(1); // lose one life
     }
 
     public void revive(Vector2 location)
@@ -82,7 +84,6 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("Revived");
         transform.position = location;
         timePassed = 0f;
-        isAlive = true;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<CircleCollider2D>().enabled = true;
         GetComponent<Rigidbody2D>().WakeUp();
@@ -91,6 +92,13 @@ public class PlayerHealth : MonoBehaviour
         
         followPlayer.setGoToCenter(false); // tells camera to stop going to center
         followPlayer.setTrackPlayer(true); //Tells the camera to follow the player again
+
+        if (isAlive)
+        {
+            GetComponent<PlayerLives>().loseLives(1); // lose one life
+        }
+
+        isAlive = true;
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
