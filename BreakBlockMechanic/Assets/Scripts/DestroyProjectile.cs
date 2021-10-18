@@ -35,31 +35,15 @@ public class DestroyProjectile : MonoBehaviour {
         }
         //if the collison is with a surface that can be broken
         else if (collision.gameObject.CompareTag("Breaker")) {
-            //get the name of the breaker and set the coords for the map shown
-            string breaker = collision.gameObject.name;
-
-            //top hit
-            if (breaker == "TopBreaker") {
-                //disable the top breaker 
-                GameObject.Find("TopBreaker").SetActive(false);
-
-                //destroy the projectile and set the embers boolean to false so it can create another one
-                Destroy(thisProjectile);
-                ember.GetComponent<Shoot>().existingProjectile = false;
-            //bottom hit
-            } else if (breaker == "BottomBreaker") {
-                //disable the bottom breaker
-                GameObject.Find("BottomBreaker").SetActive(false);
-
-                //destroy the projectile and set the embers boolean to false so it can create another one
-                Destroy(thisProjectile);
-                ember.GetComponent<Shoot>().existingProjectile = false;
-            } else {
-                Debug.Log("Unexpected breaker hit!");
-            }
+            //diable the breaker object
+            collision.gameObject.SetActive(false);
 
             //play breaking sound
             AudioManager.PlaySound("breakingIce");
+
+            //then destroy the projectile
+            Destroy(thisProjectile);
+            ember.GetComponent<Shoot>().existingProjectile = false;
         }
     }
 }

@@ -22,6 +22,6 @@ public class RestartScene : MonoBehaviour
 
     public void restartLevel()
     {
-        SceneManager.LoadScene("SampleScene"); //Load scene called Game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Load scene called Game
     }
 }
