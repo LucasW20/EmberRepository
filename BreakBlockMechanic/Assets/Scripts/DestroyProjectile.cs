@@ -12,11 +12,13 @@ using UnityEngine;
 public class DestroyProjectile : MonoBehaviour {
     //global object variables for ember and the projectile
     private GameObject ember;
+    private string[] tagsArray;
 
     // Start is called before the first frame update
     void Start() {
         //assign the global variables their objects
         ember = GameObject.Find("Ember");
+        tagsArray = new string[]{"Drip"};
     }
 
     //checks the type of collision to see if it's a wall or breaker to determine what to do.
@@ -39,10 +41,29 @@ public class DestroyProjectile : MonoBehaviour {
             //then destroy the projectile
             Destroy(this.gameObject);        
             ember.GetComponent<Shoot>().existingProjectile = false;
-        } 
+        }   
+        else if(compareAllTags(tagsArray, collision)) // check if the collision's tag matches the tag list
+        {
+            Destroy(this.gameObject);
+            ember.GetComponent<Shoot>().existingProjectile = false;
+
+        }
         else if (collision.gameObject.CompareTag("Player"))
         {
             Physics2D.IgnoreCollision(collision.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+    }
+
+    // white list of tags that destroy the projectile if hit
+    private bool compareAllTags(string[] nTagsArray, Collider2D col)
+    {
+        for (int i = 0; i >= nTagsArray.Length - 1; i++)
+        {
+            if (col.CompareTag(nTagsArray[i]))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
