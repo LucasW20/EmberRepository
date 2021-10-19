@@ -29,8 +29,6 @@ public class SceneChange : MonoBehaviour {
             //wait for a few seconds
             StartCoroutine(ExampleCoroutine());
 
-            //change the scene
-            SceneManager.LoadScene(nextScene);
         }
     }
 
@@ -43,5 +41,8 @@ public class SceneChange : MonoBehaviour {
 
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+        //change the scene
+        SceneManager.LoadScene(nextScene);
     }
 }
