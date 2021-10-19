@@ -102,7 +102,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) { 
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip")) { 
             Debug.Log("Touching Ground!");
             timeMultiplier = 5;
         }
@@ -118,7 +118,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) {
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip")) {
             Debug.Log("No Longer Touching Ground!");
             timeMultiplier = 1;
         }

@@ -9,6 +9,7 @@ TagManager:
   - Breaker
   - FallingIce
   - CampFire
+  - Drip
   layers:
   - Default
   - TransparentFX

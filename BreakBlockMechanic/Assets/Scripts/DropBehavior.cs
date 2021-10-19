@@ -24,19 +24,16 @@ public class DropBehavior : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (!collision.gameObject.CompareTag("Drip")) {
 
-        //play drip sound
-        GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("droplet"));
-        
-        // if the object collides with the player
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            // kill the player
-            playerHealth.deathEffect();
+            // if the object collides with the player
+            if (collision.gameObject.CompareTag("Player")) {
+                // kill the player
+                playerHealth.deathEffect();
+            }
+            // if the drop hits anything, destroy itself.
+            Destroy(this.gameObject);
         }
-        // if the drop hits anything, destroy itself.
-        Destroy(this.gameObject);
     }
 }
