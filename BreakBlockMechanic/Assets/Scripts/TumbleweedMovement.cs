@@ -56,12 +56,15 @@ public class TumbleweedMovement : MonoBehaviour
         }
     }
 
+    [SerializeField] 
+    private float waitSeconds;
+
     //This is the coroutine that is called in the OnTriggerEnter
     //This will, as the name suggest, make the tumbleweed ignore the first collision with the wall
     public IEnumerator IgnoreWallCoroutine()
     {
         //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
-        yield return new WaitForSeconds(0.14f);
+        yield return new WaitForSeconds(waitSeconds);
 
         //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
         //It is enabled once the 0.14 seconds pass
