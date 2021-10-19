@@ -33,7 +33,10 @@ public class DropBehavior : MonoBehaviour
                 playerHealth.deathEffect();
             }
             // if the drop hits anything, destroy itself.
-            Destroy(this.gameObject);
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

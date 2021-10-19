@@ -12,13 +12,11 @@ using UnityEngine;
 public class DestroyProjectile : MonoBehaviour {
     //global object variables for ember and the projectile
     private GameObject ember;
-    private GameObject thisProjectile;
 
     // Start is called before the first frame update
     void Start() {
         //assign the global variables their objects
         ember = GameObject.Find("Ember");
-        thisProjectile = GameObject.Find("projectile(Clone)");
     }
 
     //checks the type of collision to see if it's a wall or breaker to determine what to do.
@@ -27,7 +25,7 @@ public class DestroyProjectile : MonoBehaviour {
         //if the collision is with a wall
         if (collision.gameObject.CompareTag("Wall")) {
             //destroy the projectile and set the embers boolean to false so it can create another one
-            Destroy(thisProjectile);
+            Destroy(this.gameObject);
             ember.GetComponent<Shoot>().existingProjectile = false;
         }
         //if the collison is with a surface that can be broken
@@ -39,11 +37,12 @@ public class DestroyProjectile : MonoBehaviour {
             AudioManager.PlaySound("breakingIce");
 
             //then destroy the projectile
-            Destroy(thisProjectile);
+            Destroy(this.gameObject);        
             ember.GetComponent<Shoot>().existingProjectile = false;
-        } else if (!collision.gameObject.CompareTag("Player")) {
-            Destroy(thisProjectile);
-            ember.GetComponent<Shoot>().existingProjectile = false;
+        } 
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collision.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 }

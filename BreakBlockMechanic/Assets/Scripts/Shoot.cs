@@ -49,14 +49,6 @@ public class Shoot : MonoBehaviour
         }
     }
 
-
-    public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Wall")) {
-            Destroy(nProjectile);
-            existingProjectile = false;
-        }
-    }
-
     ////change to work for projectile
     //private float calculateAngle() {
     //    // set default angle to 90 (maybe bad practice)
