@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 5980307647126651208}
   - component: {fileID: 5980307647126651209}
   - component: {fileID: 5980307647126651210}
+  - component: {fileID: -92883811617743163}
+  - component: {fileID: 1377772588106536426}
   m_Layer: 3
   m_Name: Ember
   m_TagString: Player
@@ -194,3 +196,29 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5980307647126651217}
   m_Enabled: 1
+--- !u!114 &-92883811617743163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980307647126651217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522579dc0421d15468a0e97eddae302a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 5
+  livesBar: {fileID: 0}
+--- !u!114 &1377772588106536426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980307647126651217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60e10531137a984589c1602448b2d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

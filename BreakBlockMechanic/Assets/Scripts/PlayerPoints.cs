@@ -12,7 +12,12 @@ using UnityEngine.UI;
 public class PlayerPoints : MonoBehaviour {
 
     private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
+    PassingScene passingScene;
 
+    private void Start() {
+        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        currPoints = passingScene.getPoints();
+    }
     private void Update() {
         //cheat code! get 1000 points. used for when the devs dont wanna collect all them points to test something. REMOVE FOR FINAL
         if (Input.GetKeyDown("l")) {
@@ -30,6 +35,8 @@ public class PlayerPoints : MonoBehaviour {
     public void incrementPoints() {
         currPoints++;
         Debug.Log("Point gained! Total = " + currPoints);
+
+        passingScene.passPoints(1);
     }
 
     //decrements the amount of points the player has by 1. Used when a fire is snuffed.

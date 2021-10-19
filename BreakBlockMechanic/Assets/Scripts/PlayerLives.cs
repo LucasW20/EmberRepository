@@ -10,6 +10,12 @@ public class PlayerLives : MonoBehaviour
 
     [SerializeField] LivesBar livesBar;
 
+    public int getLives() { return currentLives; }
+
+    public void setLives(int n) { currentLives = n; }
+
+
+
     // Start is called before the first frame update
     void Start()
     {

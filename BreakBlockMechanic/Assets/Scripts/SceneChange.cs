@@ -42,6 +42,10 @@ public class SceneChange : MonoBehaviour {
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
 
+        
+        
+        DontDestroyOnLoad(GameObject.Find("SaveObject"));
+
         //change the scene
         SceneManager.LoadScene(nextScene);
     }
