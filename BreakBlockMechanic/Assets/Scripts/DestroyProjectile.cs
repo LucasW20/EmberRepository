@@ -57,9 +57,9 @@ public class DestroyProjectile : MonoBehaviour {
     // white list of tags that destroy the projectile if hit
     private bool compareAllTags(string[] nTagsArray, Collider2D col)
     {
-        for (int i = 0; i >= nTagsArray.Length - 1; i++)
+        for (int i = 0; i <= nTagsArray.Length - 1; i++)
         {
-            if (col.CompareTag(nTagsArray[i]))
+            if (col.gameObject.CompareTag(nTagsArray[i]))
             {
                 return true;
             }
