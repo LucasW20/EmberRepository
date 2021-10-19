@@ -330,7 +330,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!1 &349931912 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5980307647126651217, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
@@ -348,8 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e10531137a984589c1602448b2d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> Stashed changes
 --- !u!1 &481479283
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,8 +375,8 @@ Transform:
   m_LocalPosition: {x: 9.973128, y: 0.430503, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 832826762}
   - {fileID: 1188023963}
+  - {fileID: 832826762}
   - {fileID: 1255808682}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -542,7 +539,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1302254343
   m_SortingLayer: -1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2c28cc07fe523a141a713c96649b3f4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -566,7 +563,7 @@ Transform:
   m_LocalScale: {x: 4.324, y: 3.91, z: 1}
   m_Children: []
   m_Father: {fileID: 481479285}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &832826763
 MonoBehaviour:
@@ -881,10 +878,10 @@ Transform:
   m_GameObject: {fileID: 1188023961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.973128, y: -0.430503, z: 0}
-  m_LocalScale: {x: 4.324, y: 4.234, z: 1}
+  m_LocalScale: {x: 4.324, y: 4.234, z: 2}
   m_Children: []
   m_Father: {fileID: 481479285}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1188023964
 MonoBehaviour:
@@ -967,7 +964,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1302254343
   m_SortingLayer: -1
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: debf1858a8afdbf44a9a6d91cde4f38f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -988,7 +985,7 @@ Transform:
   m_GameObject: {fileID: 1255808680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.973128, y: -0.430503, z: 0}
-  m_LocalScale: {x: 4.324, y: 3.912, z: 1}
+  m_LocalScale: {x: 4.324, y: 3.912, z: 3}
   m_Children: []
   m_Father: {fileID: 481479285}
   m_RootOrder: 2
@@ -1918,7 +1915,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1411781001
@@ -1973,10 +1969,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.712223, y: 0.12114525}
   m_EdgeRadius: 0
-=======
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1001 &1451010482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2221,11 +2213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5487971105273863585, guid: ab31b52ac9fe0574d869ed4fe011bdda, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< Updated upstream
       value: 9
-=======
-      value: 8
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 5487971105273863585, guid: ab31b52ac9fe0574d869ed4fe011bdda, type: 3}
       propertyPath: m_LocalPosition.x
