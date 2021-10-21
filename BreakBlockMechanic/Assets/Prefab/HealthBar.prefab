@@ -180,18 +180,18 @@ MonoBehaviour:
   slider: {fileID: 1727619334817846509}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.4811321, g: 0, b: 0, a: 1}
-    key1: {r: 0.94035214, g: 0.3967248, b: 0.06474378, a: 1}
-    key2: {r: 0.8867924, g: 0.8093559, b: 0.2216981, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.31132078, g: 0.14538093, b: 0.14538093, a: 1}
+    key1: {r: 0.6981132, g: 0.006765673, b: 0, a: 1}
+    key2: {r: 0.8062619, g: 0.4393092, b: 0.101759605, a: 1}
+    key3: {r: 1, g: 1, b: 1, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 771
-    ctime1: 30262
-    ctime2: 65150
-    ctime3: 0
+    ctime0: 7325
+    ctime1: 31611
+    ctime2: 65535
+    ctime3: 63993
     ctime4: 0
     ctime5: 0
     ctime6: 0
