@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] HealthBar healthBar;
 
     bool touchingCampfire = false;
+    bool touchingWall = false;
 
     void Start()
     {
@@ -104,7 +105,18 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip")) { 
             Debug.Log("Touching Ground!");
-            timeMultiplier = 5;
+            touchingWall = true;
+            StartCoroutine(LoseHealthCoroutine(3, 1));
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip"))
+        {
+            Debug.Log("No Longer Touching Ground!");
+            touchingWall = false;
+            timeMultiplier = 1;
         }
     }
 
@@ -115,14 +127,6 @@ public class PlayerHealth : MonoBehaviour
             touchingCampfire = true; // track it
             StartCoroutine(ViewMapCoroutine(7));
             
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip")) {
-            Debug.Log("No Longer Touching Ground!");
-            timeMultiplier = 1;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -145,7 +149,7 @@ public class PlayerHealth : MonoBehaviour
         return mapCenter;
     }
 
-     public IEnumerator ViewMapCoroutine(float seconds)
+    public IEnumerator ViewMapCoroutine(float seconds)
     {
         //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
         yield return new WaitForSeconds(seconds);
@@ -157,6 +161,21 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Zoom Out Camera");
             followPlayer.setTrackPlayer(false); // stop following player
             followPlayer.setGoToCenter(true); // and go to center
+        }
+    }
+
+    public IEnumerator LoseHealthCoroutine(float damage, float waitTime)
+    {
+        timePassed += damage;
+
+        //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
+        yield return new WaitForSeconds(waitTime);
+
+        //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
+        //It is enabled once the 0.14 seconds pass
+        if (touchingWall)
+        {
+            StartCoroutine(LoseHealthCoroutine(3, 1));
         }
     }
 }
