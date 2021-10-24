@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3-Desert2.unity
     guid: b8b41e9cf0fdaf6499e2311020b2109a
+  - enabled: 1
+    path: Assets/Scenes/Level4-Water1.unity
+    guid: 40408d96d53c7f24a9c089bcbfe1ed47
+  - enabled: 1
+    path: Assets/Scenes/Level5-Water2.unity
+    guid: bf5b13c9b3f9a114a8638397bf4ea37e
+  - enabled: 1
+    path: Assets/Scenes/Level6-Final.unity
+    guid: 0fa547d73c043ab47a3203843352a014
   m_configObjects: {}
