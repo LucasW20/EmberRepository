@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private int maxPlHealth = 25;
-    private float timeMultiplier = 1;
     private float timePassed = 25f;
     private bool isAlive = false;
     public Campfire lastFire;
@@ -14,15 +13,15 @@ public class PlayerHealth : MonoBehaviour
     private FollowPlayer followPlayer;
     private Vector3 mapCenter;
 
-    [SerializeField] HealthBar healthBar;
+    [SerializeField] HealthBar healthBar; // The health bar UI
 
     bool touchingCampfire = false;
     bool touchingWall = false;
 
     void Start()
     {
-        healthBar.setMaxHealth(maxPlHealth);
-        healthBar.setHealth(timePassed);
+        healthBar.setMaxHealth(maxPlHealth); // sets the Health Bar UI elements Max health
+        healthBar.setHealth(timePassed); // sets the Health Bar UI elements current health
 
         mainCamera = GameObject.Find("Main Camera"); 
         followPlayer = mainCamera.GetComponent<FollowPlayer>();
@@ -52,18 +51,35 @@ public class PlayerHealth : MonoBehaviour
             // reset the time on health
             GameObject.Find("Ember").GetComponent<PlayerHealth>().resetTime();
         }
+        if(Input.GetKeyDown("z"))
+        {
+            if (touchingCampfire && !followPlayer.getGoToCenter())
+            {
+                Debug.Log("Zoom Out Camera");
+                viewWholeMap();
+            }
+            else if(followPlayer.getGoToCenter())
+            {
+                followPlayer.setTrackPlayer(true); // stop following player
+                followPlayer.setGoToCenter(false); // and go to center
+            }
+        }
 
     }
 
+    // updates the amount of health the player has.
     private void updateTime() 
     {
         if (timePassed < maxPlHealth)
         {
-            timePassed += Time.deltaTime * timeMultiplier;
+            timePassed += Time.deltaTime;
             healthBar.setHealth(maxPlHealth - timePassed);
         }
     }
 
+    // handles all the effects of the player death
+    // sets isAlive bool to false, disables ember's sprite visual, collider, and rigidbody,
+    // tells camera to view entire map, and player loses one life.
     public void deathEffect()
     {
         Debug.Log("Times up!");
@@ -73,13 +89,16 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody2D>().Sleep();
 
         //Tells the camera to stop following the player
-        followPlayer.setTrackPlayer(false);
-
-        followPlayer.setGoToCenter(true); // tells camera to go to center
+        viewWholeMap();
 
         GetComponent<PlayerLives>().loseLives(1); // lose one life
     }
 
+    // handles all the effects when a player revieves
+    // teleports player to passed location, sets player health to max,
+    // enables ember's sprite, collider, and rigibody, Shoots player slightly upwards from the fire,
+    // tell camera to track the player again. If the player was already alive, lose one life, and lastly
+    // set isAlive bool to true
     public void revive(Vector2 location)
     {
         Debug.Log("Revived");
@@ -90,9 +109,8 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody2D>().WakeUp();
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
 
-        
-        followPlayer.setGoToCenter(false); // tells camera to stop going to center
-        followPlayer.setTrackPlayer(true); //Tells the camera to follow the player again
+
+        trackPlayer();
 
         if (isAlive)
         {
@@ -103,20 +121,21 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip")) { 
+        // if the player collides with a wall or a break block
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) { 
             Debug.Log("Touching Ground!");
-            touchingWall = true;
-            StartCoroutine(LoseHealthCoroutine(3, 1));
+            touchingWall = true; // record the touching
+            StartCoroutine(LoseHealthCoroutine(3, 1)); // lose 3 health every 1 second
         }
     }
 
     private void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker") || col.gameObject.CompareTag("Drip"))
+        // if the player stops touching a wall or a break block
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker"))
         {
             Debug.Log("No Longer Touching Ground!");
-            touchingWall = false;
-            timeMultiplier = 1;
+            touchingWall = false; // record that they are no longer touching
         }
     }
 
@@ -124,21 +143,19 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CampFire")) // if player is touching a campfire
         {
-            touchingCampfire = true; // track it
-            StartCoroutine(ViewMapCoroutine(7));
-            
+            touchingCampfire = true; // record it
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("CampFire"))
+        if (collision.gameObject.CompareTag("CampFire")) // if player stops touching a campfire
         {
-            touchingCampfire = false;
-            followPlayer.setTrackPlayer(true); // follow player
-            followPlayer.setGoToCenter(false); // and stop going to center
+            touchingCampfire = false; // record the change
+            trackPlayer(); // tell camera to track player
         }
     }
 
+    // function to reset the player's time (life)
     public void resetTime() {
         timePassed = 0f;
     }
@@ -149,21 +166,22 @@ public class PlayerHealth : MonoBehaviour
         return mapCenter;
     }
 
-    public IEnumerator ViewMapCoroutine(float seconds)
+    // tells the camera to zoom out and view the entire map
+    public void viewWholeMap()
     {
-        //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
-        yield return new WaitForSeconds(seconds);
-
-        //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
-        //It is enabled once the 0.14 seconds pass
-        if (touchingCampfire)
-        {
             Debug.Log("Zoom Out Camera");
             followPlayer.setTrackPlayer(false); // stop following player
-            followPlayer.setGoToCenter(true); // and go to center
-        }
+            followPlayer.setGoToCenter(true); // and go to center 
     }
 
+    // tells the camera to track the player
+    public void trackPlayer()
+    {
+        followPlayer.setTrackPlayer(true);
+        followPlayer.setGoToCenter(false);
+    }
+
+    // handles health loss if the player is touching a wall. lose damage health every waitTime seconds
     public IEnumerator LoseHealthCoroutine(float damage, float waitTime)
     {
         timePassed += damage;

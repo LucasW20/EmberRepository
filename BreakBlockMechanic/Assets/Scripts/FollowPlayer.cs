@@ -96,6 +96,11 @@ public class FollowPlayer : MonoBehaviour
         goToCenter = tf;
     }
 
+    public bool getGoToCenter()
+    {
+        return goToCenter;
+    }
+
     // tells the camera to go the the Vector3 location at a given speed
     private void goToLocation(Vector3 location, float speed)
     {

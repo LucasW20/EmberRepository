@@ -38,9 +38,21 @@ public class Campfire : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) {
+        if (Input.GetKeyDown(KeyCode.Mouse2)) // if middle mouse button is pressed
+        {
             if (isLit && mouseIsOver) {
                 snuffFire();
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Mouse1)) // if right mouse button is pressed
+        {
+            if(!isLit && mouseIsOver)
+            {
+                lightFirstFire_SH.lightFirstFire(this);
+            }
+            else if (isLit && mouseIsOver)
+            {
+                ember.GetComponent<PlayerHealth>().revive(fireLocation);
             }
         }
     }
@@ -59,21 +71,6 @@ public class Campfire : MonoBehaviour {
                 Debug.Log("The fire is lit!");
                 lightFire();
             }
-        }
-    }
-
-    private void OnMouseDown() {
-        Debug.Log("Clicked!");
-        if(!isLit) {
-           lightFirstFire_SH.lightFirstFire(this);
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if (isLit && mouseIsOver) // only revive if mouse is over the campfire when released
-        {
-            ember.GetComponent<PlayerHealth>().revive(fireLocation);
         }
     }
 
