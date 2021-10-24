@@ -113,6 +113,8 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("CampFire")) // if player is touching a campfire
         {
             touchingCampfire = true; // track it
+            StartCoroutine(ViewMapCoroutine(7));
+            
         }
     }
 
@@ -128,6 +130,8 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("CampFire"))
         {
             touchingCampfire = false;
+            followPlayer.setTrackPlayer(true); // follow player
+            followPlayer.setGoToCenter(false); // and stop going to center
         }
     }
 
@@ -139,5 +143,20 @@ public class PlayerHealth : MonoBehaviour
     public Vector3 getMapCenter()
     {
         return mapCenter;
+    }
+
+     public IEnumerator ViewMapCoroutine(float seconds)
+    {
+        //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
+        yield return new WaitForSeconds(seconds);
+
+        //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
+        //It is enabled once the 0.14 seconds pass
+        if (touchingCampfire)
+        {
+            Debug.Log("Zoom Out Camera");
+            followPlayer.setTrackPlayer(false); // stop following player
+            followPlayer.setGoToCenter(true); // and go to center
+        }
     }
 }
