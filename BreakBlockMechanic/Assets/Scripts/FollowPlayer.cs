@@ -21,8 +21,6 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] int maxCameraSize; // stores set the max camera size (map size)
     [SerializeField] int minCameraSize; // stores min camera size (15 unless we have a niche reason to change it)
 
-    [SerializeField] float resetSize = 26;
-
     [SerializeField] Vector3 mapCenter;
     [SerializeField] float mapHeight;
     [SerializeField] float mapWidth;
@@ -76,13 +74,13 @@ public class FollowPlayer : MonoBehaviour
 
             goToLocation(desiredPosition, smoothSpeed);
             // Lerp(a, b, t) returns a vector of value (a + (b - a) * t. See comments in goToLocation() below for further explanation
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, 15, 1 * Time.deltaTime);
+            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, minCameraSize, 1 * Time.deltaTime);
         }
         else
         {
             goToLocation(mapCenter, 1);
             //GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, 26, 1 * Time.deltaTime);
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, resetSize, 1 * Time.deltaTime);
+            GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, maxCameraSize, 1 * Time.deltaTime);
         }
     }
 

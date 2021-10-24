@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &221495555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4563786895862087199, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+  m_PrefabInstance: {fileID: 1372959077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fcb2db780203549aeb3f7498365878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &250920306
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +249,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &357363372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4868777745459099934, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+  m_PrefabInstance: {fileID: 1372959077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9254bb3c2ed14a040a77c996462c23a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &367492404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,7 +444,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 40.5
+  orthographic size: 39
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -465,12 +487,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 873848334}
-  maxCameraSize: 41
-  minCameraSize: 41
-  resetSize: 40.5
+  maxCameraSize: 39
+  minCameraSize: 15
   mapCenter: {x: 0, y: 0, z: 0}
-  mapHeight: 104
-  mapWidth: 184
+  mapHeight: 78
+  mapWidth: 138.66667
 --- !u!1 &503029467
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +802,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -92883811617743163, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
+      propertyPath: livesBar
+      value: 
+      objectReference: {fileID: 221495555}
+    - target: {fileID: 5980307647126651208, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 357363372}
     - target: {fileID: 5980307647126651217, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
       propertyPath: m_Name
       value: Ember
@@ -1124,7 +1153,7 @@ GameObject:
   - component: {fileID: 1918635147}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
