@@ -16,6 +16,8 @@ public class Campfire : MonoBehaviour {
     Vector2 litBoxColOffset;
     Vector2 litBoxColSize;
 
+    NotificationManager ntManager;
+
     // Start is called before the first frame update
     void Start() {
         ember = GameObject.Find("Ember");
@@ -30,6 +32,8 @@ public class Campfire : MonoBehaviour {
         unLitBoxColSize = new Vector2(3, 1.5f);
         litBoxColOffset = new Vector2(0, 0f);
         litBoxColSize = new Vector2(3, 5f);
+
+        ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
     }
 
     // Update is called once per frame
@@ -100,6 +104,8 @@ public class Campfire : MonoBehaviour {
             //play ignite fire and continuous fire 
             AudioManager.PlaySound("ignite");
             GetComponent<AudioSource>().mute = false;
+
+            ntManager.SetNewNotification("Campfire lit! 1 Point gained!");
         }
     }
 
