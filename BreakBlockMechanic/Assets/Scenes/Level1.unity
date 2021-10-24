@@ -1153,6 +1153,10 @@ PrefabInstance:
       propertyPath: gradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4868777745972022090, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4868777745972022091, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_RootOrder
       value: 1
