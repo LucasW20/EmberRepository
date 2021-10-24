@@ -8,7 +8,7 @@ public class TumbleweedMovement : MonoBehaviour
     GameObject ember;
     PolygonCollider2D tumblelider;
     //Force for the tumbleweed flies to the left
-    Vector2 force = new Vector2(-75, 0);
+    [SerializeField] Vector2 force = new Vector2(-75, 0);
 
     // Start is called before the first frame update
     void Start()
