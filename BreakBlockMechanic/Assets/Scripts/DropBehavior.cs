@@ -6,6 +6,9 @@ public class DropBehavior : MonoBehaviour
 {
     PlayerHealth playerHealth;
     private float timePassed;
+    [HideInInspector]
+    public int meltingPoint;
+    private int firesLit;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +19,20 @@ public class DropBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        firesLit = GameObject.Find("ScriptHolder").GetComponent<CampfireTracker>().getNumfiresLit();
         timePassed += Time.deltaTime;
         // This destroys the object after 10 seconds, just in case
-        if(timePassed > 10)
+        if(timePassed > 10 && firesLit >= meltingPoint)
         {
             Destroy(this.gameObject);
+        }
+        if (firesLit < meltingPoint)
+        {
+            GetComponent<Collider2D>().isTrigger = false;
+        }
+        else
+        {
+            GetComponent<Collider2D>().isTrigger = true;
         }
     }
 
@@ -33,7 +45,11 @@ public class DropBehavior : MonoBehaviour
                 playerHealth.deathEffect();
             }
             // if the drop hits anything, destroy itself.
-            Destroy(this.gameObject);
+            if (firesLit >= meltingPoint)
+            {
+                Destroy(this.gameObject);
+            }
+            
         }
     }
 }

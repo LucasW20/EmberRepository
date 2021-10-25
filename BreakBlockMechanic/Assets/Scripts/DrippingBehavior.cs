@@ -14,6 +14,8 @@ public class DrippingBehavior : MonoBehaviour
     [SerializeField] float dripFrequencyStg2;
     [SerializeField] GameObject prefab;
 
+    GameObject tempDrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,10 @@ public class DrippingBehavior : MonoBehaviour
             if (timePassed > dripFrequencyStg1) // if enough time has passed
             {
                 timePassed = 0; // reset timer
-                Instantiate(prefab, transform.position, transform.rotation); // create water drop
+                tempDrop = Instantiate(prefab, transform.position, transform.rotation); // create water drop
+                // set the melting point of the drop
+                tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
+                
             }
         }
         else if (campfireTracker.getNumfiresLit() >= firesRequiredStg2) // same thing but for stage 2
@@ -44,7 +49,9 @@ public class DrippingBehavior : MonoBehaviour
             if (timePassed > dripFrequencyStg2)
             {
                 timePassed = 0;
-                Instantiate(prefab, transform.position, transform.rotation);
+                tempDrop = Instantiate(prefab, transform.position, transform.rotation);
+                // set the melting point of the drop 
+                tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
             }
         }
 
