@@ -102,7 +102,7 @@ public class Campfire : MonoBehaviour {
             AudioManager.PlaySound("ignite");
             GetComponent<AudioSource>().mute = false;
 
-            ntManager.SetNewNotification("Campfire lit! 1 Point gained!");
+            ntManager.SetNewNotification("Campfire lit! Point gained!");
         }
     }
 

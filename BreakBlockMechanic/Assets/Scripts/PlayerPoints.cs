@@ -15,7 +15,10 @@ public class PlayerPoints : MonoBehaviour {
     PassingScene passingScene;
 
     private void Start() {
+        //declare variables
         passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+
+        //set the current number of points equal to the amount passed from the last scene. 0 for first level. 
         currPoints = passingScene.getPoints();
     }
     private void Update() {
