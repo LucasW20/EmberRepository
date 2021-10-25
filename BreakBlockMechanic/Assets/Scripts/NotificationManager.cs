@@ -21,7 +21,6 @@ public class NotificationManager : MonoBehaviour {
      * 4. Call "ntManager.SetNewNotification("message"); where message is your string for what you want the notification to display
      */
 
-
     //variables used for the text
     [SerializeField] private TextMeshProUGUI notificationText;  //the gameobject for the text. Set in unity
     [SerializeField] private float fadeTime = 3.5f;             //the time in seconds it takes for the fade out to take. Set in unity.

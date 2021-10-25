@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChange : MonoBehaviour {
 
@@ -28,34 +29,33 @@ public class SceneChange : MonoBehaviour {
 
             //wait for a few seconds
             StartCoroutine(SceneChangeCoroutine());
-
         }
     }
 
     IEnumerator SceneChangeCoroutine() {
+        //Wait for the zoom out to complete
+        yield return new WaitForSeconds(5);
 
-        float time = 0;
-        float fadeTime = 4f;
-        SpriteRenderer fadeImage = GameObject.Find("ScriptHolder").GetComponent<SpriteRenderer>();
+        //fade out by changing the alpha of the fade out image
+        float time = 0;                     //base time for when we start the fade out
+        float fadeTime = 2f;
+        Image fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+
+        //loop to change the alpha gradually
         while (time < fadeTime) {
-            Debug.Log("aplha change");
             time += Time.unscaledDeltaTime;     //update the time
             fadeImage.color = new Color(fadeImage.color.r,    //update the color
                                   fadeImage.color.g,
                                   fadeImage.color.b,
                                   Mathf.Lerp(0f, 1f, time / fadeTime));
-            yield return null;//finish the loop
+            yield return null;                  //finish the loop
         }
 
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        //yield return new WaitForSeconds(5);
+        //wait for a few more seconds for the fade to take place
+        yield return new WaitForSeconds(3);
 
         //save the points the player has
         DontDestroyOnLoad(GameObject.Find("SaveObject"));
-
-
-        
 
         //change the scene
         SceneManager.LoadScene(nextScene);
