@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneChange : MonoBehaviour {
+    [SerializeField] public TextMeshProUGUI titleObject;
+    [SerializeField] public string sceneTitle;
+    [SerializeField] public int requiredPoints;   //the total amount of points needed to unlock the next area. set/change in unity
+    [SerializeField] public int nextScene;     //the next scene playing. set/change in unity
+    [SerializeField] public float fadeTime = 2f;
+    private AudioSource bgmSource;
+    private bool opened = false;
+    private Image fadeImage;
 
-    public int requiredPoints;   //the total amount of points needed to unlock the next area. set/change in unity
-    public int nextScene;     //the next scene playing. set/change in unity
-    bool opened = false;
+    void Start() {
+        bgmSource = GameObject.Find("SaveObject").GetComponent<AudioSource>();
+        fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+        StartCoroutine(SceneOpenCoroutine());
+    }
 
     // Update is called once per frame
     void Update() {
@@ -27,28 +38,60 @@ public class SceneChange : MonoBehaviour {
             Camera.main.GetComponent<FollowPlayer>().setGoToCenter(true);
             Camera.main.GetComponent<FollowPlayer>().setTrackPlayer(false);
 
-            //wait for a few seconds
-            StartCoroutine(SceneChangeCoroutine());
+            //TODO make it so the player doesn't loose health and fall
+
+            //start the closing coroutine
+            StartCoroutine(SceneCloseCoroutine());
         }
     }
 
-    IEnumerator SceneChangeCoroutine() {
+    IEnumerator SceneOpenCoroutine() {
+        //set base time
+        float time = 0;
+
+        //set the alpha to full and set the text for the title
+        fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
+        titleObject.text = sceneTitle;
+
+        //fade in the title text
+        while (time < fadeTime) {
+            time += Time.unscaledDeltaTime;
+            titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+            yield return null;
+        }
+
+        //wait for a little bit
+        yield return new WaitForSeconds(2f);
+
+        //fade out the image and title text together
+        time = 0;   //reset time
+        while (time < fadeTime) {
+            time += Time.unscaledDeltaTime;     //update the time
+            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
+            titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
+            yield return null;                  //finish the loop
+        }
+    }
+
+    IEnumerator SceneCloseCoroutine() {
         //Wait for the zoom out to complete
         yield return new WaitForSeconds(5);
 
-        //fade out by changing the alpha of the fade out image
-        float time = 0;                     //base time for when we start the fade out
-        float fadeTime = 2f;
-        Image fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+        //set base time and the starting volume
+        float time = 0;
+        float startVol = bgmSource.volume;
 
-        //loop to change the alpha gradually
+        //fade out the image and the music
         while (time < fadeTime) {
-            time += Time.unscaledDeltaTime;     //update the time
-            fadeImage.color = new Color(fadeImage.color.r,    //update the color
-                                  fadeImage.color.g,
-                                  fadeImage.color.b,
-                                  Mathf.Lerp(0f, 1f, time / fadeTime));
-            yield return null;                  //finish the loop
+            //update the time
+            time += Time.unscaledDeltaTime;
+
+            //fade
+            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+            bgmSource.volume = Mathf.Lerp(startVol, 0f, time / fadeTime);
+
+            //finish the loop
+            yield return null; 
         }
 
         //wait for a few more seconds for the fade to take place
