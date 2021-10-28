@@ -18,7 +18,7 @@ public class NotificationManager : MonoBehaviour {
      * 1. Find in code when you want a notification displayed (i.e. lighting campfire)
      * 2. Declare a variable for a manager in your class. (example: NotificationManager ntManager;)
      * 3. Put "ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationMangager>();" in the start method of that class
-     * 4. Call "ntManager.SetNewNotification("message"); where message is your string for what you want the notification to display
+     * 4. Call "ntManager.SetNewNotification("message");" where message is your string for what you want the notification to display
      */
 
     //variables used for the text

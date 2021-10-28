@@ -13,10 +13,12 @@ public class PlayerPoints : MonoBehaviour {
 
     private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
     PassingScene passingScene;
+    NotificationManager ntManager;
 
     private void Start() {
         //declare variables
         passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
 
         //set the current number of points equal to the amount passed from the last scene. 0 for first level. 
         currPoints = passingScene.getPoints();
@@ -39,6 +41,8 @@ public class PlayerPoints : MonoBehaviour {
         currPoints++;
         Debug.Log("Point gained! Total = " + currPoints);
 
+        CheckAbilityUnlock();
+
         passingScene.passPoints(1);
     }
 
@@ -46,5 +50,19 @@ public class PlayerPoints : MonoBehaviour {
     public void decrementPoints() { 
         currPoints--;
         Debug.Log("Point lost. Total = " + currPoints);
+    }
+
+    private void CheckAbilityUnlock() {
+        switch (currPoints) {
+            case 2:
+                ntManager.SetNewNotification("Wind Projectile Ability Gained! Press F to use.");
+                break;
+            case 7:
+                ntManager.SetNewNotification("Long Jump Ability Gained! Press G to use.");
+                break;
+            default:
+                //do nothing
+                break;
+        }
     }
 }

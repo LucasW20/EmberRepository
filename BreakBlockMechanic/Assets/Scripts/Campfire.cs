@@ -83,6 +83,9 @@ public class Campfire : MonoBehaviour {
             scriptHolder.GetComponent<CampfireTracker>().increaseNumFiresLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
+            //send out the notification before the points increase so that it doesn't interrupt ability gained notifications
+            ntManager.SetNewNotification("Campfire lit! Point gained!");
+
             //increment the player points
             ember.GetComponent<PlayerPoints>().incrementPoints();
 
@@ -101,8 +104,6 @@ public class Campfire : MonoBehaviour {
             //play ignite fire and continuous fire 
             AudioManager.PlaySound("ignite");
             GetComponent<AudioSource>().mute = false;
-
-            ntManager.SetNewNotification("Campfire lit! Point gained!");
         }
     }
 

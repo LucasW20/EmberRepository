@@ -50,7 +50,6 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    ////change to work for projectile
     private float calculateAngle() {
         // set default angle to 90 (maybe bad practice)
         float angle = 90;

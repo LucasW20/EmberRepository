@@ -684,6 +684,10 @@ PrefabInstance:
       propertyPath: titleObject
       value: 
       objectReference: {fileID: 189503097}
+    - target: {fileID: 2214511595144172685, guid: 28793870d5fb77343b693fea0d2c0f89, type: 3}
+      propertyPath: MaxDistance
+      value: 51.777893
+      objectReference: {fileID: 0}
     - target: {fileID: 2214511595144172694, guid: 28793870d5fb77343b693fea0d2c0f89, type: 3}
       propertyPath: m_Name
       value: SaveObject
