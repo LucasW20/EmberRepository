@@ -1,15 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 /***
  * Manages notifications send by other classes and displays it on the canvas for a time.
  * 
  * @author Lucas_C_Wright
- * @start 10-24-2021
- * @version 10-24-2021
+ * @start 10-25-2021
+ * @version 10-27-2021
  */
 public class NotificationManager : MonoBehaviour {
 
@@ -17,7 +15,7 @@ public class NotificationManager : MonoBehaviour {
      * HOW TO ADD A NOTIFICATION:
      * 1. Find in code when you want a notification displayed (i.e. lighting campfire)
      * 2. Declare a variable for a manager in your class. (example: NotificationManager ntManager;)
-     * 3. Put "ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationMangager>();" in the start method of that class
+     * 3. Put "ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();" in the start method of that class
      * 4. Call "ntManager.SetNewNotification("message");" where message is your string for what you want the notification to display
      */
 
@@ -42,6 +40,10 @@ public class NotificationManager : MonoBehaviour {
     private IEnumerator FadeOutNotification(string message) {
         notificationText.text = message;    //set the text of the gameobject to the message wanted
         float time = 0;                     //base time for when we start the fade out
+
+        //set the base alpha and wait for a few seconds to give player time to read
+        notificationText.color = new Color(notificationText.color.r, notificationText.color.g, notificationText.color.b, 1f);
+        yield return new WaitForSeconds(1.5f);
 
         //loop to change the alpha gradually
         while (time < fadeTime) {

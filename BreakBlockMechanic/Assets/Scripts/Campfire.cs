@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+/*
+ * @version 10-28-2021
+ */
 public class Campfire : MonoBehaviour {
     GameObject ember;
     GameObject scriptHolder;
@@ -15,8 +19,6 @@ public class Campfire : MonoBehaviour {
     Vector2 unLitBoxColSize;
     Vector2 litBoxColOffset;
     Vector2 litBoxColSize;
-
-    NotificationManager ntManager;
 
     // Start is called before the first frame update
     void Start() {
@@ -32,8 +34,6 @@ public class Campfire : MonoBehaviour {
         unLitBoxColSize = new Vector2(3, 1.5f);
         litBoxColOffset = new Vector2(0, 0f);
         litBoxColSize = new Vector2(3, 5f);
-
-        ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class Campfire : MonoBehaviour {
         mouseIsOver = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         if (!isLit) {
             if (collision.gameObject.CompareTag("Player")) {
                 Debug.Log("The fire is lit!");
@@ -84,7 +84,7 @@ public class Campfire : MonoBehaviour {
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
             //send out the notification before the points increase so that it doesn't interrupt ability gained notifications
-            ntManager.SetNewNotification("Campfire lit! Point gained!");
+            StartCoroutine(PointNotification());
 
             //increment the player points
             ember.GetComponent<PlayerPoints>().incrementPoints();
@@ -130,6 +130,24 @@ public class Campfire : MonoBehaviour {
             //stop the fire sound and play the snuff fire sound
             GetComponent<AudioSource>().mute = true;
             AudioManager.PlaySound("snuffFire");
+        }
+    }
+
+    // Coroutine for when a campfire is lit. Displays the notification by the campfire and fades out the text
+    IEnumerator PointNotification() {
+        TextMeshPro CFText = gameObject.GetComponentInChildren<TextMeshPro>(); //get the text component
+        float fadeTime = 2f; //time to fade
+        float time = 0; //starting time
+        CFText.color = new Color(CFText.color.r, CFText.color.g, CFText.color.b, 1f); //set the color to visible 
+
+        //wait for a few seconds for player to read
+        yield return new WaitForSeconds(1.5f);
+
+        //fade out
+        while (time < fadeTime) {
+            time += Time.unscaledDeltaTime;
+            CFText.color = new Color(CFText.color.r, CFText.color.g, CFText.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
+            yield return null;
         }
     }
 }

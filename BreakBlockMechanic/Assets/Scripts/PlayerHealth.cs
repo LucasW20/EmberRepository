@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     bool touchingCampfire = false;
     bool touchingWall = false;
+    private bool freeze = false;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (isAlive)
+        if (isAlive && !freeze)
         {
             updateTime();
 
@@ -196,4 +197,6 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(LoseHealthCoroutine(3, 1));
         }
     }
+
+    public void FreezeHealth() { freeze = true; }
 }
