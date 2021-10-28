@@ -34,9 +34,10 @@ public class DropBehavior : MonoBehaviour
         {
             GetComponent<Collider2D>().isTrigger = true;
         }
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         if (!collision.gameObject.CompareTag("Drip")) {
 
             // if the object collides with the player
