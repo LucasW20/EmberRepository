@@ -146,6 +146,11 @@ public class PlayerHealth : MonoBehaviour
         {
             touchingCampfire = true; // record it
         }
+
+        if(collision.gameObject.CompareTag("Spray"))
+        {
+            StartCoroutine(LoseHealthCoroutine(2, 1));
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
