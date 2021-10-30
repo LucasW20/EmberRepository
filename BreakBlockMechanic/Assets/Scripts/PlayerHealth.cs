@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -87,6 +88,7 @@ public class PlayerHealth : MonoBehaviour
         isAlive = false;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<Light2D>().enabled = false;
         GetComponent<Rigidbody2D>().Sleep();
 
         //Tells the camera to stop following the player
@@ -107,6 +109,7 @@ public class PlayerHealth : MonoBehaviour
         timePassed = 0f;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<CircleCollider2D>().enabled = true;
+        GetComponent<Light2D>().enabled = true;
         GetComponent<Rigidbody2D>().WakeUp();
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
 
@@ -147,10 +150,10 @@ public class PlayerHealth : MonoBehaviour
             touchingCampfire = true; // record it
         }
 
-        if(collision.gameObject.CompareTag("Spray"))
-        {
-            StartCoroutine(LoseHealthCoroutine(2, 1));
-        }
+        //if(collision.gameObject.CompareTag("Spray"))
+        //{
+        //    StartCoroutine(LoseHealthCoroutine(2, 1));
+        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
