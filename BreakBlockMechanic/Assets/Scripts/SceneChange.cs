@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Experimental.Rendering.Universal;
 
 /***
  * Handles the changing of scenes in the game along with the fade in and fade out mechanics
@@ -17,6 +18,7 @@ public class SceneChange : MonoBehaviour {
     [SerializeField] public int nextScene;     //the next scene playing. set/change in unity
     [SerializeField] public float fadeTime = 2f;
     private NotificationManager ntManager;
+    private LightingBehaviour LightController;
     private GameObject ember;
     private bool opened = false;
     private Image fadeImage;
@@ -25,6 +27,7 @@ public class SceneChange : MonoBehaviour {
     void Start() {
         ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+        LightController = GameObject.Find("Ember").GetComponent<LightingBehaviour>();
         StartCoroutine(SceneOpenCoroutine());
     }
 
@@ -57,7 +60,7 @@ public class SceneChange : MonoBehaviour {
             ember.GetComponent<PlayerHealth>().FreezeHealth();
 
             //start the closing coroutine
-            StartCoroutine(SceneCloseCoroutine());
+            StartCoroutine(SceneCloseCoroutine(nextScene));
         }
     }
 
@@ -90,7 +93,7 @@ public class SceneChange : MonoBehaviour {
     }
 
     // Coroutine used for when a scene is being closed. Fades out of scene. 
-    IEnumerator SceneCloseCoroutine() {
+    IEnumerator SceneCloseCoroutine(int sceneNum) {
         //Wait for the zoom out to complete
         yield return new WaitForSeconds(5);
         float time = 0;
@@ -108,6 +111,9 @@ public class SceneChange : MonoBehaviour {
 
         //save the points the player has. This also saves the bgm music. Then change the scene
         DontDestroyOnLoad(GameObject.Find("SaveObject"));
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(sceneNum);
+
+        //reset the lighting of the ember
+        LightController.resetLight();
     }
 }

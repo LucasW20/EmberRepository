@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartButtonBehavior : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class StartButtonBehavior : MonoBehaviour
     {
         
     }
-
-    public void OnButtonPress()
-    {
+    
+    public void OnButtonPress() {
+        SceneManager.LoadScene(0);
         n++;
         Debug.Log("Start button clicked " + n + " times.");
     }
