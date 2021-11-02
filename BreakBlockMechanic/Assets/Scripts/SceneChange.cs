@@ -22,12 +22,14 @@ public class SceneChange : MonoBehaviour {
     private GameObject ember;
     private bool opened = false;
     private Image fadeImage;
+    private Light2D exitLight;
 
     // Start is called at the start
     void Start() {
         ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         LightController = GameObject.Find("Ember").GetComponent<LightingBehaviour>();
+        exitLight = gameObject.GetComponent<Light2D>();
         StartCoroutine(SceneOpenCoroutine());
     }
 
@@ -45,6 +47,7 @@ public class SceneChange : MonoBehaviour {
             //Display notification
             //Debug.Log("The Pathway is open!");
             ntManager.SetNewNotification("The fires have melted the pathway! Move to exit to continue.");
+            StartCoroutine(LightExitCoroutine());
         }
     }
 
@@ -115,5 +118,15 @@ public class SceneChange : MonoBehaviour {
 
         //reset the lighting of the ember
         LightController.resetLight();
+    }
+
+    IEnumerator LightExitCoroutine() {
+        float time = 0;
+
+        while (time < fadeTime) {
+            time += Time.unscaledDeltaTime;
+            exitLight.intensity = Mathf.Lerp(0f, 1.9f, time / fadeTime);
+            yield return null;
+        }
     }
 }

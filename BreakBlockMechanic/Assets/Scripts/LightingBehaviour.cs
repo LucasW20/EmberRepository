@@ -44,7 +44,7 @@ public class LightingBehaviour : MonoBehaviour {
 
     //reset the default values for the ember at the start of the scene
     public void resetLight() {
-        lightEngine.intensity = 1.5f;
+        lightEngine.intensity = 2.5f;
         lightEngine.pointLightOuterRadius = 10f;
     }
 }
