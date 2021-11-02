@@ -18,6 +18,8 @@ public class Windforce : MonoBehaviour
     AreaEffector2D windForceEffector;
     LineRenderer windVectorVisual;
 
+    bool windForceEnabled = true;
+
     void Start()
     {
         windForceM1 = GameObject.Find("WindForceM1");
@@ -34,46 +36,52 @@ public class Windforce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            mouseCurrent = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // get the current mouse position.
-            //"Input.mousePosition" return the mouses x and y position in pixels
-            // Camera.main.ScreenToWorldPoint converts that position into units based on what our main camera sees
+        if (windForceEnabled)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseCurrent = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                // get the current mouse position.
+                //"Input.mousePosition" return the mouses x and y position in pixels
+                // Camera.main.ScreenToWorldPoint converts that position into units based on what our main camera sees
 
-            mouseOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+                mouseOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
 
-        if (Input.GetMouseButton(0)) {
-            // enable polygon collider
-            windForceCollider.enabled = true;
-            // enable line renderer
-            //windVectorVisual.enabled = true;
-            // enable area effector
-            windForceEffector.enabled = true;
-            // get mouse position
-            mouseCurrent = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // calculate the 4 corner points for the polygon collider with calculatePoints function and store them as vector2's
-            Vector2[] pointsList = calculatePoints(mouseOrigin, mouseCurrent, width);
-            // set the path of the polygon collider to the Vector2s in the points list array
-            windForceCollider.SetPath(0, pointsList);
-            // sets the angle from the x axis that force is applied to objects
-            windForceEffector.forceAngle = calculateForceAngle(mouseOrigin, mouseCurrent);
-            // sets the magnitude of the force relative to the length of the line
-            windForceEffector.forceMagnitude = calculateForceMagnitude(mouseOrigin, mouseCurrent, 20);
+            if (Input.GetMouseButton(0))
+            {
+                // enable polygon collider
+                windForceCollider.enabled = true;
+                // enable line renderer
+                //windVectorVisual.enabled = true;
+                // enable area effector
+                windForceEffector.enabled = true;
+                // get mouse position
+                mouseCurrent = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                // calculate the 4 corner points for the polygon collider with calculatePoints function and store them as vector2's
+                Vector2[] pointsList = calculatePoints(mouseOrigin, mouseCurrent, width);
+                // set the path of the polygon collider to the Vector2s in the points list array
+                windForceCollider.SetPath(0, pointsList);
+                // sets the angle from the x axis that force is applied to objects
+                windForceEffector.forceAngle = calculateForceAngle(mouseOrigin, mouseCurrent);
+                // sets the magnitude of the force relative to the length of the line
+                windForceEffector.forceMagnitude = calculateForceMagnitude(mouseOrigin, mouseCurrent, 20);
 
-            Vector3[] lrPos = new Vector3[2];
-            // store mouse origin nd mouse current as Vector3s
-            lrPos[0] = mouseOrigin;
-            lrPos[1] = mouseCurrent;
-            // set the 2 positions of the line renderer
-            windVectorVisual.SetPositions(lrPos);
-        }
+                Vector3[] lrPos = new Vector3[2];
+                // store mouse origin nd mouse current as Vector3s
+                lrPos[0] = mouseOrigin;
+                lrPos[1] = mouseCurrent;
+                // set the 2 positions of the line renderer
+                windVectorVisual.SetPositions(lrPos);
+            }
 
-        if (Input.GetMouseButtonUp(0)) {
-            // disable collider, effecftor, and line renderer
-            windForceCollider.enabled = false;
-            //windVectorVisual.enabled = false;
-            windForceEffector.enabled = false;
+            if (Input.GetMouseButtonUp(0))
+            {
+                // disable collider, effecftor, and line renderer
+                windForceCollider.enabled = false;
+                //windVectorVisual.enabled = false;
+                windForceEffector.enabled = false;
+            }
         }
     }
 
@@ -194,6 +202,11 @@ public class Windforce : MonoBehaviour
 
         // return as an vector2 array because thats what PolygonCollider2D's SetPath function takes as a paramater
         return tPoints;
+    }
+
+    public void toggleWindForce(bool tf)
+    {
+        windForceEnabled = tf;
     }
 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 /***
  * Attached to the Ember/Player to track the amount of points they have and abilities
@@ -10,7 +11,7 @@ public class PlayerPoints : MonoBehaviour {
 
     private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
     PassingScene passingScene;
-    NotificationManager ntManager;
+    NotificationManager ntManager;  
 
     private void Start() {
         //declare variables
