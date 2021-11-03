@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Experimental.Rendering.Universal;
 
 /*
  * @version 10-28-2021
@@ -104,6 +105,8 @@ public class Campfire : MonoBehaviour {
             //play ignite fire and continuous fire 
             AudioManager.PlaySound("ignite");
             GetComponent<AudioSource>().mute = false;
+
+            gameObject.GetComponent<Light2D>().enabled = true;
         }
     }
 
@@ -130,6 +133,8 @@ public class Campfire : MonoBehaviour {
             //stop the fire sound and play the snuff fire sound
             GetComponent<AudioSource>().mute = true;
             AudioManager.PlaySound("snuffFire");
+
+            gameObject.GetComponent<Light2D>().enabled = false;
         }
     }
 

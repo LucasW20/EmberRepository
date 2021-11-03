@@ -27,6 +27,10 @@ public class PlayerPoints : MonoBehaviour {
             currPoints = 1000;
             Debug.Log("1k points gained! Cheater!");
         }
+
+        if (Input.GetKeyDown("c")) {
+            gameObject.GetComponent<PlayerHealth>().resetTime();
+        }
     }
 
     //returns the amount of points the player has. Used for comparing to the abilities point requirement
