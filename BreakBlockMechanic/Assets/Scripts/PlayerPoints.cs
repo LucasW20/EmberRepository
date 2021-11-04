@@ -51,7 +51,23 @@ public class PlayerPoints : MonoBehaviour {
     //decrements the amount of points the player has by 1. Used when a fire is snuffed.
     public void decrementPoints() { 
         currPoints--;
+        passingScene.passPoints(-1);
         Debug.Log("Point lost. Total = " + currPoints);
+    }
+
+    public void adjustPoints(int nPoints)
+    {
+        currPoints += nPoints;
+        passingScene.passPoints(nPoints);
+        if (nPoints > 0)
+        {
+            CheckAbilityUnlock();
+            Debug.Log("Point gained. Total = " + currPoints);
+        }
+        if(nPoints < 0)
+        {
+            Debug.Log("Point lost. Total = " + currPoints);
+        }
     }
 
     private void CheckAbilityUnlock() {
