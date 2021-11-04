@@ -17,6 +17,8 @@ public class SceneChange : MonoBehaviour {
     [SerializeField] public int requiredPoints;   //the total amount of points needed to unlock the next area. set/change in unity
     [SerializeField] public int nextScene;     //the next scene playing. set/change in unity
     [SerializeField] public float fadeTime = 2f;
+
+    private AudioSource bgmTrack;
     private NotificationManager ntManager;
     private LightingBehaviour LightController;
     private GameObject ember;
@@ -29,6 +31,7 @@ public class SceneChange : MonoBehaviour {
         ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         LightController = GameObject.Find("Ember").GetComponent<LightingBehaviour>();
+        bgmTrack = GameObject.Find("SaveObject").GetComponent<AudioSource>();
         exitLight = gameObject.GetComponent<Light2D>();
         StartCoroutine(SceneOpenCoroutine());
     }
@@ -70,15 +73,26 @@ public class SceneChange : MonoBehaviour {
     // Coroutine for when a scene is first loaded
     IEnumerator SceneOpenCoroutine() {
         float time = 0;
+        int currScene = SceneManager.GetActiveScene().buildIndex;
 
         //set the alpha to full and set the text for the title
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
         titleObject.text = sceneTitle;
 
+        if (currScene == 3) {
+            bgmTrack.Stop();
+            bgmTrack.PlayOneShot(Resources.Load<AudioClip>("Campfire"));
+            bgmTrack.volume = 0f;
+        }
+
         //fade in the title text
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+
+            if (currScene == 3) {
+                bgmTrack.volume = Mathf.Lerp(0f, 0.201f, time / fadeTime);
+            }
             yield return null;
         }
 
@@ -100,12 +114,18 @@ public class SceneChange : MonoBehaviour {
         //Wait for the zoom out to complete
         yield return new WaitForSeconds(5);
         float time = 0;
+        float volStart = bgmTrack.volume;
 
         //fade out the image and the music
         while (time < fadeTime) {
             //update the time
             time += Time.unscaledDeltaTime;
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+
+            if (sceneNum == 3) {
+                bgmTrack.volume = Mathf.Lerp(volStart, 0f, time / fadeTime);
+            }
+
             yield return null; //finish the loop
         }
 
