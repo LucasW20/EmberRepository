@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class BubbleShieldBehavior : MonoBehaviour
 {
-    GameObject ember;
     // Start is called before the first frame update
     void Start()
     {
-        ember = GameObject.Find("Ember");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // this.transform.position = ember.transform.position;
+        if (Input.GetKeyDown("s"))
+        {
+            StartCoroutine(startShieldCoroutine());
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public IEnumerator startShieldCoroutine()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<CircleCollider2D>(), GetComponent<Collider2D>());
-        }
+        // toggles a boolean in playerhealth, stopping health loss from collisions
+        GetComponent<PlayerHealth>().toggleShield(true);
+        // increase the collider radius
+        GetComponent<CircleCollider2D>().radius = 1.5f;
+        yield return new WaitForSeconds(3);
+        // disable shield and set radius back to normal
+        GetComponent<PlayerHealth>().toggleShield(false);
+        GetComponent<CircleCollider2D>().radius = .76f;
     }
 }
