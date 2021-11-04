@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     bool touchingCampfire = false;
     bool touchingWall = false;
     private bool freeze = false;
+    private bool shieldEnabled = false;
 
     void Start()
     {
@@ -84,17 +85,20 @@ public class PlayerHealth : MonoBehaviour
     // tells camera to view entire map, and player loses one life.
     public void deathEffect()
     {
-        Debug.Log("Times up!");
-        isAlive = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<CircleCollider2D>().enabled = false;
-        GetComponent<Light2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
+        if (!shieldEnabled)
+        {
+            Debug.Log("Times up!");
+            isAlive = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<Light2D>().enabled = false;
+            GetComponent<Rigidbody2D>().Sleep();
 
-        //Tells the camera to stop following the player
-        viewWholeMap();
+            //Tells the camera to stop following the player
+            viewWholeMap();
 
-        GetComponent<PlayerLives>().loseLives(1); // lose one life
+            GetComponent<PlayerLives>().loseLives(1); // lose one life
+        }
     }
 
     // handles all the effects when a player revieves
@@ -193,18 +197,22 @@ public class PlayerHealth : MonoBehaviour
     // handles health loss if the player is touching a wall. lose damage health every waitTime seconds
     public IEnumerator LoseHealthCoroutine(float damage, float waitTime)
     {
-        timePassed += damage;
-
-        //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
-        yield return new WaitForSeconds(waitTime);
-
-        //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
-        //It is enabled once the 0.14 seconds pass
-        if (touchingWall)
+        if (!shieldEnabled)
         {
-            StartCoroutine(LoseHealthCoroutine(3, 1));
+            timePassed += damage;
+
+            //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
+            yield return new WaitForSeconds(waitTime);
+
+            //Collider is disabled to start so it doesn't delete itself when it flies through the wall. 
+            //It is enabled once the 0.14 seconds pass
+            if (touchingWall)
+            {
+                StartCoroutine(LoseHealthCoroutine(3, 1));
+            }
         }
     }
 
     public void FreezeHealth() { freeze = true; }
+    public void toggleShield(bool tf) { shieldEnabled = tf; }
 }
