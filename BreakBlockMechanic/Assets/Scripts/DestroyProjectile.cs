@@ -18,7 +18,7 @@ public class DestroyProjectile : MonoBehaviour {
     void Start() {
         //assign the global variables their objects
         ember = GameObject.Find("Ember");
-        tagsArray = new string[]{"Drip"};
+        tagsArray = new string[]{"Drip", "Waterfall"};
     }
 
     //checks the type of collision to see if it's a wall or breaker to determine what to do.
