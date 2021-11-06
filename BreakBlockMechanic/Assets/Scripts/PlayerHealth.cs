@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     private bool freeze = false;
     private bool shieldEnabled = false;
 
+    int frostResist = 0;
+
     void Start()
     {
         healthBar.setMaxHealth(maxPlHealth); // sets the Health Bar UI elements Max health
@@ -30,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         followPlayer = mainCamera.GetComponent<FollowPlayer>();
         mapCenter = mainCamera.transform.position; // save the center of the map as the initial position of the camera
         // the main camera should always be centered on the map to start each level, theoretically
+
+        frostResist = GameObject.Find("SaveObject").GetComponent<PassingScene>().getFrostResist();
         
     }
 
@@ -133,7 +137,8 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) { 
             Debug.Log("Touching Ground!");
             touchingWall = true; // record the touching
-            StartCoroutine(LoseHealthCoroutine(3, 1)); // lose 3 health every 1 second
+            StartCoroutine(LoseHealthCoroutine(5 - frostResist, 1)); // lose 5 - frostResist health every 1 second
+            Debug.Log("Frost Resistance is: " + frostResist);
         }
     }
 
@@ -154,10 +159,10 @@ public class PlayerHealth : MonoBehaviour
             touchingCampfire = true; // record it
         }
 
-        //if(collision.gameObject.CompareTag("Spray"))
-        //{
-        //    StartCoroutine(LoseHealthCoroutine(2, 1));
-        //}
+        if(collision.gameObject.CompareTag("Spray"))
+        {
+            StartCoroutine(LoseHealthCoroutine(2, 1));
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -165,6 +170,14 @@ public class PlayerHealth : MonoBehaviour
         {
             touchingCampfire = false; // record the change
             trackPlayer(); // tell camera to track player
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
         }
     }
 
@@ -215,4 +228,21 @@ public class PlayerHealth : MonoBehaviour
 
     public void FreezeHealth() { freeze = true; }
     public void toggleShield(bool tf) { shieldEnabled = tf; }
+
+    // getter for frost resist
+    public int getFrostResist()
+    {
+        return frostResist;
+    }
+
+    // adjuster for frost resist
+    public void adjustFrostReist(int resistChange)
+    {
+        frostResist += resistChange;
+    }
+    // setter for frost resist
+    public void setFrostResist(int nResist)
+    {
+        frostResist = nResist;
+    }
 }

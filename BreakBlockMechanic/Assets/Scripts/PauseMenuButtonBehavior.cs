@@ -5,8 +5,10 @@ using UnityEngine;
 public class PauseMenuButtonBehavior : MonoBehaviour
 {
     [SerializeField] GameObject menu;
-    [SerializeField] PlayerPoints playerPoints;
-    [SerializeField] PlayerLives playerLives;
+    GameObject ember;
+    PlayerPoints playerPoints;
+    PlayerLives playerLives;
+    PlayerHealth playerHealth;
     PassingScene passingScene;
     private bool isPressed = false;
 
@@ -14,6 +16,10 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     void Start()
     {
         passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        ember = GameObject.Find("Ember");
+        playerPoints = ember.GetComponent<PlayerPoints>();
+        playerLives = ember.GetComponent<PlayerLives>();
+        playerHealth = ember.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -39,6 +45,12 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         playerLives.adjustMaxLives(n);
         passingScene.passMaxLives(n);
         
+    }
+
+    public void frostResistIncrease(int n)
+    {
+        playerHealth.adjustFrostReist(n);
+        passingScene.passFrostResist(n);
     }
 
     public void toggleMenu(bool tf)

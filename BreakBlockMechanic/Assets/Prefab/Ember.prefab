@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1377772588106536426}
   - component: {fileID: 9026197371670074757}
   - component: {fileID: 2615617796525840942}
+  - component: {fileID: -743999303702140305}
   m_Layer: 3
   m_Name: Ember
   m_TagString: Player
@@ -210,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522579dc0421d15468a0e97eddae302a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLives: 5
   livesBar: {fileID: 0}
 --- !u!114 &1377772588106536426
 MonoBehaviour:
@@ -275,5 +275,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2128fa4324f83734c9c1b4aa3b65aefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-743999303702140305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5980307647126651217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff8aea76b26d21448fae4ed9a0c9403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

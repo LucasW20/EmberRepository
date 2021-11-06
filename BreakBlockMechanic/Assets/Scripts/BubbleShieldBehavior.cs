@@ -19,6 +19,14 @@ public class BubbleShieldBehavior : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
+        }
+    }
+
     public IEnumerator startShieldCoroutine()
     {
         // toggles a boolean in playerhealth, stopping health loss from collisions
