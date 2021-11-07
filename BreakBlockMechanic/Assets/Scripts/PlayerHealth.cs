@@ -23,6 +23,8 @@ public class PlayerHealth : MonoBehaviour
 
     int frostResist = 0;
 
+    [SerializeField] ParticleSystem partSys;
+
     void Start()
     {
         healthBar.setMaxHealth(maxPlHealth); // sets the Health Bar UI elements Max health
@@ -98,6 +100,9 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<Light2D>().enabled = false;
             GetComponent<Rigidbody2D>().Sleep();
 
+            partSys.Stop();
+            partSys.enableEmission = false;
+
             //Tells the camera to stop following the player
             viewWholeMap();
 
@@ -121,6 +126,9 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody2D>().WakeUp();
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 25);
 
+        partSys.Play();
+        ParticleSystem.EmissionModule em = partSys.emission;
+        em.enabled = true;
 
         trackPlayer();
 
