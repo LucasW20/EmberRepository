@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class BubbleShieldBehavior : MonoBehaviour
 {
+    private float durationOfShield = 2;
+    PassingScene passingScene;
     // Start is called before the first frame update
     void Start()
     {
-
+        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        durationOfShield = passingScene.getShieldDuration();
     }
 
     // Update is called once per frame
@@ -33,9 +36,19 @@ public class BubbleShieldBehavior : MonoBehaviour
         GetComponent<PlayerHealth>().toggleShield(true);
         // increase the collider radius
         GetComponent<CircleCollider2D>().radius = 1.5f;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(durationOfShield);
         // disable shield and set radius back to normal
         GetComponent<PlayerHealth>().toggleShield(false);
         GetComponent<CircleCollider2D>().radius = .76f;
+    }
+
+    public void adjustShieldDuration(float n)
+    {
+        durationOfShield += n;
+    }
+
+    public float getShieldDuration()
+    {
+        return durationOfShield;
     }
 }

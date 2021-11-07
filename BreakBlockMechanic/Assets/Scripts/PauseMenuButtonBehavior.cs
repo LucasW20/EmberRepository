@@ -11,6 +11,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     PlayerHealth playerHealth;
     PassingScene passingScene;
     LongJump longJump;
+    BubbleShieldBehavior bubbleShieldBehavior;
     private bool isPressed = false;
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         playerLives = ember.GetComponent<PlayerLives>();
         playerHealth = ember.GetComponent<PlayerHealth>();
         longJump = ember.GetComponent<LongJump>();
+        bubbleShieldBehavior = ember.GetComponent<BubbleShieldBehavior>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,12 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     {
         longJump.adjustTotalJumps(n);
         passingScene.passTotalJumps(n);
+    }
+
+    public void shieldDurationIncrease(float n)
+    {
+        bubbleShieldBehavior.adjustShieldDuration(n);
+        passingScene.passShieldDuration(n);
     }
 
     public void toggleMenu(bool tf)
