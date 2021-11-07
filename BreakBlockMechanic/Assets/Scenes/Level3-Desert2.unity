@@ -4227,6 +4227,7 @@ GameObject:
   - component: {fileID: 2100565318}
   - component: {fileID: 2100565317}
   - component: {fileID: 2100565319}
+  - component: {fileID: 2100565320}
   m_Layer: 0
   m_Name: map3K_01
   m_TagString: Breaker
@@ -4354,6 +4355,19 @@ PolygonCollider2D:
       - {x: 12.599999, y: -3.09375}
       - {x: 12.698437, y: -2.64375}
       - {x: 12.825, y: -2.4890625}
+--- !u!114 &2100565320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100565316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ec66c624045d945b704bc3c3d2507f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  special: 1
 --- !u!1001 &7923664403946577066
 PrefabInstance:
   m_ObjectHideFlags: 0
