@@ -5,6 +5,7 @@ using UnityEngine;
 public class LongJump : MonoBehaviour
 {
     GameObject ember;
+    PassingScene passingScene;
     PlayerPoints playerPoints;
     Vector2 mouseCurr;
 
@@ -14,8 +15,9 @@ public class LongJump : MonoBehaviour
 
     float speed = 40; // velocity of the jump
 
-    int jumpsLeft = 3; // tracks how many jumps the player has left
-    int pointsRequired = 7; // how many points are needed before player can jump
+    int jumpsUsed = 0; // tracks how many jumps the player has used
+    int totalJumps = 3;
+    int pointsRequired = 1; // how many points are needed before player can jump
 
 
     // Start is called before the first frame update
@@ -23,6 +25,8 @@ public class LongJump : MonoBehaviour
     {
         ember = GameObject.Find("Ember");
         playerPoints = ember.GetComponent<PlayerPoints>();
+        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        totalJumps = passingScene.getTotalJumps();
     }
 
     // Update is called once per frame
@@ -33,12 +37,13 @@ public class LongJump : MonoBehaviour
             mouseCurr = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         // if 'g' is released and we have jumps left, and we have enough points
-        if (Input.GetKeyUp("g") && jumpsLeft >= 0 && playerPoints.getPoints() >= pointsRequired) 
+        if (Input.GetKeyUp("g") && jumpsUsed < totalJumps && playerPoints.getPoints() >= pointsRequired) 
         {
             // calculate the direction of the 'jump' based on the ember's location and the mouses position
+            Debug.Log("Jump Attempted");
             direction = calculateDirection(transform.position, mouseCurr);
             moving = true; // set moving equal to true (for the if statement below)
-            jumpsLeft--; // remove a jump
+            jumpsUsed++; // remove a jump
             
         }
         if(moving)
@@ -179,6 +184,10 @@ public class LongJump : MonoBehaviour
         // return the slope
         return slope;
     }
+
+    public void adjustTotalJumps(int n){ totalJumps += n; }
+
+    public int getTotalJumps() { return totalJumps; }
 
 
 }
