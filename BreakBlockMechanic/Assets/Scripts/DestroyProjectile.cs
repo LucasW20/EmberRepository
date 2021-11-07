@@ -32,11 +32,8 @@ public class DestroyProjectile : MonoBehaviour {
         }
         //if the collison is with a surface that can be broken
         else if (collision.gameObject.CompareTag("Breaker")) {
-            //diable the breaker object
-            collision.gameObject.SetActive(false);
-
-            //play breaking sound
-            AudioManager.PlaySound("breakingIce");
+            //call destroyhandler
+            collision.GetComponent<IceWallBehaviour>().DestroyHandler(gameObject);
 
             //then destroy the projectile
             Destroy(this.gameObject);        
