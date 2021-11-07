@@ -100,8 +100,9 @@ public class PlayerHealth : MonoBehaviour
             GetComponent<Light2D>().enabled = false;
             GetComponent<Rigidbody2D>().Sleep();
 
-            partSys.Stop();
-            partSys.enableEmission = false;
+            partSys.Clear();
+            ParticleSystem.EmissionModule em = partSys.emission;
+            em.enabled = false;
 
             //Tells the camera to stop following the player
             viewWholeMap();
