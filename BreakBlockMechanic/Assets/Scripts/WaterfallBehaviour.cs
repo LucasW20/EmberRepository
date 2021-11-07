@@ -68,8 +68,13 @@ public class WaterfallBehaviour : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    //private void OnTriggerEnter2D(Collider2D collision) {
+    //    StartCoroutine(ember.GetComponent<PlayerHealth>().LoseHealthCoroutine(5, 1));
+    //    ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20), ForceMode2D.Impulse);
+    //}
+
+    private void OnTriggerStay2D(Collider2D collision) {
         StartCoroutine(ember.GetComponent<PlayerHealth>().LoseHealthCoroutine(5, 1));
-        ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+        ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20), ForceMode2D.Impulse);
     }
 }
