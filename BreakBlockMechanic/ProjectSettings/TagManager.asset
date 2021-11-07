@@ -12,6 +12,7 @@ TagManager:
   - Drip
   - Shield
   - Waterfall
+  - Spray
   layers:
   - Default
   - TransparentFX
