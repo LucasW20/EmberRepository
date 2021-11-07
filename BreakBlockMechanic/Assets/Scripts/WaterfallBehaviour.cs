@@ -7,7 +7,7 @@ using UnityEngine;
  * 
  * @author Lucas_C_Wright
  * @start 11-04-2021
- * @version 11-04-2021
+ * @version 11-7-2021
  */
 public class WaterfallBehaviour : MonoBehaviour {
     [SerializeField] private int meltingPoints;
@@ -68,13 +68,14 @@ public class WaterfallBehaviour : MonoBehaviour {
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision) {
-    //    StartCoroutine(ember.GetComponent<PlayerHealth>().LoseHealthCoroutine(5, 1));
-    //    ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20), ForceMode2D.Impulse);
-    //}
-
-    private void OnTriggerStay2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         StartCoroutine(ember.GetComponent<PlayerHealth>().LoseHealthCoroutine(5, 1));
         ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20), ForceMode2D.Impulse);
     }
+
+    //private void OnTriggerStay2D(Collider2D collision) {
+
+    //    StartCoroutine(ember.GetComponent<PlayerHealth>().LoseHealthCoroutine(5, 1));
+    //    ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20), ForceMode2D.Impulse);
+    //}
 }
