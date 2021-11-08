@@ -18,7 +18,7 @@ public class SceneChange : MonoBehaviour {
     [SerializeField] public int nextScene;     //the next scene playing. set/change in unity
     [SerializeField] public float fadeTime = 2f;
     [SerializeField] public float fadeLight = 1.9f;
-    [SerializeField] public float baseFade;
+    [SerializeField] public float baseLight = 0.5f;
 
     private AudioSource bgmTrack;
     private NotificationManager ntManager;
@@ -144,22 +144,34 @@ public class SceneChange : MonoBehaviour {
 
     IEnumerator LightExitCoroutine() {
         float time = 0;
-
-        //fade in
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
-            exitLight.intensity = Mathf.Lerp(0f, fadeLight, time / fadeTime);
+            exitLight.intensity = Mathf.Lerp(0, fadeLight, time / fadeTime);
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
+        time = 0; //reset time
+        while (true) {
+            yield return new WaitForSeconds(0.5f);
 
-        time = 0;
-        //fade out but not to 0
-        while (time < fadeTime) {
-            time += Time.unscaledDeltaTime;
-            exitLight.intensity = Mathf.Lerp(fadeLight, 0.5f, time / fadeTime);
-            yield return null;
+            //fade out but not to 0
+            while (time < fadeTime) {
+                time += Time.unscaledDeltaTime;
+                exitLight.intensity = Mathf.Lerp(fadeLight, baseLight, time / fadeTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.5f);  //wait for a little bit
+            time = 0; //reset time
+
+            //fade in
+            while (time < fadeTime) {
+                time += Time.unscaledDeltaTime;
+                exitLight.intensity = Mathf.Lerp(baseLight, fadeLight, time / fadeTime);
+                yield return null;
+            }
+
+            time = 0; //reset time
         }
     }
 }
