@@ -37,7 +37,7 @@ public class LongJump : MonoBehaviour
             mouseCurr = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         // if 'g' is released and we have jumps left, and we have enough points
-        if (Input.GetKeyUp("g") && jumpsUsed < totalJumps && playerPoints.getPoints() >= pointsRequired) 
+        if (Input.GetKeyUp("g") && jumpsUsed < totalJumps && playerPoints.getTotalPoints() >= pointsRequired) 
         {
             // calculate the direction of the 'jump' based on the ember's location and the mouses position
             Debug.Log("Jump Attempted");

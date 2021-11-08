@@ -121,8 +121,8 @@ public class Campfire : MonoBehaviour {
             scriptHolder.GetComponent<CampfireTracker>().decreaseNumFireLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
-            //decrement the player points
-            ember.GetComponent<PlayerPoints>().decrementPoints();
+            //decrement the player's total and current points
+            ember.GetComponent<PlayerPoints>().decrementPoints(true);
 
             // change collider size
             GetComponent<BoxCollider2D>().size = unLitBoxColSize;

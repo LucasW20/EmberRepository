@@ -31,7 +31,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //if the player presses the F key then shoot a projectile 
-        if (Input.GetKeyDown("f") && !existingProjectile && ember.GetComponent<PlayerPoints>().getPoints() >= pointRequirement) {
+        if (Input.GetKeyDown("f") && !existingProjectile && ember.GetComponent<PlayerPoints>().getTotalPoints() >= pointRequirement) {
             //log for debugging
             //Debug.Log("Clicked F for FIRE!");
 

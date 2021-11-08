@@ -15,6 +15,6 @@ public class PointsTextUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = ember.GetComponent<PlayerPoints>().getPoints().ToString();
+        GetComponent<Text>().text = ember.GetComponent<PlayerPoints>().getCurrentPoints().ToString();
     }
 }

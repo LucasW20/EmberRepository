@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class PlayerPoints : MonoBehaviour {
 
     private int currPoints;     //the total amount of points the player has during the game. determines which abilities the player can use. 
+    private int pointsSpent;
+    private int pointsEarned;
     PassingScene passingScene;
     NotificationManager ntManager;  
 
@@ -34,13 +36,18 @@ public class PlayerPoints : MonoBehaviour {
     }
 
     //returns the amount of points the player has. Used for comparing to the abilities point requirement
-    public int getPoints() { return currPoints; }
+    public int getCurrentPoints() { return currPoints; }
+
+    public int getTotalPoints() { return pointsEarned; }
+
+    public int getPointsSpent() { return pointsSpent; }
 
     //TODO implement fade in and fade out text letting the player know when they get a point and loose a point
 
     //increments the amount of points the player has by 1. Used when a new fire is lit.
     public void incrementPoints() {
         currPoints++;
+        pointsEarned++;
         Debug.Log("Point gained! Total = " + currPoints);
 
         CheckAbilityUnlock();
@@ -49,26 +56,16 @@ public class PlayerPoints : MonoBehaviour {
     }
 
     //decrements the amount of points the player has by 1. Used when a fire is snuffed.
-    public void decrementPoints() { 
+    public void decrementPoints(bool totalAndCurrent) { 
         currPoints--;
+        if (totalAndCurrent)
+        {
+            pointsEarned--;
+        }
         passingScene.passPoints(-1);
         Debug.Log("Point lost. Total = " + currPoints);
     }
 
-    public void adjustPoints(int nPoints)
-    {
-        currPoints += nPoints;
-        passingScene.passPoints(nPoints);
-        if (nPoints > 0)
-        {
-            CheckAbilityUnlock();
-            Debug.Log("Point gained. Total = " + currPoints);
-        }
-        if(nPoints < 0)
-        {
-            Debug.Log("Point lost. Total = " + currPoints);
-        }
-    }
 
     private void CheckAbilityUnlock() {
         switch (currPoints) {

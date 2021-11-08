@@ -44,7 +44,7 @@ public class SceneChange : MonoBehaviour {
         ember = GameObject.Find("Ember");
 
         //if the amount of points required to move on has been hit then open the path.
-        if (ember.GetComponent<PlayerPoints>().getPoints() >= requiredPoints && !opened) {
+        if (ember.GetComponent<PlayerPoints>().getTotalPoints() >= requiredPoints && !opened) {
             //change the collider to a trigger collider
             gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             opened = true;
