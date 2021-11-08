@@ -17,6 +17,8 @@ public class SceneChange : MonoBehaviour {
     [SerializeField] public int requiredPoints;   //the total amount of points needed to unlock the next area. set/change in unity
     [SerializeField] public int nextScene;     //the next scene playing. set/change in unity
     [SerializeField] public float fadeTime = 2f;
+    [SerializeField] public float fadeLight = 1.9f;
+    [SerializeField] public float baseFade;
 
     private AudioSource bgmTrack;
     private NotificationManager ntManager;
@@ -143,9 +145,20 @@ public class SceneChange : MonoBehaviour {
     IEnumerator LightExitCoroutine() {
         float time = 0;
 
+        //fade in
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
-            exitLight.intensity = Mathf.Lerp(0f, 1.9f, time / fadeTime);
+            exitLight.intensity = Mathf.Lerp(0f, fadeLight, time / fadeTime);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        time = 0;
+        //fade out but not to 0
+        while (time < fadeTime) {
+            time += Time.unscaledDeltaTime;
+            exitLight.intensity = Mathf.Lerp(fadeLight, 0.5f, time / fadeTime);
             yield return null;
         }
     }
