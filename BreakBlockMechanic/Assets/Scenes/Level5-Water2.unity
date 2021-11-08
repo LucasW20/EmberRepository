@@ -1335,7 +1335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1107465601
 MonoBehaviour:
@@ -1905,6 +1905,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: baseLight
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: fadeLight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: nextScene
       value: 5
       objectReference: {fileID: 0}
@@ -1918,7 +1926,11 @@ PrefabInstance:
       objectReference: {fileID: 1732475261}
     - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Color.b

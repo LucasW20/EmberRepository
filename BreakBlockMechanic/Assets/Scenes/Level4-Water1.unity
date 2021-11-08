@@ -3371,8 +3371,12 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: baseLight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: fadeLight
-      value: 2.5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: nextScene
@@ -3388,7 +3392,11 @@ PrefabInstance:
       objectReference: {fileID: 1383805338}
     - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Color.b
@@ -3404,7 +3412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Intensity
-      value: 4.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_ShapePath.Array.size

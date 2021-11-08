@@ -567,6 +567,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5830521613573444702, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5830521613720890197, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -882,17 +886,21 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.35686275
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.34117648
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.21960784
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_Intensity
@@ -904,11 +912,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_ShapeLightFalloffSize
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_ShapeLightFalloffOffset.y
-      value: -2.94
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 4546927572272674033, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_ShapePath.Array.data[0].x
