@@ -37,11 +37,12 @@ public class WaterfallBehaviour : MonoBehaviour {
         float time = 0;
         float fadeTime = 2f;
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-
+        SpriteRenderer waterfallAni = GameObject.Find("WaterfallAnimation").GetComponent<SpriteRenderer>();
 
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
+            waterfallAni.color = new Color(waterfallAni.color.r, waterfallAni.color.g, waterfallAni.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
             yield return null;
         }
 
