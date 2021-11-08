@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PassingScene : MonoBehaviour {
-    [HideInInspector] public int passingPoints = 0;
+    [HideInInspector] public int passingTotalPoints = 0;
+    [HideInInspector] public int passingCurrPoints = 0;
     [HideInInspector] public int passingMaxLives;
     [HideInInspector] public int passingFrostResist;
     [HideInInspector] public int passingTotalJumps;
@@ -16,8 +17,10 @@ public class PassingScene : MonoBehaviour {
         passingTotalJumps = GameObject.Find("Ember").GetComponent<LongJump>().getTotalJumps();
         passingShieldDuration = GameObject.Find("Ember").GetComponent<BubbleShieldBehavior>().getShieldDuration();
     }
-    public void passPoints(int nPoints) { passingPoints += nPoints; }
-    public int getPoints() { return passingPoints; }
+    public void passCurrPoints(int nPoints) { passingCurrPoints += nPoints; }
+    public void passTotalPoints(int nPoints) { passingTotalPoints += nPoints; }
+    public int getCurrPoints() { return passingCurrPoints; }
+    public int getTotalPoints() { return passingTotalPoints; }
 
     public void passMaxLives(int nLives) { passingMaxLives += nLives; }
     public int getMaxLives() { return passingMaxLives; }

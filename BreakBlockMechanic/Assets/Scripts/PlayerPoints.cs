@@ -21,7 +21,8 @@ public class PlayerPoints : MonoBehaviour {
         ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
 
         //set the current number of points equal to the amount passed from the last scene. 0 for first level. 
-        currPoints = passingScene.getPoints();
+        currPoints = passingScene.getCurrPoints();
+        pointsEarned = passingScene.getTotalPoints();
     }
     private void Update() {
         //cheat code! get 1000 points. used for when the devs dont wanna collect all them points to test something. REMOVE FOR FINAL
@@ -52,7 +53,8 @@ public class PlayerPoints : MonoBehaviour {
 
         CheckAbilityUnlock();
 
-        passingScene.passPoints(1);
+        passingScene.passTotalPoints(1);
+        passingScene.passCurrPoints(1);
     }
 
     //decrements the amount of points the player has by 1. Used when a fire is snuffed.
@@ -61,8 +63,9 @@ public class PlayerPoints : MonoBehaviour {
         if (totalAndCurrent)
         {
             pointsEarned--;
+            passingScene.passTotalPoints(-1);
         }
-        passingScene.passPoints(-1);
+        passingScene.passCurrPoints(-1);
         Debug.Log("Point lost. Total = " + currPoints);
     }
 
