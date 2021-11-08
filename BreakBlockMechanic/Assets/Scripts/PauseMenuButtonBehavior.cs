@@ -50,27 +50,39 @@ public class PauseMenuButtonBehavior : MonoBehaviour
 
     public void livesIncrease(int n)
     {
-        playerLives.adjustMaxLives(n);
-        passingScene.passMaxLives(n);
+        if (!isPressed)
+        {
+            playerLives.adjustMaxLives(n);
+            passingScene.passMaxLives(n);
+        }
         
     }
 
     public void frostResistIncrease(int n)
     {
-        playerHealth.adjustFrostReist(n);
-        passingScene.passFrostResist(n);
+        if (!isPressed)
+        {
+            playerHealth.adjustFrostReist(n);
+            passingScene.passFrostResist(n);
+        }
     }
 
     public void totalJumpsIncrease(int n)
     {
-        longJump.adjustTotalJumps(n);
-        passingScene.passTotalJumps(n);
+        if (!isPressed)
+        {
+            longJump.adjustTotalJumps(n);
+            passingScene.passTotalJumps(n);
+        }
     }
 
     public void shieldDurationIncrease(float n)
     {
-        bubbleShieldBehavior.adjustShieldDuration(n);
-        passingScene.passShieldDuration(n);
+        if (!isPressed)
+        {
+            bubbleShieldBehavior.adjustShieldDuration(n);
+            passingScene.passShieldDuration(n);
+        }
     }
 
     public void toggleMenu(bool tf)

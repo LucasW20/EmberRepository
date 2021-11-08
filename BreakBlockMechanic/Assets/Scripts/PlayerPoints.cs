@@ -49,7 +49,8 @@ public class PlayerPoints : MonoBehaviour {
     public void incrementPoints() {
         currPoints++;
         pointsEarned++;
-        Debug.Log("Point gained! Total = " + currPoints);
+        Debug.Log("Point gained! Total = " + pointsEarned);
+        Debug.Log("Current =" + currPoints);
 
         CheckAbilityUnlock();
 
@@ -66,12 +67,13 @@ public class PlayerPoints : MonoBehaviour {
             passingScene.passTotalPoints(-1);
         }
         passingScene.passCurrPoints(-1);
-        Debug.Log("Point lost. Total = " + currPoints);
+        Debug.Log("Point lost. Total = " + pointsEarned);
+        Debug.Log("Current =" + currPoints);
     }
 
 
     private void CheckAbilityUnlock() {
-        switch (currPoints) {
+        switch (pointsEarned) {
             case 2:
                 ntManager.SetNewNotification("Wind Projectile Ability Gained! Press F to use.");
                 break;
