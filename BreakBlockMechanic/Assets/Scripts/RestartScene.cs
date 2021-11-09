@@ -14,8 +14,7 @@ public class RestartScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
+        if (Input.GetKeyDown("r")) {
             restartLevel();
         }
     }

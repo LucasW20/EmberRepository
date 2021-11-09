@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -108,6 +109,11 @@ public class PlayerHealth : MonoBehaviour
             viewWholeMap();
 
             GetComponent<PlayerLives>().loseLives(1); // lose one life
+
+            if (GetComponent<PlayerLives>().getLives() <= 0) {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
         }
     }
 

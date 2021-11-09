@@ -41,11 +41,7 @@ public class PlayerLives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentLives <= 0)
-        {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
+        
     }
 
     public void loseLives(int livesLost)
