@@ -11,6 +11,7 @@ using UnityEngine;
  */
 public class WaterfallBehaviour : MonoBehaviour {
     [SerializeField] private int meltingPoints;
+    [SerializeField] public GameObject waterfallAni;
     private PolygonCollider2D fallCollider;
     private CampfireTracker fireTracker;
     private GameObject ember;
@@ -37,12 +38,12 @@ public class WaterfallBehaviour : MonoBehaviour {
         float time = 0;
         float fadeTime = 2f;
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-        SpriteRenderer waterfallAni = GameObject.Find("WaterfallAnimation").GetComponent<SpriteRenderer>();
+        SpriteRenderer wfAni = waterfallAni.GetComponent<SpriteRenderer>();
 
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
-            waterfallAni.color = new Color(waterfallAni.color.r, waterfallAni.color.g, waterfallAni.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+            wfAni.color = new Color(wfAni.color.r, wfAni.color.g, wfAni.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
             yield return null;
         }
 
@@ -54,10 +55,12 @@ public class WaterfallBehaviour : MonoBehaviour {
         float time = 0;
         float fadeTime = 2f;
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer wfAni = waterfallAni.GetComponent<SpriteRenderer>();
 
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
+            wfAni.color = new Color(wfAni.color.r, wfAni.color.g, wfAni.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
             yield return null;
         }
 
