@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 287628815}
   m_Layer: 0
   m_Name: map6K_01
-  m_TagString: Untagged
+  m_TagString: Breaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 1594312157}
   m_Layer: 0
   m_Name: map6K_02
-  m_TagString: Untagged
+  m_TagString: Breaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4221,7 +4221,7 @@ GameObject:
   - component: {fileID: 2120573374}
   m_Layer: 0
   m_Name: map6K_03
-  m_TagString: Untagged
+  m_TagString: Breaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

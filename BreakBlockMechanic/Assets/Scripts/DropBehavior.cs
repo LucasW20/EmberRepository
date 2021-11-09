@@ -9,6 +9,7 @@ public class DropBehavior : MonoBehaviour
     [HideInInspector]
     public int meltingPoint;
     private int firesLit;
+    private bool frozen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +30,12 @@ public class DropBehavior : MonoBehaviour
         if (firesLit < meltingPoint)
         {
             GetComponent<Collider2D>().isTrigger = false;
+            frozen = true;
         }
         else
         {
             GetComponent<Collider2D>().isTrigger = true;
+            frozen = false;
         }
 
     }
@@ -52,5 +55,16 @@ public class DropBehavior : MonoBehaviour
             }
             
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Breaker")) {
+            collision.gameObject.GetComponent<IceWallBehaviour>().DestroyHandler(this.gameObject);
+            Destroy(this.gameObject);
+        }
+    }
+
+    public bool isFrozen() {
+        return frozen;
     }
 }
