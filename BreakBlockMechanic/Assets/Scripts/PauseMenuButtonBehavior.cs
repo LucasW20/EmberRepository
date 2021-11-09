@@ -31,6 +31,10 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     {
         
     }
+    public void press()
+    {
+        isPressed = true;
+    }
     public void purchaseAbility(int nCost)
     {
         if (!isPressed && playerPoints.getCurrentPoints() >= nCost)
@@ -40,7 +44,6 @@ public class PauseMenuButtonBehavior : MonoBehaviour
             {
                 playerPoints.decrementPoints(false);
             }
-            isPressed = true;
         }
         else
         {
