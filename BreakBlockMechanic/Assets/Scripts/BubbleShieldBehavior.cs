@@ -7,6 +7,8 @@ public class BubbleShieldBehavior : MonoBehaviour
     private float durationOfShield = 2;
     PassingScene passingScene;
     GameObject shieldVisual;
+    private int uses = 4;
+    private bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class BubbleShieldBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKeyDown("s") && uses > 0 && !isActive)
         {
             StartCoroutine(startShieldCoroutine());
         }
@@ -35,6 +37,7 @@ public class BubbleShieldBehavior : MonoBehaviour
     public IEnumerator startShieldCoroutine()
     {
         // toggles a boolean in playerhealth, stopping health loss from collisions
+        isActive = true;
         GetComponent<PlayerHealth>().toggleShield(true);
         shieldVisual.GetComponent<SpriteRenderer>().enabled = true;
         // increase the collider radius
@@ -44,6 +47,8 @@ public class BubbleShieldBehavior : MonoBehaviour
         GetComponent<PlayerHealth>().toggleShield(false);
         shieldVisual.GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().radius = .76f;
+        isActive = false;
+        uses--;
     }
 
     public void adjustShieldDuration(float n)
