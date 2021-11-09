@@ -11,6 +11,14 @@ public class PlayerLives : MonoBehaviour
     [SerializeField] LivesBar livesBar;
     PassingScene passingScene;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
+        maxLives = passingScene.getMaxLives();
+        currentLives = maxLives;
+        livesBar.setLives(currentLives);
+    }
     public int getLives() { return currentLives; }
 
     public void setLives(int n) { currentLives = n; }
@@ -28,16 +36,6 @@ public class PlayerLives : MonoBehaviour
     }
 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
-        maxLives = passingScene.getMaxLives();
-        currentLives = maxLives;
-        livesBar.setLives(currentLives);
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -48,5 +46,11 @@ public class PlayerLives : MonoBehaviour
     {
         currentLives -= livesLost;
         livesBar.setLives(currentLives);
+
+        if (currentLives <= 0)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

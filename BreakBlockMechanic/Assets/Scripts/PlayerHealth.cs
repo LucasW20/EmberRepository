@@ -110,10 +110,6 @@ public class PlayerHealth : MonoBehaviour
 
             GetComponent<PlayerLives>().loseLives(1); // lose one life
 
-            if (GetComponent<PlayerLives>().getLives() <= 0) {
-                Scene scene = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(scene.name);
-            }
         }
     }
 

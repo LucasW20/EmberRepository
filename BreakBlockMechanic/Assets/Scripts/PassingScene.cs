@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassingScene : MonoBehaviour {
     [HideInInspector] public int passingTotalPoints = 0;
     [HideInInspector] public int passingCurrPoints = 0;
-    [HideInInspector] public int passingMaxLives = 2;
+    int passingMaxLives = 2;
     [HideInInspector] public int passingFrostResist;
     [HideInInspector] public int passingTotalJumps;
     [HideInInspector] public float passingShieldDuration;
@@ -13,6 +13,7 @@ public class PassingScene : MonoBehaviour {
     private void Start()
     {
         //passingMaxLives = GameObject.Find("Ember").GetComponent<PlayerLives>().getMaxLives();
+        Debug.Log(passingMaxLives);
         passingFrostResist = GameObject.Find("Ember").GetComponent<PlayerHealth>().getFrostResist();
         passingTotalJumps = GameObject.Find("Ember").GetComponent<LongJump>().getTotalJumps();
         passingShieldDuration = GameObject.Find("Ember").GetComponent<BubbleShieldBehavior>().getShieldDuration();
