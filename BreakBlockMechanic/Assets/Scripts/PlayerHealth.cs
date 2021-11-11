@@ -25,19 +25,20 @@ public class PlayerHealth : MonoBehaviour
     int frostResist = 0;
 
     [SerializeField] ParticleSystem partSys;
+    [SerializeField] ParticleSystem partSysTrail;
 
     void Start()
     {
         healthBar.setMaxHealth(maxPlHealth); // sets the Health Bar UI elements Max health
         healthBar.setHealth(timePassed); // sets the Health Bar UI elements current health
 
-        mainCamera = GameObject.Find("Main Camera"); 
+        mainCamera = GameObject.Find("Main Camera");
         followPlayer = mainCamera.GetComponent<FollowPlayer>();
         mapCenter = mainCamera.transform.position; // save the center of the map as the initial position of the camera
         // the main camera should always be centered on the map to start each level, theoretically
 
         frostResist = GameObject.Find("SaveObject").GetComponent<PassingScene>().getFrostResist();
-        
+
     }
 
     void Update()
@@ -56,19 +57,19 @@ public class PlayerHealth : MonoBehaviour
 
         }
 
-        if(touchingCampfire) // if the player is touching a campfire
+        if (touchingCampfire) // if the player is touching a campfire
         {
             // reset the time on health
             GameObject.Find("Ember").GetComponent<PlayerHealth>().resetTime();
         }
-        if(Input.GetKeyDown("z"))
+        if (Input.GetKeyDown("z"))
         {
             if (touchingCampfire && !followPlayer.getGoToCenter())
             {
                 Debug.Log("Zoom Out Camera");
                 viewWholeMap();
             }
-            else if(followPlayer.getGoToCenter())
+            else if (followPlayer.getGoToCenter())
             {
                 followPlayer.setTrackPlayer(true); // stop following player
                 followPlayer.setGoToCenter(false); // and go to center
@@ -78,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // updates the amount of health the player has.
-    private void updateTime() 
+    private void updateTime()
     {
         if (timePassed < maxPlHealth)
         {
@@ -105,11 +106,14 @@ public class PlayerHealth : MonoBehaviour
             ParticleSystem.EmissionModule em = partSys.emission;
             em.enabled = false;
 
+            partSysTrail.Clear();
+            ParticleSystem.EmissionModule emT = partSysTrail.emission;
+            emT.enabled = false;
+
             //Tells the camera to stop following the player
             viewWholeMap();
 
             GetComponent<PlayerLives>().loseLives(1); // lose one life
-
         }
     }
 
@@ -133,6 +137,10 @@ public class PlayerHealth : MonoBehaviour
         ParticleSystem.EmissionModule em = partSys.emission;
         em.enabled = true;
 
+        partSysTrail.Play();
+        ParticleSystem.EmissionModule emT = partSysTrail.emission;
+        emT.enabled = true;
+
         trackPlayer();
 
         if (isAlive)
@@ -143,9 +151,11 @@ public class PlayerHealth : MonoBehaviour
         isAlive = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
+    private void OnCollisionEnter2D(Collision2D col)
+    {
         // if the player collides with a wall or a break block
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker")) { 
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Breaker"))
+        {
             Debug.Log("Touching Ground!");
             touchingWall = true; // record the touching
             StartCoroutine(LoseHealthCoroutine(5 - frostResist, 1)); // lose 5 - frostResist health every 1 second
@@ -170,7 +180,7 @@ public class PlayerHealth : MonoBehaviour
             touchingCampfire = true; // record it
         }
 
-        if(collision.gameObject.CompareTag("Spray"))
+        if (collision.gameObject.CompareTag("Spray"))
         {
             StartCoroutine(LoseHealthCoroutine(2, 1));
         }
@@ -193,7 +203,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // function to reset the player's time (life)
-    public void resetTime() {
+    public void resetTime()
+    {
         timePassed = 0f;
     }
 
@@ -206,9 +217,9 @@ public class PlayerHealth : MonoBehaviour
     // tells the camera to zoom out and view the entire map
     public void viewWholeMap()
     {
-            Debug.Log("Zoom Out Camera");
-            followPlayer.setTrackPlayer(false); // stop following player
-            followPlayer.setGoToCenter(true); // and go to center 
+        Debug.Log("Zoom Out Camera");
+        followPlayer.setTrackPlayer(false); // stop following player
+        followPlayer.setGoToCenter(true); // and go to center 
     }
 
     // tells the camera to track the player
