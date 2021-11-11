@@ -14,6 +14,9 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     BubbleShieldBehavior bubbleShieldBehavior;
     private bool isPressed = false;
 
+    SceneChange sceneChange;
+    CheckPoints checkPoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,8 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         playerHealth = ember.GetComponent<PlayerHealth>();
         longJump = ember.GetComponent<LongJump>();
         bubbleShieldBehavior = ember.GetComponent<BubbleShieldBehavior>();
+        sceneChange = GameObject.Find("ExitObject").GetComponent<SceneChange>();
+        checkPoints = GameObject.Find("SaveObject").GetComponent<CheckPoints>();
     }
 
     // Update is called once per frame
@@ -48,6 +53,14 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         else
         {
             Debug.Log("Not Enough Points");
+        }
+    }
+
+    public void loadLevel(int sceneNum)
+    {
+        if (checkPoints.checkCheckPoint(sceneNum))
+        {
+            sceneChange.loadNewScene(sceneNum, 0);
         }
     }
 

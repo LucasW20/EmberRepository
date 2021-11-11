@@ -28,12 +28,15 @@ public class SceneChange : MonoBehaviour {
     private Image fadeImage;
     private Light2D exitLight;
 
+    private CheckPoints checkPoints;
+
     // Start is called at the start
     void Start() {
         ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         LightController = GameObject.Find("Ember").GetComponent<LightingBehaviour>();
         bgmTrack = GameObject.Find("SaveObject").GetComponent<AudioSource>();
+        checkPoints = GameObject.Find("SaveObject").GetComponent<CheckPoints>();
         exitLight = gameObject.GetComponent<Light2D>();
         StartCoroutine(SceneOpenCoroutine());
     }
@@ -68,7 +71,7 @@ public class SceneChange : MonoBehaviour {
             ember.GetComponent<PlayerHealth>().FreezeHealth();
 
             //start the closing coroutine
-            StartCoroutine(SceneCloseCoroutine(nextScene));
+            StartCoroutine(SceneCloseCoroutine(nextScene, 5));
         }
     }
 
@@ -112,9 +115,9 @@ public class SceneChange : MonoBehaviour {
     }
 
     // Coroutine used for when a scene is being closed. Fades out of scene. 
-    IEnumerator SceneCloseCoroutine(int sceneNum) {
+    IEnumerator SceneCloseCoroutine(int sceneNum, float waitTime) {
         //Wait for the zoom out to complete
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(waitTime);
         float time = 0;
         float volStart = bgmTrack.volume;
 
@@ -134,12 +137,18 @@ public class SceneChange : MonoBehaviour {
         //wait for a few more seconds for the fade to take place
         yield return new WaitForSeconds(3);
 
+        checkPoints.setCheckPoint(sceneNum);
         //save the points the player has. This also saves the bgm music. Then change the scene
         DontDestroyOnLoad(GameObject.Find("SaveObject"));
         SceneManager.LoadScene(sceneNum);
 
         //reset the lighting of the ember
         LightController.resetLight();
+    }
+
+    public void loadNewScene(int sceneNum, float waitTime)
+    {
+        StartCoroutine(SceneCloseCoroutine(sceneNum, waitTime));
     }
 
     IEnumerator LightExitCoroutine() {
