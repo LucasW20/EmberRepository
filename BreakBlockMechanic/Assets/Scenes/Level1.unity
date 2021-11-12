@@ -3261,6 +3261,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ember
       objectReference: {fileID: 0}
+    - target: {fileID: 6434177023448664963, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434177023448664963, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04067b30f5d5b5f4484828efdbda63ca, type: 3}
 --- !u!198 &3896768323802300157 stripped
