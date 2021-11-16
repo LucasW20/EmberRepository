@@ -14,6 +14,8 @@ public class DrippingBehavior : MonoBehaviour
     [SerializeField] float dripFrequencyStg2;
     [SerializeField] GameObject prefab;
 
+    [SerializeField] float zRotation;
+
     GameObject tempDrop;
 
     // Start is called before the first frame update
@@ -38,6 +40,7 @@ public class DrippingBehavior : MonoBehaviour
             {
                 timePassed = 0; // reset timer
                 tempDrop = Instantiate(prefab, transform.position, transform.rotation); // create water drop
+                tempDrop.transform.Rotate(0f, 0f, zRotation);
                 // set the melting point of the drop
                 tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
                 
