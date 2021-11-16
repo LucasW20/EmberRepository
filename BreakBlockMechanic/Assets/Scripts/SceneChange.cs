@@ -9,7 +9,7 @@ using UnityEngine.Experimental.Rendering.Universal;
  * Handles the changing of scenes in the game along with the fade in and fade out mechanics
  * @author Lucas_C_Wright
  * @start 10-18-2021
- * @version 11-08-2021
+ * @version 11-16-2021
  */
 public class SceneChange : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI titleObject;
