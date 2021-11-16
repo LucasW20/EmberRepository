@@ -13,6 +13,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     LongJump longJump;
     BubbleShieldBehavior bubbleShieldBehavior;
     private bool isPressed = false;
+    [SerializeField] int aIndex;
 
     SceneChange sceneChange;
     CheckPoints checkPoints;
@@ -36,18 +37,41 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     {
         
     }
-    public void press()
-    {
-        isPressed = true;
-    }
+
     public void purchaseAbility(int nCost)
     {
-        if (!isPressed && playerPoints.getCurrentPoints() >= nCost)
+        bool tempBool = false;
+        if (!passingScene.getButtonIsPressed(aIndex) && playerPoints.getCurrentPoints() >= nCost && !passingScene.getPurchasedAbility(aIndex))
         {
-            // decrement the current player points, but not the total points, nCost times
-            for (int i = 0; i < nCost; i++)
+            if(aIndex % 3 == 2 && passingScene.getPurchasedAbility(aIndex - 1) && passingScene.getPurchasedAbility(aIndex - 2))
             {
-                playerPoints.decrementPoints(false);
+                tempBool = true;
+                Debug.Log("First If");
+            }
+
+            if (aIndex % 3 == 1 && passingScene.getPurchasedAbility(aIndex - 1))
+            {
+                tempBool = true;
+                Debug.Log("Second If");
+            }
+
+            if (aIndex % 3 == 0)
+            {
+                tempBool = true;
+                Debug.Log("Third if");
+            }
+            // decrement the current player points, but not the total points, nCost times
+            if (tempBool)
+            {
+                for (int i = 0; i < nCost; i++)
+                {
+                    playerPoints.decrementPoints(false);
+                }
+                passingScene.toggleButtonIsPressed(aIndex, true);
+            }
+            else
+            {
+                Debug.Log("Cannot Purchase");
             }
         }
         else
@@ -66,38 +90,47 @@ public class PauseMenuButtonBehavior : MonoBehaviour
 
     public void livesIncrease(int n)
     {
-        if (!isPressed)
+        if (passingScene.getButtonIsPressed(aIndex) && !passingScene.getPurchasedAbility(aIndex))
         {
             playerLives.adjustMaxLives(n);
             passingScene.passMaxLives(n);
+            isPressed = true;
+            passingScene.togglePurchasedAbility(aIndex, true);
         }
         
     }
 
     public void frostResistIncrease(int n)
     {
-        if (!isPressed)
+        if (passingScene.getButtonIsPressed(aIndex) && !passingScene.getPurchasedAbility(aIndex))
         {
             playerHealth.adjustFrostReist(n);
             passingScene.passFrostResist(n);
+            isPressed = true;
+            passingScene.togglePurchasedAbility(aIndex, true);
+            Debug.Log("frost up");
         }
     }
 
     public void totalJumpsIncrease(int n)
     {
-        if (!isPressed)
+        if (passingScene.getButtonIsPressed(aIndex) && !passingScene.getPurchasedAbility(aIndex))
         {
             longJump.adjustTotalJumps(n);
             passingScene.passTotalJumps(n);
+            isPressed = true;
+            passingScene.togglePurchasedAbility(aIndex, true);
         }
     }
 
     public void shieldDurationIncrease(float n)
     {
-        if (!isPressed)
+        if (passingScene.getButtonIsPressed(aIndex) && !passingScene.getPurchasedAbility(aIndex))
         {
             bubbleShieldBehavior.adjustShieldDuration(n);
             passingScene.passShieldDuration(n);
+            isPressed = true;
+            passingScene.togglePurchasedAbility(aIndex, true);
         }
     }
 

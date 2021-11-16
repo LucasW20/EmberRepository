@@ -27,6 +27,7 @@ public class LongJump : MonoBehaviour
         playerPoints = ember.GetComponent<PlayerPoints>();
         passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
         totalJumps = passingScene.getTotalJumps();
+        Debug.Log("Total Jumps = " + totalJumps);
     }
 
     // Update is called once per frame

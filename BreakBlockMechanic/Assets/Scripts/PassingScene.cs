@@ -6,17 +6,20 @@ public class PassingScene : MonoBehaviour {
     [HideInInspector] public int passingTotalPoints = 0;
     [HideInInspector] public int passingCurrPoints = 0;
     int passingMaxLives = 2;
-    [HideInInspector] public int passingFrostResist;
-    [HideInInspector] public int passingTotalJumps;
-    [HideInInspector] public float passingShieldDuration;
+    int passingFrostResist = 0;
+    int passingTotalJumps = 3;
+    float passingShieldDuration = 2;
+
+    private bool[] purchasedAbilities = new bool[12] { false, false, false, false, false, false, false, false, false, false, false, false };
+    private bool[] buttonIsPressedArray = new bool[12] { false, false, false, false, false, false, false, false, false, false, false, false };
 
     private void Start()
     {
         //passingMaxLives = GameObject.Find("Ember").GetComponent<PlayerLives>().getMaxLives();
         Debug.Log(passingMaxLives);
-        passingFrostResist = GameObject.Find("Ember").GetComponent<PlayerHealth>().getFrostResist();
-        passingTotalJumps = GameObject.Find("Ember").GetComponent<LongJump>().getTotalJumps();
-        passingShieldDuration = GameObject.Find("Ember").GetComponent<BubbleShieldBehavior>().getShieldDuration();
+        //passingFrostResist = GameObject.Find("Ember").GetComponent<PlayerHealth>().getFrostResist();
+        //passingTotalJumps = GameObject.Find("Ember").GetComponent<LongJump>().getTotalJumps();
+        //passingShieldDuration = GameObject.Find("Ember").GetComponent<BubbleShieldBehavior>().getShieldDuration();
     }
     public void passCurrPoints(int nPoints) { passingCurrPoints += nPoints; }
     public void passTotalPoints(int nPoints) { passingTotalPoints += nPoints; }
@@ -34,4 +37,24 @@ public class PassingScene : MonoBehaviour {
 
     public void passShieldDuration(float nDuration) { passingShieldDuration += nDuration; }
     public float getShieldDuration() { return passingShieldDuration; }
+
+    public void togglePurchasedAbility(int index, bool tf)
+    {
+        purchasedAbilities[index] = tf;
+    }
+
+    public bool getPurchasedAbility(int index)
+    {
+        return purchasedAbilities[index];
+    }
+
+    public void toggleButtonIsPressed(int index, bool tf)
+    {
+        buttonIsPressedArray[index] = tf;
+    }
+
+    public bool getButtonIsPressed(int index)
+    {
+        return buttonIsPressedArray[index];
+    }
 }
