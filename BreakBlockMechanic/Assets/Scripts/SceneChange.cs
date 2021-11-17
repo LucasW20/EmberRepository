@@ -86,7 +86,8 @@ public class SceneChange : MonoBehaviour {
 
         if (currScene == 3) {
             bgmTrack.Stop();
-            bgmTrack.PlayOneShot(Resources.Load<AudioClip>("Campfire"));
+            bgmTrack.clip = Resources.Load<AudioClip>("Campfire");
+            bgmTrack.Play();
             bgmTrack.volume = 0f;
         }
 

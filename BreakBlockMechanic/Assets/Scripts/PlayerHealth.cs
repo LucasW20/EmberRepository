@@ -267,4 +267,6 @@ public class PlayerHealth : MonoBehaviour
     {
         frostResist = nResist;
     }
+
+    public float getHealth() { return timePassed; }
 }
