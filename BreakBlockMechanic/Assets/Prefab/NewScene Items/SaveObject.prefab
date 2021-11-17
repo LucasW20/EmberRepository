@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19975a7a0b97e594cb82174e41fe2538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passingPoints: 0
+  passingTotalPoints: 0
+  passingCurrPoints: 0
 --- !u!82 &2214511595144172685
 AudioSource:
   m_ObjectHideFlags: 0

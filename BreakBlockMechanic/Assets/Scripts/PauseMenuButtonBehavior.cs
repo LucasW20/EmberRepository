@@ -12,7 +12,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
     PassingScene passingScene;
     LongJump longJump;
     BubbleShieldBehavior bubbleShieldBehavior;
-    private bool isPressed = false;
+    //private bool isPressed = false;
     [SerializeField] int aIndex;
 
     SceneChange sceneChange;
@@ -94,7 +94,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         {
             playerLives.adjustMaxLives(n);
             passingScene.passMaxLives(n);
-            isPressed = true;
+            //isPressed = true;
             passingScene.togglePurchasedAbility(aIndex, true);
         }
         
@@ -106,7 +106,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         {
             playerHealth.adjustFrostReist(n);
             passingScene.passFrostResist(n);
-            isPressed = true;
+            //isPressed = true;
             passingScene.togglePurchasedAbility(aIndex, true);
             Debug.Log("frost up");
         }
@@ -118,7 +118,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         {
             longJump.adjustTotalJumps(n);
             passingScene.passTotalJumps(n);
-            isPressed = true;
+            //isPressed = true;
             passingScene.togglePurchasedAbility(aIndex, true);
         }
     }
@@ -129,7 +129,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
         {
             bubbleShieldBehavior.adjustShieldDuration(n);
             passingScene.passShieldDuration(n);
-            isPressed = true;
+            //isPressed = true;
             passingScene.togglePurchasedAbility(aIndex, true);
         }
     }
