@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4597471267924717730}
   - component: {fileID: 5853192062748523623}
   - component: {fileID: 7072771673910939633}
-  - component: {fileID: 3526007127566013023}
+  - component: {fileID: 1718690872787634326}
   m_Layer: 0
   m_Name: WaterDrop
   m_TagString: Drip
@@ -216,8 +216,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!58 &3526007127566013023
-CircleCollider2D:
+--- !u!60 &1718690872787634326
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -229,6 +229,24 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: -0.2}
-  serializedVersion: 2
-  m_Radius: 0.08
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0051741693, y: -0.04830963}
+      - {x: 0.0025470909, y: -0.1449058}
+      - {x: -0.0061393324, y: -0.21420904}
+      - {x: 0.02, y: -0.25}
+      - {x: 0.06, y: -0.25}
+      - {x: 0.06552257, y: -0.2074529}
+      - {x: 0.057801276, y: -0.15806967}
+      - {x: 0.05123322, y: -0.06217134}
+      - {x: 0.037452884, y: -0.036727704}

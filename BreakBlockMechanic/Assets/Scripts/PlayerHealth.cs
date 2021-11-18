@@ -214,6 +214,8 @@ public class PlayerHealth : MonoBehaviour
         return mapCenter;
     }
 
+    public bool isEmberAlive() { return isAlive; }
+
     // tells the camera to zoom out and view the entire map
     public void viewWholeMap()
     {

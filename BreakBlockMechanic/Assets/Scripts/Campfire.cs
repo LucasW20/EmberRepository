@@ -58,6 +58,8 @@ public class Campfire : MonoBehaviour {
         }
     }
 
+    public bool isFireLit() { return isLit; }
+
     private void OnMouseEnter() {
         mouseIsOver = true;
     }
