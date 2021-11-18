@@ -12,6 +12,7 @@ public class PassingScene : MonoBehaviour {
 
     private bool[] purchasedAbilities = new bool[12] { false, false, false, false, false, false, false, false, false, false, false, false };
     private bool[] buttonIsPressedArray = new bool[12] { false, false, false, false, false, false, false, false, false, false, false, false };
+    private bool[] campfireArray = new bool[50];
 
     private void Start()
     {
@@ -21,6 +22,9 @@ public class PassingScene : MonoBehaviour {
         //passingTotalJumps = GameObject.Find("Ember").GetComponent<LongJump>().getTotalJumps();
         //passingShieldDuration = GameObject.Find("Ember").GetComponent<BubbleShieldBehavior>().getShieldDuration();
     }
+    public bool checkCampfireLit(int nIndex) { return campfireArray[nIndex]; }
+    public void toggleCampfireLit(int nIndex, bool tf) { campfireArray[nIndex] = tf; }
+
     public void passCurrPoints(int nPoints) { passingCurrPoints += nPoints; }
     public void passTotalPoints(int nPoints) { passingTotalPoints += nPoints; }
     public int getCurrPoints() { return passingCurrPoints; }
