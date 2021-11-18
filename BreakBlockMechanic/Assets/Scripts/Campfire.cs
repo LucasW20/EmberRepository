@@ -108,7 +108,7 @@ public class Campfire : MonoBehaviour {
             scriptHolder.GetComponent<CampfireTracker>().increaseNumFiresLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
-            if (passingScene.checkCampfireLit(campfireIndex))
+            if (!passingScene.checkCampfireLit(campfireIndex))
             {
                 earnPoints();
             }
