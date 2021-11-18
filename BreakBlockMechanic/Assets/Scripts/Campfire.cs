@@ -21,6 +21,10 @@ public class Campfire : MonoBehaviour {
     Vector2 litBoxColOffset;
     Vector2 litBoxColSize;
 
+    PassingScene passingScene;
+
+    [SerializeField] private int campfireIndex;
+
     // Start is called before the first frame update
     void Start() {
         ember = GameObject.Find("Ember");
@@ -35,6 +39,8 @@ public class Campfire : MonoBehaviour {
         unLitBoxColSize = new Vector2(3, 1.5f);
         litBoxColOffset = new Vector2(0, 0f);
         litBoxColSize = new Vector2(3, 5f);
+
+        passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
     }
 
     // Update is called once per frame
@@ -77,6 +83,22 @@ public class Campfire : MonoBehaviour {
         }
     }
 
+    private void earnPoints()
+    {
+        //send out the notification before the points increase so that it doesn't interrupt ability gained notifications
+        StartCoroutine(PointNotification());
+
+        //increment the player points
+        ember.GetComponent<PlayerPoints>().incrementPoints();
+
+        //when the fire is lit change the embers last fire lit variable to this one
+       // GameObject.Find("Ember").GetComponent<PlayerHealth>().lastFire = this;
+
+        // tell passing scene this campfire has been lit
+        passingScene.toggleCampfireLit(campfireIndex, true);
+
+    }
+
     public void lightFire() {
         // if fire is not lit, set it to lit
         if (!isLit) { 
@@ -86,15 +108,11 @@ public class Campfire : MonoBehaviour {
             scriptHolder.GetComponent<CampfireTracker>().increaseNumFiresLit();
             Debug.Log(scriptHolder.GetComponent<CampfireTracker>().getNumfiresLit());
 
-            //send out the notification before the points increase so that it doesn't interrupt ability gained notifications
-            StartCoroutine(PointNotification());
-
-            //increment the player points
-            ember.GetComponent<PlayerPoints>().incrementPoints();
-
-            //when the fire is lit change the embers last fire lit variable to this one
-            GameObject.Find("Ember").GetComponent<PlayerHealth>().lastFire = this;
-
+            if (passingScene.checkCampfireLit(campfireIndex))
+            {
+                earnPoints();
+            }
+          
             //when lit restore the embers time/health
             GameObject.Find("Ember").GetComponent<PlayerHealth>().resetTime();
 
