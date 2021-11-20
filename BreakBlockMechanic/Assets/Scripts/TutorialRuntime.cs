@@ -7,7 +7,7 @@ using TMPro;
  * Handles the runtime of the tutorial level
  * @author Lucas_C_Wright
  * @start 11-11-2021
- * @version 11-18-2021
+ * @version 11-20-2021
  */
 public class TutorialRuntime : MonoBehaviour {
     [SerializeField] TextMeshProUGUI ttlText; //object for the text in the canvas. set in unity
@@ -15,8 +15,8 @@ public class TutorialRuntime : MonoBehaviour {
     private float fadeTime = 1f;
 
     private bool firstGate = false;
-    private bool secondGate = false;
-    private bool finalGate = false;
+    //private bool secondGate = false;
+    //private bool finalGate = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -31,7 +31,7 @@ public class TutorialRuntime : MonoBehaviour {
         }
         if (firstGate && GameObject.Find("Ember").GetComponent<PlayerHealth>().isEmberAlive()) {
             secondFire.SetActive(true);
-            secondGate = true;
+            //secondGate = true;
             StartCoroutine(FinalGateCoroutine());
         }
     }

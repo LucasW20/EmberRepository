@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.Experimental.Rendering.Universal;
 
 /*
- * @version 10-28-2021
+ * @version 11-20-21
  */
 public class Campfire : MonoBehaviour {
     GameObject ember;
@@ -85,9 +85,6 @@ public class Campfire : MonoBehaviour {
 
     private void earnPoints()
     {
-        //send out the notification before the points increase so that it doesn't interrupt ability gained notifications
-        StartCoroutine(PointNotification());
-
         //increment the player points
         ember.GetComponent<PlayerPoints>().incrementPoints();
 
@@ -155,24 +152,6 @@ public class Campfire : MonoBehaviour {
             AudioManager.PlaySound("snuffFire");
 
             gameObject.GetComponent<Light2D>().enabled = false;
-        }
-    }
-
-    // Coroutine for when a campfire is lit. Displays the notification by the campfire and fades out the text
-    IEnumerator PointNotification() {
-        TextMeshPro CFText = gameObject.GetComponentInChildren<TextMeshPro>(); //get the text component
-        float fadeTime = 2f; //time to fade
-        float time = 0; //starting time
-        CFText.color = new Color(CFText.color.r, CFText.color.g, CFText.color.b, 1f); //set the color to visible 
-
-        //wait for a few seconds for player to read
-        yield return new WaitForSeconds(1.5f);
-
-        //fade out
-        while (time < fadeTime) {
-            time += Time.unscaledDeltaTime;
-            CFText.color = new Color(CFText.color.r, CFText.color.g, CFText.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
-            yield return null;
         }
     }
 }
