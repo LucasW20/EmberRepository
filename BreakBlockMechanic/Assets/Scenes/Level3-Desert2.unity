@@ -486,6 +486,77 @@ MonoBehaviour:
   mapCenter: {x: 0, y: 0, z: 0}
   mapHeight: 78
   mapWidth: 138.66667
+--- !u!1 &472181668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9167395251847032645, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
+  m_PrefabInstance: {fileID: 960701431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &472181669
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472181668}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.96, y: 2.02}
+    newSize: {x: 1.96, y: 2.02}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.17, y: 0.099999994}
+      - {x: -0.12, y: -0.049999997}
+      - {x: -0.11, y: -0.32}
+      - {x: -0.07, y: -0.41}
+      - {x: -0.04, y: -0.38}
+      - {x: -0.03, y: -0.29999998}
+      - {x: 0.01, y: 0.08}
+      - {x: 0.02, y: 0.22999999}
+      - {x: 0.099999994, y: 0.22}
+      - {x: 0.19999999, y: 0.28}
+      - {x: 0.26999998, y: 0.099999994}
+      - {x: 0.28, y: -0.07}
+      - {x: 0.35, y: -0.11}
+      - {x: 0.38, y: -0.06}
+      - {x: 0.42999998, y: 0.24}
+      - {x: 0.52, y: 0.37}
+      - {x: 0.65, y: 0.53999996}
+      - {x: 0.72999996, y: 0.57}
+      - {x: 0.72999996, y: 0.61}
+      - {x: 0.71, y: 0.65}
+      - {x: 0.32, y: 0.64}
+      - {x: 0.14, y: 0.7}
+      - {x: 0.08, y: 0.7}
+      - {x: 0.03, y: 0.69}
+      - {x: -0.03, y: 0.66999996}
+      - {x: -0.14999999, y: 0.65}
+      - {x: -0.22999999, y: 0.59999996}
+      - {x: -0.35999998, y: 0.37}
+      - {x: -0.48, y: 0.41}
+      - {x: -0.48999998, y: 0.39999998}
+      - {x: -0.48999998, y: 0.12}
+      - {x: -0.45999998, y: -0.03}
+      - {x: -0.39999998, y: -0.56}
+      - {x: -0.39, y: -0.63}
+      - {x: -0.38, y: -0.71}
+      - {x: -0.37, y: -0.75}
+      - {x: -0.35, y: -0.77}
+      - {x: -0.32, y: -0.76}
+      - {x: -0.29999998, y: -0.66999996}
+      - {x: -0.26, y: -0.35}
+      - {x: -0.22, y: -0.06}
 --- !u!1001 &609392659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -499,11 +570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2499729450077398290, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
       propertyPath: force.x
-      value: 75
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2499729450077398290, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
       propertyPath: waitSeconds
-      value: 0.27
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 2499729450077398291, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
       propertyPath: m_Size.x
@@ -1293,12 +1364,17 @@ PrefabInstance:
     - target: {fileID: 9167395251847032644, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d46784ea1cff36a4fb3eb83e9ff10a7c, type: 3}
+      objectReference: {fileID: 21300000, guid: 51dd6a1d66de9f44b8bbd4344460f40d, type: 3}
+    - target: {fileID: 9167395251847032644, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032645, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_Name
       value: DrippingIceBot
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9167395251847032642, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
 --- !u!1001 &1052276406
 PrefabInstance:
@@ -1612,11 +1688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032643, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.25
+      value: 12.58
       objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032643, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.79
+      value: 37.54
       objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032643, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1633,12 +1709,17 @@ PrefabInstance:
     - target: {fileID: 9167395251847032644, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d46784ea1cff36a4fb3eb83e9ff10a7c, type: 3}
+      objectReference: {fileID: 21300000, guid: 51dd6a1d66de9f44b8bbd4344460f40d, type: 3}
+    - target: {fileID: 9167395251847032644, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032645, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_Name
       value: DrippingIceTop
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9167395251847032642, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
 --- !u!1001 &1071878679
 PrefabInstance:

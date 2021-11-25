@@ -6,15 +6,34 @@ public class FallingIce : MonoBehaviour
 {
     Rigidbody2D Detector;
     GameObject ember;
+
+    bool movingLeft = true;
    
     //Sets the force for the ice to fall
-    Vector2 force = new Vector2(0, -75);
+    Vector2 force = new Vector2(0, -50);
 
     // Start is called before the first frame update
     void Start() {
         //Grabs the ice's rigid body
         Detector = GetComponent<Rigidbody2D>();
         ember = GameObject.Find("Ember");
+    }
+
+    public void wiggle()
+    {
+            Vector3 tempVec = transform.position;
+            if(movingLeft)
+            {
+                tempVec.x += .1f;
+                transform.position = tempVec;
+                movingLeft = false;
+            }
+            else
+            {
+                tempVec.x -= .1f;
+                transform.position = tempVec;
+                movingLeft = true;
+            }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

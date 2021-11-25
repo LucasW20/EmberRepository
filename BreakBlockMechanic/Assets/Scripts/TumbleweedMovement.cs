@@ -33,6 +33,7 @@ public class TumbleweedMovement : MonoBehaviour
             detector.isKinematic = false;
             detector.drag = 0;
             detector.angularDrag = 0;
+            detector.gravityScale = 0;
             detector.AddForce(force, ForceMode2D.Impulse);
             //Adds the force declared above so it falls fast
 
@@ -50,7 +51,7 @@ public class TumbleweedMovement : MonoBehaviour
             Destroy(gameObject);
         }
        //If it doesn't hit the ember, it will delete after it hits a wall
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breaker"))
         {
             Destroy(gameObject);
         }
