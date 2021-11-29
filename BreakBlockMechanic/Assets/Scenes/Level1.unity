@@ -3051,6 +3051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveObject
       objectReference: {fileID: 0}
+    - target: {fileID: 2214511595144172694, guid: 28793870d5fb77343b693fea0d2c0f89, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28793870d5fb77343b693fea0d2c0f89, type: 3}
 --- !u!1001 &3645156094640775065
@@ -3212,6 +3216,10 @@ PrefabInstance:
       propertyPath: titleObject
       value: 
       objectReference: {fileID: 696242464}
+    - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: requiredPoints
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -3504,7 +3512,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9167395251847032640, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: zRotation
-      value: -45
+      value: -47
       objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032643, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_RootOrder
