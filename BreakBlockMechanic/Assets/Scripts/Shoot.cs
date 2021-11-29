@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /***
  * When the player chooses to this script is called to create a projectile and fire it in the direction the player wants
  * 
  * @author Lucas_C_Wright
- * @start 10/05/2021
- * @version 10/10/2021
+ * @start 10-05-2021
+ * @version 10-10-2021
 */
 public class Shoot : MonoBehaviour
 {

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /***
  * Handles the behaviour if SaveObject is not in the current scene
  * @author Lucas_C_Wright
  * @start 11-17-21
- * @version 11-17-21
+ * @version 11-29-21
  */
 public class MissingCatch : MonoBehaviour {
 
@@ -19,11 +17,5 @@ public class MissingCatch : MonoBehaviour {
             newObj = Instantiate(prefab);
             newObj.name = "SaveObject";
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
