@@ -195,6 +195,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimedSpray (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934347, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: m_ForceAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: direction
+      value: up
+      objectReference: {fileID: 0}
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2611,6 +2619,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimedSpray
       objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934347, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: m_ForceAngle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: direction
+      value: up
+      objectReference: {fileID: 0}
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3617,11 +3633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -6.02
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.z
