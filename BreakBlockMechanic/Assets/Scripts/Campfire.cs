@@ -45,7 +45,7 @@ public class Campfire : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse2)) // if middle mouse button is pressed
+        if (Input.GetKeyDown("n")) // if middle mouse button is pressed
         {
             if (isLit && mouseIsOver) {
                 snuffFire();
