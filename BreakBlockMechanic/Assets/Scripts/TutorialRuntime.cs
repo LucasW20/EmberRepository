@@ -70,7 +70,7 @@ public class TutorialRuntime : MonoBehaviour {
         StartCoroutine(notificationCoroutine);
     }
 
-    //the coroutine method
+    //the notification coroutine
     private IEnumerator FadeOutNotification(string message) {
         ttlText.text = message;    //set the text of the gameobject to the message wanted
         float time = 0;                     //base time for when we start the fade out
@@ -158,7 +158,7 @@ public class TutorialRuntime : MonoBehaviour {
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(1.1f);
         SetNewNotification("You also have the ability to douse fires. Hover the mouse over the fire and press 'N'.");
-        yield return WaitForKeyPress(KeyCode.Mouse2);
+        yield return WaitForKeyPress(KeyCode.N);
         yield return new WaitForSeconds(1.1f);
         //SetNewNotification("Keybinds for these abilities can be changed in the menu.");
         //yield return WaitForKeyPress(KeyCode.Space);

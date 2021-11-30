@@ -9,7 +9,7 @@ using UnityEngine.Experimental.Rendering.Universal;
  * Handles the changing of scenes in the game along with the fade in and fade out mechanics
  * @author Lucas_C_Wright
  * @start 10-18-2021
- * @version 11-16-2021
+ * @version 11-29-2021
  */
 public class SceneChange : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI titleObject;
@@ -139,16 +139,21 @@ public class SceneChange : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         checkPoints.setCheckPoint(sceneNum);
-        //save the points the player has. This also saves the bgm music. Then change the scene
-        DontDestroyOnLoad(GameObject.Find("SaveObject"));
-        SceneManager.LoadScene(sceneNum);
-
+        
+        //if at the tutorial then go back to the menu otherwise
+        if (SceneManager.GetActiveScene().buildIndex == 8) {
+            SceneManager.LoadScene(0);
+        } else {
+            //save the points the player has. This also saves the bgm music. Then change the scene
+            DontDestroyOnLoad(GameObject.Find("SaveObject"));
+            SceneManager.LoadScene(sceneNum);
+        }
+        
         //reset the lighting of the ember
         LightController.resetLight();
     }
 
-    public void loadNewScene(int sceneNum, float waitTime)
-    {
+    public void loadNewScene(int sceneNum, float waitTime) {
         StartCoroutine(SceneCloseCoroutine(sceneNum, waitTime));
     }
 
