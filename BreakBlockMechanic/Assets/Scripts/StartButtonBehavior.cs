@@ -13,7 +13,7 @@ public class StartButtonBehavior : MonoBehaviour
     }
     
     public void OnButtonPress() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         n++;
         Debug.Log("Start button clicked " + n + " times.");
     }

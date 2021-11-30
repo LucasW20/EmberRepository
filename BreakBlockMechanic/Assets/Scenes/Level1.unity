@@ -2918,7 +2918,7 @@ PrefabInstance:
       objectReference: {fileID: 696242464}
     - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: requiredPoints
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3421991081344558273, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: m_RootOrder
