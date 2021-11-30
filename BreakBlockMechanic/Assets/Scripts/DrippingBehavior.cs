@@ -53,6 +53,7 @@ public class DrippingBehavior : MonoBehaviour
             {
                 timePassed = 0;
                 tempDrop = Instantiate(prefab, transform.position, transform.rotation);
+                tempDrop.transform.Rotate(0f, 0f, zRotation);
                 // set the melting point of the drop 
                 tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
             }
