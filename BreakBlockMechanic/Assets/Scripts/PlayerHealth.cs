@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     bool touchingWall = false;
     private bool freeze = false;
     private bool shieldEnabled = false;
+    private bool canTakeDamage = true;
 
     int frostResist = 0;
 
@@ -234,8 +235,9 @@ public class PlayerHealth : MonoBehaviour
     // handles health loss if the player is touching a wall. lose damage health every waitTime seconds
     public IEnumerator LoseHealthCoroutine(float damage, float waitTime)
     {
-        if (!shieldEnabled)
+        if (!shieldEnabled && canTakeDamage)
         {
+            StartCoroutine(canTakeDamageCoroutine());
             timePassed += damage;
 
             //yield on a new YieldInstruction that waits for 0.14 seconds before executing what is below
@@ -248,6 +250,13 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine(LoseHealthCoroutine(3, 1));
             }
         }
+    }
+
+    public IEnumerator canTakeDamageCoroutine()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(1f);
+        canTakeDamage = true;
     }
 
     public void FreezeHealth() { freeze = true; }
