@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenuOpen : MonoBehaviour
 {
     private bool isOpen = false;
+    [SerializeField] bool canOpenWithKey = true;
     [SerializeField] GameObject menu;
     GameObject windForceM1;
     // Start is called before the first frame update
@@ -17,17 +18,23 @@ public class PauseMenuOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("p") && canOpenWithKey)
         {
-            toggleMenu();
+            if (isOpen) 
+            {
+                toggleMenu(false);
+            }
+            else if (!isOpen)
+            {
+                toggleMenu(true);
+            }
         }
     }
 
-    public void toggleMenu()
+    public void toggleMenu(bool tf)
     {
-        menu.SetActive(!isOpen);
-        windForceM1.GetComponent<Windforce>().toggleWindForce(isOpen);
-        isOpen = !isOpen;
-
+        menu.SetActive(tf);
+        windForceM1.GetComponent<Windforce>().toggleWindForce(!tf);
+        isOpen = tf;
     }
 }
