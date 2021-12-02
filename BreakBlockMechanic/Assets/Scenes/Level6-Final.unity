@@ -3143,6 +3143,7 @@ GameObject:
   - component: {fileID: 1186036354}
   - component: {fileID: 1186036353}
   - component: {fileID: 1186036352}
+  - component: {fileID: 1186036355}
   m_Layer: 0
   m_Name: Waterfall
   m_TagString: Waterfall
@@ -3229,6 +3230,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1186036355
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186036351}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 28.8, y: 16.199999}
+    newSize: {x: 28.8, y: 16.199999}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 12.670312, y: 3.234375}
+      - {x: 12.641026, y: 3.3810024}
+      - {x: 12.650432, y: 3.5389004}
+      - {x: 12.659644, y: 3.9651399}
+      - {x: 12.568176, y: 4.454855}
+      - {x: 12.624426, y: 4.5747533}
+      - {x: 12.662172, y: 4.696875}
+      - {x: 12.6806755, y: 5.17645}
+      - {x: 11.701453, y: 4.7846465}
+      - {x: 11.663146, y: 4.3147674}
+      - {x: 11.741216, y: 4.0422444}
+      - {x: 11.643265, y: 3.6741939}
+      - {x: 11.597198, y: 3.525325}
+      - {x: 11.680117, y: 3.2309835}
+      - {x: 11.657812, y: 2.9550638}
+      - {x: 11.529311, y: 2.8876615}
+      - {x: 11.404203, y: 3.0690198}
+      - {x: 11.264547, y: 3.0835671}
+      - {x: 11.156896, y: 2.8726296}
+      - {x: 11.140408, y: 2.691756}
+    - - {x: 13.021874, y: 2.0671875}
+      - {x: 12.979687, y: 2.0249999}
+      - {x: 12.979687, y: 1.74375}
+      - {x: 13.021874, y: 1.7156249}
+      - {x: 13.049999, y: 1.7156249}
+      - {x: 13.092187, y: 1.74375}
+      - {x: 13.092187, y: 2.053125}
+      - {x: 13.049999, y: 2.0671875}
 --- !u!1 &1248612357
 GameObject:
   m_ObjectHideFlags: 0

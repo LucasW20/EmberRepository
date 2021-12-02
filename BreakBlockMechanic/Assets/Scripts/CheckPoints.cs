@@ -19,11 +19,11 @@ public class CheckPoints : MonoBehaviour
 
     public void setCheckPoint(int scneneIndex)
     {
-        checkPoints[scneneIndex] = true;
+        checkPoints[scneneIndex - 1] = true;
     }
 
     public bool checkCheckPoint(int sceneIndex)
     {
-        return checkPoints[sceneIndex];
+        return checkPoints[sceneIndex - 1];
     }
 }
