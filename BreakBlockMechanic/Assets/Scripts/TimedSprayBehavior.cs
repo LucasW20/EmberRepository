@@ -13,6 +13,8 @@ public class TimedSprayBehavior : MonoBehaviour
     [SerializeField] float sprayWidth; // width of the sprays
     [SerializeField] float sprayLength; // length of the spray
     [SerializeField] float spraySpeed; // how fast the spray comes out
+    [SerializeField] float sprayTime;
+    [SerializeField] GameObject particleSys;
     float currentLength = 0.01f;
 
     bool spraying = true;
@@ -24,6 +26,7 @@ public class TimedSprayBehavior : MonoBehaviour
         boxCol = GetComponent<BoxCollider2D>();
 
         areaAffector.forceAngle = 90;
+        particleSys.GetComponent<ParticleSystem>().Stop();
     }
 
     // Update is called once per frame
@@ -37,6 +40,7 @@ public class TimedSprayBehavior : MonoBehaviour
             spray(sprayWidth, currentLength);
             if (currentLength >= sprayLength) // if the length overshoots the intended max length
             {
+                //particleSys.GetComponent<ParticleSystem>().Stop();
                 spray(sprayWidth, sprayLength); // set the length of collider to the actual max length
                 spraying = false; // stop spraying
                 StartCoroutine(WaitForSprayCoroutine());
@@ -52,6 +56,13 @@ public class TimedSprayBehavior : MonoBehaviour
         boxCol.offset = new Vector2(0, 0); // reset offset of collider
         yield return new WaitForSeconds(timeBetweenSprays); // wait for timeBetweenSprays seconds
         spraying = true; // start spraying again
+        StartCoroutine(SprayParticleCoroutine());
+    }
+
+    public IEnumerator SprayParticleCoroutine() {
+        particleSys.GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(sprayTime);
+        particleSys.GetComponent<ParticleSystem>().Stop();
     }
 
     // function that updates the size of the box collider of the spray

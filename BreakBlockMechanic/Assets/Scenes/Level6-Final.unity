@@ -180,6 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da9460db40560a04c9600c82d9adda0a, type: 3}
+--- !u!1 &97083647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5078544622066319925, guid: 10255642e7e34fc419025e250c792979, type: 3}
+  m_PrefabInstance: {fileID: 1074767666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &106576716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +208,14 @@ PrefabInstance:
       propertyPath: direction
       value: up
       objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: sprayTime
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: particleSys
+      value: 
+      objectReference: {fileID: 1068543126}
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -246,6 +259,14 @@ PrefabInstance:
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: LifetimeByEmitterSpeedModule.m_Curve.maxCurve.m_Curve.Array.data[0].value
+      value: 0.06757016
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10255642e7e34fc419025e250c792979, type: 3}
@@ -2692,6 +2713,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1068543126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5078544622066319925, guid: 10255642e7e34fc419025e250c792979, type: 3}
+  m_PrefabInstance: {fileID: 106576716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1074767666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2715,6 +2741,14 @@ PrefabInstance:
       propertyPath: direction
       value: up
       objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: sprayTime
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: particleSys
+      value: 
+      objectReference: {fileID: 97083647}
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2758,6 +2792,26 @@ PrefabInstance:
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: LifetimeByEmitterSpeedModule.m_Curve.maxCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: LifetimeByEmitterSpeedModule.m_Curve.maxCurve.m_Curve.Array.data[0].value
+      value: 0.06756973
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186936506695340452, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: LifetimeByEmitterSpeedModule.m_Curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10255642e7e34fc419025e250c792979, type: 3}

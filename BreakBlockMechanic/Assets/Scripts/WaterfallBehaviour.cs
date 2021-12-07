@@ -7,7 +7,7 @@ using UnityEngine;
  * 
  * @author Lucas_C_Wright
  * @start 11-04-2021
- * @version 11-16-2021
+ * @version 12-06-2021
  */
 public class WaterfallBehaviour : MonoBehaviour {
     [SerializeField] private int meltingPoints;
@@ -40,6 +40,9 @@ public class WaterfallBehaviour : MonoBehaviour {
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
         SpriteRenderer wfAni = waterfallAni.GetComponent<SpriteRenderer>();
 
+        //unmute the waterfall
+        waterfallAni.GetComponent<AudioSource>().mute = false;
+
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
@@ -56,6 +59,9 @@ public class WaterfallBehaviour : MonoBehaviour {
         float fadeTime = 2f;
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
         SpriteRenderer wfAni = waterfallAni.GetComponent<SpriteRenderer>();
+
+        //mute the waterfall
+        waterfallAni.GetComponent<AudioSource>().mute = false;
 
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;

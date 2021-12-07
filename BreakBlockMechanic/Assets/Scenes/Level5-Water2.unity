@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 738454232417776367, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 738454232417776367, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 738454232417776367, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 738454232417776367, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1734640171420307945, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -191,6 +207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 738454232417776367, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1734640171420307945, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -586,6 +606,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af912d91868b371488b95e61c0c49946, type: 3}
+--- !u!1 &520706064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5078544622066319925, guid: 10255642e7e34fc419025e250c792979, type: 3}
+  m_PrefabInstance: {fileID: 2124934329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &582376610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,10 +5082,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8803256823132515842, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26867a92022594c4fa79a6a56afd35bc, type: 2}
     - target: {fileID: 5971999914422934344, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_Name
       value: TimedSpray
       objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: sprayTime
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971999914422934348, guid: 10255642e7e34fc419025e250c792979, type: 3}
+      propertyPath: particleSys
+      value: 
+      objectReference: {fileID: 520706064}
     - target: {fileID: 5971999914422934349, guid: 10255642e7e34fc419025e250c792979, type: 3}
       propertyPath: m_RootOrder
       value: 26
