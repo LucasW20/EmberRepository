@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3670746018000103283}
   - component: {fileID: 3670746018000103280}
   - component: {fileID: 3670746018000103281}
+  - component: {fileID: 12205198048468320}
+  - component: {fileID: 2421038611145109694}
   m_Layer: 0
   m_Name: WaterfallAnimation
   m_TagString: Untagged
@@ -102,3 +104,70 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &12205198048468320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670746018000103286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c9f4fa8bd879b4449c3289c358bbf9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &2421038611145109694
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670746018000103286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 4.97}
+    newSize: {x: 5, y: 4.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1798822, y: -1.023071}
+      - {x: -0.23181075, y: -0.8772846}
+      - {x: -0.21584533, y: -0.78301173}
+      - {x: -0.17578644, y: -0.71704745}
+      - {x: -0.16430186, y: -0.63688666}
+      - {x: -0.14186965, y: -0.60862076}
+      - {x: -0.15584467, y: -0.49615023}
+      - {x: -0.19771498, y: -0.38758063}
+      - {x: -0.24181075, y: -0.2112014}
+      - {x: -0.2379521, y: -0.105}
+      - {x: -0.20458582, y: -0.049753636}
+      - {x: -0.16590498, y: -0.011083219}
+      - {x: -0.08596466, y: 0.27102396}
+      - {x: -0.065964654, y: 0.5000762}
+      - {x: -0.07789321, y: 0.5710236}
+      - {x: -0.08341197, y: 0.67276645}
+      - {x: -0.11771576, y: 0.83651435}
+      - {x: -0.1272966, y: 0.8611463}
+      - {x: -1.0293473, y: 0.5265229}
+      - {x: -1.0389366, y: 0.3199552}
+      - {x: -1.0069013, y: -0.1420809}
+      - {x: -0.9959284, y: -0.2420809}
+      - {x: -1.0172635, y: -0.27180907}
+      - {x: -1.02, y: -0.42499998}
+      - {x: -1.0441538, y: -0.6133675}
+      - {x: -1.0561421, y: -0.85657364}
+      - {x: -1.0243313, y: -0.9785025}
+      - {x: -1.024036, y: -1.1129527}
+      - {x: -1.0371931, y: -1.2396437}
+      - {x: -1.0698813, y: -1.3723011}
