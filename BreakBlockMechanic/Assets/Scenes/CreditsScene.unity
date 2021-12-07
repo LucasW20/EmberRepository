@@ -195,17 +195,25 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1064454336}
+    - target: {fileID: 2916694200559167564, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916694200559167564, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 31.4
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -573,6 +581,7 @@ MonoBehaviour:
   mapCenter: {x: 0, y: -25, z: 0}
   mapHeight: 52
   mapWidth: 92.4444
+  pathwayLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &533526753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,6 +1042,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5830521613573444703, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5830521613720890194, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_Name
       value: MainUICanvas
@@ -1133,7 +1146,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5830521614917809361, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5830521614988703139, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033018628803798622, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}

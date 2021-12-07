@@ -7,7 +7,7 @@ using UnityEngine.UI;
  * Handles the unique behaviour of the credits level.
  * @author Lucas_C_Wright
  * @start 11-29-21
- * @version 11-29-21
+ * @version 12-07-21
  */
 public class CreditsScript : MonoBehaviour {
     private PlayerHealth ember;
@@ -19,7 +19,11 @@ public class CreditsScript : MonoBehaviour {
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         bgmTrack = GameObject.Find("SaveObject").GetComponent<AudioSource>();
         ember = GameObject.Find("Ember").GetComponent<PlayerHealth>();
+
+        //freeze the player at the start and set it to the top of the level
         ember.FreezeHealth();
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        ember.GetComponent<Transform>().position = new Vector3(0, 40, 0);
     }
 
     // Update is called once per frame
@@ -30,6 +34,12 @@ public class CreditsScript : MonoBehaviour {
         }
     }
 
+
+    private IEnumerator StartCreditsCoroutine() {
+        yield return null;
+    }
+
+    //special coroutine to end the credits level instead of the one in SceneChange
     private IEnumerator CloseCreditsCoroutine() {
         float waitTime = 5;
         float fadeTime = 2.5f;
