@@ -1329,6 +1329,7 @@ MonoBehaviour:
   mapCenter: {x: 0, y: 0, z: 0}
   mapHeight: 78
   mapWidth: 138.6667
+  pathwayLocation: {x: 44.2, y: 24.9, z: -10}
 --- !u!1001 &1139018461
 PrefabInstance:
   m_ObjectHideFlags: 0

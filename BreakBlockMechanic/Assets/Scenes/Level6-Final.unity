@@ -1040,6 +1040,7 @@ MonoBehaviour:
   mapCenter: {x: 0, y: 0, z: 0}
   mapHeight: 78
   mapWidth: 138.6667
+  pathwayLocation: {x: -1.1, y: 24.1, z: -10}
 --- !u!20 &443985187
 Camera:
   m_ObjectHideFlags: 0
@@ -1067,7 +1068,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 26
+  orthographic size: 39
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

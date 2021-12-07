@@ -313,6 +313,7 @@ MonoBehaviour:
   mapCenter: {x: 0, y: 0, z: 0}
   mapHeight: 52
   mapWidth: 92.444
+  pathwayLocation: {x: 2, y: -11.5, z: -10}
 --- !u!114 &50100610
 MonoBehaviour:
   m_ObjectHideFlags: 0

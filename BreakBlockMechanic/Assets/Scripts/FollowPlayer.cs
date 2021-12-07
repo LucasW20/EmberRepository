@@ -17,6 +17,8 @@ public class FollowPlayer : MonoBehaviour
 
     bool trackPlayer = false; // bool to let the camera know if it should follow the player
     bool goToCenter = true; // bool to let the camera know if it should go to center
+    bool goToPathway = false;
+    bool disableOuterMovement = false;
 
     [SerializeField] int maxCameraSize; // stores set the max camera size (map size)
     [SerializeField] int minCameraSize; // stores min camera size (15 unless we have a niche reason to change it)
@@ -24,6 +26,7 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] Vector3 mapCenter;
     [SerializeField] float mapHeight;
     [SerializeField] float mapWidth;
+    [SerializeField] Vector3 pathwayLocation;
 
     float mapTopLimit;
     float mapBottomLimit;
@@ -68,7 +71,7 @@ public class FollowPlayer : MonoBehaviour
     {
         calculateCameraLimits(); // find the edges of the camera
         calculateOffset(); // find what the offset should be (so the camera doesn't look over the edge of the map)
-        if (trackPlayer) // if the camera should be following the player
+        if (trackPlayer && !goToCenter && !disableOuterMovement) // if the camera should be following the player
         {
             desiredPosition = target.position + offset; // store targets position so we can edit z value (offset variable unused so far)
 
@@ -76,29 +79,70 @@ public class FollowPlayer : MonoBehaviour
             // Lerp(a, b, t) returns a vector of value (a + (b - a) * t. See comments in goToLocation() below for further explanation
             GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, minCameraSize, 1 * Time.deltaTime);
         }
-        else
+        else if (!trackPlayer && goToCenter && !disableOuterMovement)
         {
             goToLocation(mapCenter, 1);
             //GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, 26, 1 * Time.deltaTime);
             GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, maxCameraSize, 1 * Time.deltaTime);
+        }
+        if (goToPathway)
+        {
+            offset = new Vector3(0, 0, 0);
+            StartCoroutine(StartPathwayCoroutine(pathwayLocation));
+            disableOuterMovement = true;
+            goToPathway = false;
         }
     }
 
     // changes whether or not the player should be tracked by the camera based on the bool paramater
     public void setTrackPlayer(bool tf)
     {
-        trackPlayer = tf;
+        if (!disableOuterMovement)
+        {
+            trackPlayer = tf;
+        }
     }
 
     // changes whether or not the camera should go to the center of the map based on the bool paramater
     public void setGoToCenter(bool tf)
     {
-        goToCenter = tf;
+        if (!disableOuterMovement)
+        {
+            goToCenter = tf;
+        }
     }
 
     public bool getGoToCenter()
     {
         return goToCenter;
+    }
+
+    public void setGoToPathway()
+    {
+        goToPathway = true;
+    }
+
+    public IEnumerator StartPathwayCoroutine(Vector3 location)
+    {
+        Debug.Log("Moving Camera To Pathway!");
+        Vector3 oldPosition = transform.position;
+        float tSize = GetComponent<Camera>().orthographicSize;
+        while (transform.position.magnitude - location.magnitude >= .1)
+        { 
+            goToLocation(location, 5);
+            if(GetComponent<Camera>().orthographicSize != minCameraSize)
+            {
+                GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, minCameraSize, 1 * Time.deltaTime);
+            }
+            yield return new WaitForSeconds(.0167f);
+        }
+        Debug.Log("Made It To Pathway!");
+        yield return new WaitForSeconds(4);
+        while (transform.position.magnitude - oldPosition.magnitude >= .1)
+        {
+            goToLocation(oldPosition, 5);
+        }
+        disableOuterMovement = false;
     }
 
     // tells the camera to go the the Vector3 location at a given speed

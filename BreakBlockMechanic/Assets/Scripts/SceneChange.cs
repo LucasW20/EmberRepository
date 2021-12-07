@@ -9,7 +9,7 @@ using UnityEngine.Experimental.Rendering.Universal;
  * Handles the changing of scenes in the game along with the fade in and fade out mechanics
  * @author Lucas_C_Wright
  * @start 10-18-2021
- * @version 11-29-2021
+ * @version 12-07-2021
  */
 public class SceneChange : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI titleObject;
@@ -156,8 +156,9 @@ public class SceneChange : MonoBehaviour {
     public void loadNewScene(int sceneNum, float waitTime) {
         StartCoroutine(SceneCloseCoroutine(sceneNum, waitTime));
     }
-
     IEnumerator LightExitCoroutine() {
+        GameObject.Find("Main Camera").GetComponent<FollowPlayer>().setGoToPathway();
+        yield return new WaitForSeconds(2f);
         float time = 0;
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;

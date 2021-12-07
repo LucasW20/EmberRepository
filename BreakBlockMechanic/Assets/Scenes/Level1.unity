@@ -776,6 +776,7 @@ MonoBehaviour:
   mapCenter: {x: 30, y: 11, z: 0}
   mapHeight: 52
   mapWidth: 92.444
+  pathwayLocation: {x: 30.8, y: -0.04, z: -10}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
