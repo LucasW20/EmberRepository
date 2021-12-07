@@ -26,14 +26,14 @@ public class PlayerPoints : MonoBehaviour {
     }
     private void Update() {
         //cheat code! get 1000 points. used for when the devs dont wanna collect all them points to test something. REMOVE FOR FINAL
-        if (Input.GetKeyDown("l")) {
-            currPoints = 1000;
-            Debug.Log("1k points gained! Cheater!");
-        }
+        //if (Input.GetKeyDown("l")) {
+        //    currPoints = 1000;
+        //    Debug.Log("1k points gained! Cheater!");
+        //}
 
-        if (Input.GetKeyDown("c")) {
-            gameObject.GetComponent<PlayerHealth>().resetTime();
-        }
+        //if (Input.GetKeyDown("c")) {
+        //    gameObject.GetComponent<PlayerHealth>().resetTime();
+        //}
     }
 
     //returns the amount of points the player has. Used for comparing to the abilities point requirement
