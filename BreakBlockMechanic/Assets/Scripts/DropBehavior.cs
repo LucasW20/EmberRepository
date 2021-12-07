@@ -46,7 +46,7 @@ public class DropBehavior : MonoBehaviour
             // if the object collides with the player
             if (collision.gameObject.CompareTag("Player")) {
                 // kill the player
-                playerHealth.deathEffect();
+                StartCoroutine(playerHealth.LoseHealthCoroutine(4, 1));
             }
             // if the drop hits anything, destroy itself.
             if (firesLit >= meltingPoint)
