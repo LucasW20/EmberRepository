@@ -70,9 +70,9 @@ public class FollowPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         calculateCameraLimits(); // find the edges of the camera
-        calculateOffset(); // find what the offset should be (so the camera doesn't look over the edge of the map)
         if (trackPlayer && !goToCenter && !disableOuterMovement) // if the camera should be following the player
         {
+            calculateOffset(); // find what the offset should be (so the camera doesn't look over the edge of the map)
             desiredPosition = target.position + offset; // store targets position so we can edit z value (offset variable unused so far)
 
             goToLocation(desiredPosition, smoothSpeed);
@@ -87,9 +87,8 @@ public class FollowPlayer : MonoBehaviour
         }
         if (goToPathway)
         {
-            offset = new Vector3(0, 0, 0);
-            StartCoroutine(StartPathwayCoroutine(pathwayLocation));
             disableOuterMovement = true;
+            StartCoroutine(StartPathwayCoroutine(pathwayLocation));
             goToPathway = false;
         }
     }
@@ -127,8 +126,10 @@ public class FollowPlayer : MonoBehaviour
         Debug.Log("Moving Camera To Pathway!");
         Vector3 oldPosition = transform.position;
         float tSize = GetComponent<Camera>().orthographicSize;
-        while (transform.position.magnitude - location.magnitude >= .1)
-        { 
+        Debug.Log("Distance to pathway: " + (transform.position - location).magnitude);
+        while ((transform.position - location).magnitude >= .1)
+        {
+            Debug.Log("Distance to pathway: " + (transform.position - location).magnitude);
             goToLocation(location, 5);
             if(GetComponent<Camera>().orthographicSize != minCameraSize)
             {
@@ -138,9 +139,10 @@ public class FollowPlayer : MonoBehaviour
         }
         Debug.Log("Made It To Pathway!");
         yield return new WaitForSeconds(4);
-        while (transform.position.magnitude - oldPosition.magnitude >= .1)
+        while ((transform.position - oldPosition).magnitude >= .1)
         {
             goToLocation(oldPosition, 5);
+            yield return new WaitForSeconds(.0167f);
         }
         disableOuterMovement = false;
     }
