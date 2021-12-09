@@ -33,16 +33,21 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] float mapLeftLimit;
     [SerializeField] float mapRightLimit;
 
-    [SerializeField] float cameraTopLimit;
-    [SerializeField] float cameraBottomLimit;
-    [SerializeField] float cameraLeftLimit;
-    [SerializeField] float cameraRightLimit;
+    float cameraTopLimit;
+    float cameraBottomLimit;
+    float cameraLeftLimit;
+    float cameraRightLimit;
 
     const float pixelRatio = 16f / 9f;
 
+    [SerializeField] bool manualMapLimits = false;
+
     private void Start()
     {
-        calculateMapLimits(); // calculate the edges of the map
+        if (!manualMapLimits)
+        {
+            calculateMapLimits(); // calculate the edges of the map
+        }
     }
 
     // calculates the x and y values of the edges of the map based on the map's center position and the map size
@@ -70,6 +75,9 @@ public class FollowPlayer : MonoBehaviour
     private void FixedUpdate()
     {
         calculateCameraLimits(); // find the edges of the camera
+
+        //Mathf.Clamp(transform.position.x, mapLeftLimit - (GetComponent<Camera>().orthographicSize * pixelRatio), mapRightLimit + (GetComponent<Camera>().orthographicSize * pixelRatio));
+
         if (trackPlayer && !goToCenter && !disableOuterMovement) // if the camera should be following the player
         {
             calculateOffset(); // find what the offset should be (so the camera doesn't look over the edge of the map)
@@ -141,7 +149,8 @@ public class FollowPlayer : MonoBehaviour
         yield return new WaitForSeconds(4);
         while ((transform.position - oldPosition).magnitude >= 1)
         {
-            goToLocation(oldPosition, 2);
+            calculateOffset();
+            goToLocation(target.position + offset, 2);
             yield return new WaitForSeconds(.00167f);
         }
         disableOuterMovement = false;
@@ -163,27 +172,27 @@ public class FollowPlayer : MonoBehaviour
         smoothedPosition.y = Mathf.Lerp(transform.position.y, location.y, speed * Time.deltaTime);
 
         //if its going towards the edge of the map and the camera edge is approaching the map limit, dont move
-
-        if(Mathf.Abs(mapTopLimit - cameraTopLimit) <= .5 && smoothedPosition.y > transform.position.y)
+        /*calculateCameraLimits();
+        if(Mathf.Abs(mapTopLimit - cameraTopLimit) <= .5 && smoothedPosition.y > transform.position.y && GetComponent<Camera>().orthographicSize < maxCameraSize - 3)
         {
             Debug.Log("One");
             smoothedPosition.y = mapTopLimit - (GetComponent<Camera>().orthographicSize);
         }
-        if (Mathf.Abs(mapBottomLimit - cameraBottomLimit) <= .5 && smoothedPosition.y < transform.position.y)
+        if (Mathf.Abs(mapBottomLimit - cameraBottomLimit) <= .5 && smoothedPosition.y < transform.position.y && GetComponent<Camera>().orthographicSize < maxCameraSize - 3)
         {
             Debug.Log("Two");
             smoothedPosition.y = mapBottomLimit + (GetComponent<Camera>().orthographicSize);
         }
-        if (Mathf.Abs(mapRightLimit - cameraRightLimit) <= .5 && smoothedPosition.x > transform.position.x)
+        if (Mathf.Abs(mapRightLimit - cameraRightLimit) <= .5 && smoothedPosition.x > transform.position.x && GetComponent<Camera>().orthographicSize < maxCameraSize - 3)
         {
             Debug.Log("Three");
             smoothedPosition.x = mapRightLimit - (GetComponent<Camera>().orthographicSize * pixelRatio);
         }
-        if (Mathf.Abs(mapLeftLimit - cameraLeftLimit) <= .5 && smoothedPosition.x < transform.position.x)
+        if (Mathf.Abs(mapLeftLimit - cameraLeftLimit) <= .5 && smoothedPosition.x < transform.position.x && GetComponent<Camera>().orthographicSize < maxCameraSize - 3)
         {
             Debug.Log("Four");
             smoothedPosition.x = mapLeftLimit + (GetComponent<Camera>().orthographicSize * pixelRatio);
-        }
+        }*/
 
         // sets the position of the camera to the smoothed position
         transform.position = smoothedPosition;
@@ -194,12 +203,12 @@ public class FollowPlayer : MonoBehaviour
     {
         if (cameraTopLimit > mapTopLimit) // if the top of the camera passes the top of the map
         {
-            offset.y = (mapTopLimit - cameraTopLimit) * 30; // set the offset in the y = to the top of the maps y value - the top of the cameras y value;
+            offset.y = (mapTopLimit - cameraTopLimit) * 20; // set the offset in the y = to the top of the maps y value - the top of the cameras y value;
             // multiply by nine because the camera is still trying to go the player, so it needs some extra offset to overpower its base tracking
         }
         else if (cameraBottomLimit < mapBottomLimit)
         {
-            offset.y = (mapBottomLimit - cameraBottomLimit) * 30;
+            offset.y = (mapBottomLimit - cameraBottomLimit) * 20;
         }
         else
         {
@@ -208,11 +217,11 @@ public class FollowPlayer : MonoBehaviour
 
         if (cameraRightLimit > mapRightLimit)
         {
-            offset.x = (mapRightLimit - cameraRightLimit) * 30;
+            offset.x = (mapRightLimit - cameraRightLimit) * 20;
         }
         else if (cameraLeftLimit < mapLeftLimit)
         {
-            offset.x = (mapLeftLimit - cameraLeftLimit) * 30;
+            offset.x = (mapLeftLimit - cameraLeftLimit) * 20;
         }
         else
         {
