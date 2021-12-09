@@ -7,23 +7,28 @@ using UnityEngine.UI;
  * Handles the unique behaviour of the credits level.
  * @author Lucas_C_Wright
  * @start 11-29-21
- * @version 12-07-21
+ * @version 12-09-21
  */
 public class CreditsScript : MonoBehaviour {
-    private PlayerHealth ember;
+    [SerializeField] GameObject WindForce;
+    private PlayerHealth emberHealth;
     private AudioSource bgmTrack;
+    private GameObject ember;
     private Image fadeImage;
 
     // Start is called before the first frame update
     void Start() {
+        ember = GameObject.Find("Ember");
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         bgmTrack = GameObject.Find("SaveObject").GetComponent<AudioSource>();
-        ember = GameObject.Find("Ember").GetComponent<PlayerHealth>();
+        emberHealth = GameObject.Find("Ember").GetComponent<PlayerHealth>();
 
         //freeze the player at the start and set it to the top of the level
-        ember.FreezeHealth();
+        emberHealth.revive(new Vector2(0,35));
+        emberHealth.FreezeHealth();
         ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-        ember.GetComponent<Transform>().position = new Vector3(0, 40, 0);
+        ember.GetComponent<Transform>().position = new Vector3(0, 35, 0);
+        StartCoroutine(StartCreditsCoroutine());
     }
 
     // Update is called once per frame
@@ -32,11 +37,17 @@ public class CreditsScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space)) {
             StartCoroutine(CloseCreditsCoroutine());
         }
+        if (GameObject.Find("CreditsFire").GetComponent<Campfire>().isFireLit()) {
+            WindForce.SetActive(true);
+        }
     }
 
 
     private IEnumerator StartCreditsCoroutine() {
-        yield return null;
+        yield return new WaitForSeconds(5f);
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        ember.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -0.1f));
     }
 
     //special coroutine to end the credits level instead of the one in SceneChange
