@@ -28,15 +28,15 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] float mapWidth;
     [SerializeField] Vector3 pathwayLocation;
 
-    float mapTopLimit;
-    float mapBottomLimit;
-    float mapLeftLimit;
-    float mapRightLimit;
+    [SerializeField] float mapTopLimit;
+    [SerializeField] float mapBottomLimit;
+    [SerializeField] float mapLeftLimit;
+    [SerializeField] float mapRightLimit;
 
-    float cameraTopLimit;
-    float cameraBottomLimit;
-    float cameraLeftLimit;
-    float cameraRightLimit;
+    [SerializeField] float cameraTopLimit;
+    [SerializeField] float cameraBottomLimit;
+    [SerializeField] float cameraLeftLimit;
+    [SerializeField] float cameraRightLimit;
 
     const float pixelRatio = 16f / 9f;
 
@@ -127,22 +127,22 @@ public class FollowPlayer : MonoBehaviour
         Vector3 oldPosition = transform.position;
         float tSize = GetComponent<Camera>().orthographicSize;
         Debug.Log("Distance to pathway: " + (transform.position - location).magnitude);
-        while ((transform.position - location).magnitude >= .1)
+        while ((transform.position - location).magnitude >= 1)
         {
             Debug.Log("Distance to pathway: " + (transform.position - location).magnitude);
-            goToLocation(location, 5);
+            goToLocation(location, 2);
             if(GetComponent<Camera>().orthographicSize != minCameraSize)
             {
                 GetComponent<Camera>().orthographicSize = Mathf.Lerp(GetComponent<Camera>().orthographicSize, minCameraSize, 1 * Time.deltaTime);
             }
-            yield return new WaitForSeconds(.0167f);
+            yield return new WaitForSeconds(.00167f);
         }
         Debug.Log("Made It To Pathway!");
         yield return new WaitForSeconds(4);
-        while ((transform.position - oldPosition).magnitude >= .1)
+        while ((transform.position - oldPosition).magnitude >= 1)
         {
-            goToLocation(oldPosition, 5);
-            yield return new WaitForSeconds(.0167f);
+            goToLocation(oldPosition, 2);
+            yield return new WaitForSeconds(.00167f);
         }
         disableOuterMovement = false;
     }
@@ -155,7 +155,35 @@ public class FollowPlayer : MonoBehaviour
         // Lerp(a, b, t) returns a vector of value (a + (b - a) * t;
         // essentially, it sets the position of the camera partially closer to the desired position based on t.
         // So if t is .5 the camera will move halfway towards the desiredposition each frame.
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, location, speed * Time.deltaTime);
+        Vector3 smoothedPosition;// = Vector3.Lerp(transform.position, location, speed * Time.deltaTime);
+        smoothedPosition.z = transform.position.z;
+        
+        smoothedPosition.x = Mathf.Lerp(transform.position.x, location.x, speed * Time.deltaTime);
+
+        smoothedPosition.y = Mathf.Lerp(transform.position.y, location.y, speed * Time.deltaTime);
+
+        //if its going towards the edge of the map and the camera edge is approaching the map limit, dont move
+
+        if(Mathf.Abs(mapTopLimit - cameraTopLimit) <= .5 && smoothedPosition.y > transform.position.y)
+        {
+            Debug.Log("One");
+            smoothedPosition.y = mapTopLimit - (GetComponent<Camera>().orthographicSize);
+        }
+        if (Mathf.Abs(mapBottomLimit - cameraBottomLimit) <= .5 && smoothedPosition.y < transform.position.y)
+        {
+            Debug.Log("Two");
+            smoothedPosition.y = mapBottomLimit + (GetComponent<Camera>().orthographicSize);
+        }
+        if (Mathf.Abs(mapRightLimit - cameraRightLimit) <= .5 && smoothedPosition.x > transform.position.x)
+        {
+            Debug.Log("Three");
+            smoothedPosition.x = mapRightLimit - (GetComponent<Camera>().orthographicSize * pixelRatio);
+        }
+        if (Mathf.Abs(mapLeftLimit - cameraLeftLimit) <= .5 && smoothedPosition.x < transform.position.x)
+        {
+            Debug.Log("Four");
+            smoothedPosition.x = mapLeftLimit + (GetComponent<Camera>().orthographicSize * pixelRatio);
+        }
 
         // sets the position of the camera to the smoothed position
         transform.position = smoothedPosition;
@@ -166,12 +194,12 @@ public class FollowPlayer : MonoBehaviour
     {
         if (cameraTopLimit > mapTopLimit) // if the top of the camera passes the top of the map
         {
-            offset.y = (mapTopLimit - cameraTopLimit) * 9; // set the offset in the y = to the top of the maps y value - the top of the cameras y value;
+            offset.y = (mapTopLimit - cameraTopLimit) * 30; // set the offset in the y = to the top of the maps y value - the top of the cameras y value;
             // multiply by nine because the camera is still trying to go the player, so it needs some extra offset to overpower its base tracking
         }
         else if (cameraBottomLimit < mapBottomLimit)
         {
-            offset.y = (mapBottomLimit - cameraBottomLimit) * 9;
+            offset.y = (mapBottomLimit - cameraBottomLimit) * 30;
         }
         else
         {
@@ -180,11 +208,11 @@ public class FollowPlayer : MonoBehaviour
 
         if (cameraRightLimit > mapRightLimit)
         {
-            offset.x = (mapRightLimit - cameraRightLimit) * 9;
+            offset.x = (mapRightLimit - cameraRightLimit) * 30;
         }
         else if (cameraLeftLimit < mapLeftLimit)
         {
-            offset.x = (mapLeftLimit - cameraLeftLimit) * 9;
+            offset.x = (mapLeftLimit - cameraLeftLimit) * 30;
         }
         else
         {
