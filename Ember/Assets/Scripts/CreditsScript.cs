@@ -37,7 +37,7 @@ public class CreditsScript : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //when the spacebar is pressed start the closing coroutine that exits the game
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (inactive && Input.GetKeyDown(KeyCode.Space)) {
             StartCoroutine(CloseCreditsCoroutine());
         }
         if (!inactive && GameObject.Find("CreditsFire").GetComponent<Campfire>().isFireLit()) {
@@ -57,13 +57,9 @@ public class CreditsScript : MonoBehaviour {
 
     //special coroutine to end the credits level instead of the one in SceneChange
     private IEnumerator CloseCreditsCoroutine() {
-        float waitTime = 5;
         float fadeTime = 2.5f;
         float time = 0;
         float volStart = bgmTrack.volume;
-
-        //Wait for the zoom out to complete
-        yield return new WaitForSeconds(waitTime);
 
         //fade out the image and the music
         while (time < fadeTime) {
