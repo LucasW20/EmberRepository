@@ -18,7 +18,7 @@ public class PauseMenuOpen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("p") && canOpenWithKey)
+        if (Input.GetKeyDown(KeyCode.Escape) && canOpenWithKey)
         {
             if (isOpen) 
             {
