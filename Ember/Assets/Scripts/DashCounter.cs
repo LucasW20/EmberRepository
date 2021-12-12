@@ -43,6 +43,7 @@ public class DashCounter : MonoBehaviour
     public void displayDashCounter()
     {
         GameObject.Find("DashIcon").GetComponent<Image>().enabled = true;
+        GameObject.Find("DashBorder").GetComponent<Image>().enabled = true;
     }
 
     // Update is called once per frame
