@@ -777,6 +777,11 @@ MonoBehaviour:
   mapHeight: 52
   mapWidth: 92.444
   pathwayLocation: {x: 30.8, y: -0.04, z: -10}
+  mapTopLimit: 0
+  mapBottomLimit: 0
+  mapLeftLimit: 0
+  mapRightLimit: 0
+  manualMapLimits: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3284,8 +3289,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9167395251847032640, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
+      propertyPath: waitFor
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167395251847032640, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: zRotation
-      value: -47
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 9167395251847032643, guid: 43826ea112576eb4b9f5e3547c87e99f, type: 3}
       propertyPath: m_RootOrder

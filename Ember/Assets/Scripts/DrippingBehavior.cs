@@ -18,12 +18,17 @@ public class DrippingBehavior : MonoBehaviour
 
     GameObject tempDrop;
 
+    PolygonCollider2D iceCollider;
+
+    [SerializeField] float waitFor;
+
     // Start is called before the first frame update
     void Start()
     {
         // will be used to get the number of fires lit in the level
         campfireTracker = GameObject.Find("ScriptHolder").GetComponent<CampfireTracker>();
         timePassed = 0;
+        iceCollider = this.GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -41,6 +46,7 @@ public class DrippingBehavior : MonoBehaviour
                 timePassed = 0; // reset timer
                 tempDrop = Instantiate(prefab, transform.position, transform.rotation); // create water drop
                 tempDrop.transform.Rotate(0f, 0f, zRotation);
+                StartCoroutine(IgnoreCollision());
                 // set the melting point of the drop
                 tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
                 
@@ -54,10 +60,19 @@ public class DrippingBehavior : MonoBehaviour
                 timePassed = 0;
                 tempDrop = Instantiate(prefab, transform.position, transform.rotation);
                 tempDrop.transform.Rotate(0f, 0f, zRotation);
+                StartCoroutine(IgnoreCollision());
                 // set the melting point of the drop 
                 tempDrop.GetComponent<DropBehavior>().meltingPoint = firesRequiredStg1;
             }
         }
 
+    }
+    public IEnumerator IgnoreCollision()
+    {
+        iceCollider.enabled = false;
+
+        yield return new WaitForSeconds(waitFor);
+
+        iceCollider.enabled = true;
     }
 }
