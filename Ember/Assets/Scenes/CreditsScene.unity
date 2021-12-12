@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsFire
       objectReference: {fileID: 0}
+    - target: {fileID: 1734640171420307954, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fd6e89ca71ba9140a7881fc8ade0fa9, type: 3}
 --- !u!1001 &179288278
@@ -213,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3717397736348718332, guid: b77d2768bc0fec543bd51532011df3d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -434,6 +438,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
+      propertyPath: nextScene
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2583134866294646151, guid: 6a082ae4de4d5ed4489935d829bf4cc7, type: 3}
       propertyPath: sceneTitle
       value: 
@@ -1073,7 +1081,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1090,7 +1098,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1134,7 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 338424833}
   maxCameraSize: 15
-  minCameraSize: 8
+  minCameraSize: 10
   mapCenter: {x: 0, y: 35, z: 0}
   mapHeight: 104
   mapWidth: 54
@@ -3066,7 +3074,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.6
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -6723,7 +6731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notificationText: {fileID: 5830521614655342621}
-  fadeTime: 4
+  fadeTime: 3.5
 --- !u!224 &5830521613407249387
 RectTransform:
   m_ObjectHideFlags: 0

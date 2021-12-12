@@ -137,13 +137,13 @@ public class SceneChange : MonoBehaviour {
 
         //wait for a few more seconds for the fade to take place
         yield return new WaitForSeconds(3);
-
-        checkPoints.setCheckPoint(sceneNum);
         
         //if at the tutorial then go back to the menu otherwise
         if (SceneManager.GetActiveScene().buildIndex == 8) {
             SceneManager.LoadScene(0);
         } else {
+            checkPoints.setCheckPoint(sceneNum);
+
             //save the points the player has. This also saves the bgm music. Then change the scene
             DontDestroyOnLoad(GameObject.Find("SaveObject"));
             SceneManager.LoadScene(sceneNum);

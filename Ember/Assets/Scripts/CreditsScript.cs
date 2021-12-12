@@ -7,7 +7,7 @@ using UnityEngine.UI;
  * Handles the unique behaviour of the credits level.
  * @author Lucas_C_Wright
  * @start 11-29-21
- * @version 12-09-21
+ * @version 12-12-21
  */
 public class CreditsScript : MonoBehaviour {
     [SerializeField] GameObject WindForce;
@@ -15,6 +15,8 @@ public class CreditsScript : MonoBehaviour {
     private AudioSource bgmTrack;
     private GameObject ember;
     private Image fadeImage;
+    private NotificationManager ntManager;
+    private bool inactive = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,6 +24,7 @@ public class CreditsScript : MonoBehaviour {
         fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         bgmTrack = GameObject.Find("SaveObject").GetComponent<AudioSource>();
         emberHealth = GameObject.Find("Ember").GetComponent<PlayerHealth>();
+        ntManager = GameObject.Find("MainUICanvas").GetComponent<NotificationManager>();
 
         //freeze the player at the start and set it to the top of the level
         emberHealth.revive(new Vector2(0,35));
@@ -37,8 +40,10 @@ public class CreditsScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space)) {
             StartCoroutine(CloseCreditsCoroutine());
         }
-        if (GameObject.Find("CreditsFire").GetComponent<Campfire>().isFireLit()) {
+        if (!inactive && GameObject.Find("CreditsFire").GetComponent<Campfire>().isFireLit()) {
+            inactive = true;
             WindForce.SetActive(true);
+            ntManager.SetNewNotification("Press [SPACE] to end the game!");
         }
     }
 
