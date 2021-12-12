@@ -17,7 +17,7 @@ public class LongJump : MonoBehaviour
 
     int jumpsUsed = 0; // tracks how many jumps the player has used
     int totalJumps = 3;
-    int pointsRequired = 1; // how many points are needed before player can jump
+    int pointsRequired = 7; // how many points are needed before player can jump
 
 
     // Start is called before the first frame update
