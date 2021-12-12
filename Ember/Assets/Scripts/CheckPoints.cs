@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPoints : MonoBehaviour
 {
-    bool[] checkPoints = new bool[6] {true, false, false, false, false, false };
+    bool[] checkPoints = new bool[7] {true, false, false, false, false, false, false };
     // Start is called before the first frame update
     void Start()
     {

@@ -7,20 +7,25 @@ public class BubbleShieldBehavior : MonoBehaviour
     private float durationOfShield = 2;
     PassingScene passingScene;
     GameObject shieldVisual;
+    PlayerPoints playerPoints;
+    GameObject ember;
     private int uses = 4;
     private bool isActive = false;
+    private int requiredPoints = 12;
     // Start is called before the first frame update
     void Start()
     {
+        ember = GameObject.Find("Ember");
         passingScene = GameObject.Find("SaveObject").GetComponent<PassingScene>();
         durationOfShield = passingScene.getShieldDuration();
         shieldVisual = GameObject.Find("BubbleShieldVisual");
+        playerPoints = ember.GetComponent<PlayerPoints>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("s") && uses > 0 && !isActive)
+        if (Input.GetKeyDown("s") && uses > 0 && !isActive && playerPoints.getTotalPoints() >= requiredPoints)
         {
             StartCoroutine(startShieldCoroutine());
         }

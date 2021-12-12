@@ -84,7 +84,7 @@ public class SceneChange : MonoBehaviour {
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, 1f);
         titleObject.text = sceneTitle;
 
-        if (currScene == 3) {
+        if (currScene == 4) {
             bgmTrack.Stop();
             bgmTrack.clip = Resources.Load<AudioClip>("Campfire");
             bgmTrack.Play();
@@ -128,7 +128,7 @@ public class SceneChange : MonoBehaviour {
             time += Time.unscaledDeltaTime;
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
 
-            if (sceneNum == 3) {
+            if (sceneNum == 4) {
                 bgmTrack.volume = Mathf.Lerp(volStart, 0f, time / fadeTime);
             }
 
