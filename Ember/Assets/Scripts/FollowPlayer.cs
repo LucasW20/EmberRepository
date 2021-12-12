@@ -132,8 +132,7 @@ public class FollowPlayer : MonoBehaviour
     public IEnumerator StartPathwayCoroutine(Vector3 location)
     {
         Debug.Log("Moving Camera To Pathway!");
-        Vector3 oldPosition = transform.position;
-        float tSize = GetComponent<Camera>().orthographicSize;
+        GameObject.Find("WindForceM1").GetComponent<Windforce>().toggleWindForce(false);
         Debug.Log("Distance to pathway: " + (transform.position - location).magnitude);
         while ((transform.position - location).magnitude >= 1)
         {
@@ -145,15 +144,18 @@ public class FollowPlayer : MonoBehaviour
             }
             yield return new WaitForSeconds(.00167f);
         }
+        GameObject.Find("WindForceM1").GetComponent<Windforce>().toggleWindForce(true);
         Debug.Log("Made It To Pathway!");
         yield return new WaitForSeconds(4);
-        while ((transform.position - oldPosition).magnitude >= 1)
+        while (Mathf.Abs(transform.position.x - target.position.x) <= 1 && Mathf.Abs(transform.position.y - target.position.y) <= 1)
         {
             calculateOffset();
             goToLocation(target.position + offset, 2);
             yield return new WaitForSeconds(.00167f);
         }
+        Debug.Log("Made It Back!");
         disableOuterMovement = false;
+        
     }
 
     // tells the camera to go the the Vector3 location at a given speed
