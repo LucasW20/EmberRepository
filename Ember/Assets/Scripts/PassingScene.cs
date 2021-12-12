@@ -14,6 +14,9 @@ public class PassingScene : MonoBehaviour {
     private bool[] buttonIsPressedArray = new bool[12] { false, false, false, false, false, false, false, false, false, false, false, false };
     private bool[] campfireArray = new bool[50];
 
+    private bool windProjectileIconDisplay = false;
+    private bool dashCountIconDisplay = false;
+
     private void Start()
     {
         //passingMaxLives = GameObject.Find("Ember").GetComponent<PlayerLives>().getMaxLives();
@@ -61,4 +64,9 @@ public class PassingScene : MonoBehaviour {
     {
         return buttonIsPressedArray[index];
     }
+
+    public void displayWindProjectileIcon() { windProjectileIconDisplay = true; }
+    public bool getWindProjectileIconDisplay() { return windProjectileIconDisplay; }
+    public void displayDashCountIcon() { dashCountIconDisplay = true; }
+    public bool getDashCountIconDisplay() { return dashCountIconDisplay; }
 }

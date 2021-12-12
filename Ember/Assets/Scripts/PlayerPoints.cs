@@ -76,9 +76,13 @@ public class PlayerPoints : MonoBehaviour {
         switch (pointsEarned) {
             case 2:
                 ntManager.SetNewNotification("Wind Projectile Ability Gained! Press F to use.");
+                GameObject.Find("Wind Projectile Icon").GetComponent<WindProjectileIconController>().displayWindIcon();
+                GameObject.Find("SaveObject").GetComponent<PassingScene>().displayWindProjectileIcon();
                 break;
             case 7:
                 ntManager.SetNewNotification("Long Jump Ability Gained! Press G to use.");
+                GameObject.Find("DashCounter").GetComponent<DashCounter>().displayDashCounter();
+                GameObject.Find("SaveObject").GetComponent<PassingScene>().displayDashCountIcon();
                 break;
             default:
                 //do nothing

@@ -17,6 +17,10 @@ public class DashCounter : MonoBehaviour
         {
             dashCount = 3;
         }
+        if(GameObject.Find("SaveObject").GetComponent<PassingScene>().getDashCountIconDisplay())
+        {
+            displayDashCounter();
+        }
 
         slider.maxValue = dashCount;
         slider.value = dashCount;

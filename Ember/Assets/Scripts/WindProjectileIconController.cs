@@ -8,7 +8,10 @@ public class WindProjectileIconController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameObject.Find("SaveObject").GetComponent<PassingScene>().getWindProjectileIconDisplay())
+        {
+            displayWindIcon();
+        }
     }
 
     // Displays the visual for the wind projectile icon
