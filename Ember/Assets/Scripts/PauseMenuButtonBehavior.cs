@@ -120,6 +120,7 @@ public class PauseMenuButtonBehavior : MonoBehaviour
             passingScene.passTotalJumps(n);
             //isPressed = true;
             passingScene.togglePurchasedAbility(aIndex, true);
+            GameObject.Find("DashCounter").GetComponent<DashCounter>().increaseDashes();
         }
     }
 

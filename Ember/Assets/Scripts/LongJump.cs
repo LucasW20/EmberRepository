@@ -45,6 +45,7 @@ public class LongJump : MonoBehaviour
             direction = calculateDirection(transform.position, mouseCurr);
             moving = true; // set moving equal to true (for the if statement below)
             jumpsUsed++; // remove a jump
+            GameObject.Find("DashCounter").GetComponent<DashCounter>().useDash();
             
         }
         if(moving)
