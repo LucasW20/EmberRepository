@@ -487,6 +487,11 @@ MonoBehaviour:
   mapHeight: 78
   mapWidth: 138.66667
   pathwayLocation: {x: 26.2, y: 24.8, z: -10}
+  mapTopLimit: 0
+  mapBottomLimit: 0
+  mapLeftLimit: 0
+  mapRightLimit: 0
+  manualMapLimits: 0
 --- !u!1001 &425080041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2740,6 +2745,34 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1372959084}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SetVolume, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5830521613469668441, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2788,6 +2821,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 8420967280835381953, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420967280835381953, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
 --- !u!114 &1372959078 stripped
@@ -2828,6 +2869,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5830521613573444703, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
   m_PrefabInstance: {fileID: 1372959077}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1372959082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5830521613332603508, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+  m_PrefabInstance: {fileID: 1372959077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1372959083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5830521613332603510, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+  m_PrefabInstance: {fileID: 1372959077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372959082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1372959084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372959082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d98952fdf30ca46bc4f138cdecef9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 1058d2724c5c8f949874b0a5f9eeddd6, type: 2}
+  slider: {fileID: 1372959083}
 --- !u!1001 &1481699409
 PrefabInstance:
   m_ObjectHideFlags: 0
