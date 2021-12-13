@@ -61,7 +61,7 @@ public class WaterfallBehaviour : MonoBehaviour {
         SpriteRenderer wfAni = waterfallAni.GetComponent<SpriteRenderer>();
 
         //mute the waterfall
-        waterfallAni.GetComponent<AudioSource>().mute = false;
+        waterfallAni.GetComponent<AudioSource>().mute = true;
 
         while (time < fadeTime) {
             time += Time.unscaledDeltaTime;

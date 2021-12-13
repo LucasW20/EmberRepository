@@ -115,6 +115,7 @@ public class SceneChange : MonoBehaviour {
         
         //diable the fadeing image so that it doesn't interfeer with the buttons
         fadeImage.enabled = false;
+        GameObject.Find("TitleText").GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
     // Coroutine used for when a scene is being closed. Fades out of scene. 
@@ -124,7 +125,7 @@ public class SceneChange : MonoBehaviour {
         float time = 0;
         float volStart = bgmTrack.volume;
         fadeImage.enabled = true;
-
+        GameObject.Find("TitleText").GetComponent<TextMeshProUGUI>().enabled = true;
 
         //fade out the image and the music
         while (time < fadeTime) {
