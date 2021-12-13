@@ -9,7 +9,7 @@ using UnityEngine.Experimental.Rendering.Universal;
  * Handles the changing of scenes in the game along with the fade in and fade out mechanics
  * @author Lucas_C_Wright
  * @start 10-18-2021
- * @version 12-07-2021
+ * @version 12-12-2021
  */
 public class SceneChange : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI titleObject;
@@ -96,7 +96,7 @@ public class SceneChange : MonoBehaviour {
             time += Time.unscaledDeltaTime;
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(0f, 1f, time / fadeTime));
 
-            if (currScene == 3) {
+            if (currScene == 4) {
                 bgmTrack.volume = Mathf.Lerp(0f, 0.201f, time / fadeTime);
             }
             yield return null;
