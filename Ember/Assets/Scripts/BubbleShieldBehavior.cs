@@ -28,6 +28,7 @@ public class BubbleShieldBehavior : MonoBehaviour
         if (Input.GetKeyDown("s") && uses > 0 && !isActive && playerPoints.getTotalPoints() >= requiredPoints)
         {
             StartCoroutine(startShieldCoroutine());
+            GameObject.Find("ShieldCounter").GetComponent<ShieldCounter>().useShield();
         }
     }
 

@@ -76,6 +76,8 @@ public class PlayerPoints : MonoBehaviour {
                 break;
             case 12: //unlock bubble shield
                 ntManager.SetNewNotification("Bubble Shield Ability Unlocked! Press S to use.");
+                GameObject.Find("ShieldCounter").GetComponent<ShieldCounter>().displayShieldCounter();
+                GameObject.Find("SaveObject").GetComponent<PassingScene>().displayShieldCountIcon();
                 break;
             default:
                 //do nothing

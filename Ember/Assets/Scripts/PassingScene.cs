@@ -16,6 +16,7 @@ public class PassingScene : MonoBehaviour {
 
     private bool windProjectileIconDisplay = false;
     private bool dashCountIconDisplay = false;
+    private bool shieldCountIconDisplay = false;
 
     private void Start()
     {
@@ -69,4 +70,7 @@ public class PassingScene : MonoBehaviour {
     public bool getWindProjectileIconDisplay() { return windProjectileIconDisplay; }
     public void displayDashCountIcon() { dashCountIconDisplay = true; }
     public bool getDashCountIconDisplay() { return dashCountIconDisplay; }
+
+    public void displayShieldCountIcon() { shieldCountIconDisplay = true; }
+    public bool getShieldCountIconDisplay() { return shieldCountIconDisplay; }
 }
