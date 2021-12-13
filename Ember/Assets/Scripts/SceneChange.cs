@@ -113,6 +113,7 @@ public class SceneChange : MonoBehaviour {
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
             yield return null; //finish the loop
         }
+        fadeImage.enabled = false;
     }
 
     // Coroutine used for when a scene is being closed. Fades out of scene. 
