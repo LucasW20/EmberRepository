@@ -915,8 +915,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4587905063467842313, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: fallingIce
+      value: 
+      objectReference: {fileID: 609392660}
+    - target: {fileID: 5204158594631284956, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: m_Size.x
+      value: 74.36532
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204158594631284956, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: m_Size.y
+      value: 10.262438
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204158594631284956, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: m_Offset.x
+      value: 40.181248
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204158594631284956, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.39392757
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204158594631284956, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+--- !u!1 &609392660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2499729450077398289, guid: 06447c79a0633f441bbc7082f5ea042b, type: 3}
+  m_PrefabInstance: {fileID: 609392659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &702805688
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioClip fallingIce;
     public static AudioClip snuffFire;
     public static AudioClip droplet;
+    public static AudioClip tumbleWind;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class AudioManager : MonoBehaviour {
         fallingIce = Resources.Load<AudioClip>("IceFall");
         snuffFire = Resources.Load<AudioClip>("extinguish");
         droplet = Resources.Load<AudioClip>("droplet");
+        tumbleWind = Resources.Load<AudioClip>("wind");
 
         //get the audiosource we're playing from 
         audioSrc = GetComponent<AudioSource>();
@@ -69,6 +71,9 @@ public class AudioManager : MonoBehaviour {
                 audioSrc.spatialBlend = 1;
                 audioSrc.PlayOneShot(droplet);
                 audioSrc.spatialBlend = 0;
+                break;
+            case "wind":
+                audioSrc.PlayOneShot(tumbleWind);
                 break;
             default:
                 //do nothing

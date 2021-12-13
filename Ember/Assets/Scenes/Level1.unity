@@ -3277,8 +3277,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6461928982741042826, guid: 379bed9cbd9e15c4abfee7b947269179, type: 3}
+      propertyPath: ice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461928982741042826, guid: 379bed9cbd9e15c4abfee7b947269179, type: 3}
+      propertyPath: fallingIce
+      value: 
+      objectReference: {fileID: 6461928981914685585}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 379bed9cbd9e15c4abfee7b947269179, type: 3}
+--- !u!1 &6461928981914685585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6461928981756321348, guid: 379bed9cbd9e15c4abfee7b947269179, type: 3}
+  m_PrefabInstance: {fileID: 6461928981914685584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8241029528960670064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5830521613573444703, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
