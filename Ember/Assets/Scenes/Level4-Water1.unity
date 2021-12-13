@@ -1124,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterfallAnimationLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 7629022021407017351, guid: e7015891c52cfe8409cad946f9918337, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7015891c52cfe8409cad946f9918337, type: 3}
 --- !u!1 &1173028629 stripped
@@ -3866,6 +3870,10 @@ PrefabInstance:
     - target: {fileID: 3670746018000103286, guid: e7015891c52cfe8409cad946f9918337, type: 3}
       propertyPath: m_Name
       value: WaterfallAnimationRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629022021407017351, guid: e7015891c52cfe8409cad946f9918337, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7015891c52cfe8409cad946f9918337, type: 3}
