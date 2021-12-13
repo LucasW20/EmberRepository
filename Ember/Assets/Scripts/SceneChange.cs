@@ -27,7 +27,6 @@ public class SceneChange : MonoBehaviour {
     private bool opened = false;
     private Image fadeImage;
     private Light2D exitLight;
-
     private CheckPoints checkPoints;
 
     // Start is called at the start
@@ -113,6 +112,8 @@ public class SceneChange : MonoBehaviour {
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, Mathf.Lerp(1f, 0f, time / fadeTime));
             yield return null; //finish the loop
         }
+        
+        //diable the fadeing image so that it doesn't interfeer with the buttons
         fadeImage.enabled = false;
     }
 
@@ -122,6 +123,8 @@ public class SceneChange : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
         float time = 0;
         float volStart = bgmTrack.volume;
+        fadeImage.enabled = true;
+
 
         //fade out the image and the music
         while (time < fadeTime) {

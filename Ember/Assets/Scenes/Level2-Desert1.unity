@@ -436,6 +436,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2594749340084910579, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2003952650}
+    - target: {fileID: 2594749340084910579, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: toggleMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4563786894523885706, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -664,6 +672,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: toggleMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6814493229572809922, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6814493229572809922, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8027880335142635312, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
       propertyPath: m_fontSize
       value: 60
@@ -680,6 +696,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 8976314367841518794, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
+    - target: {fileID: 8420967280835381953, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420967280835381953, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec661118b1cc7140a5b80ac3181acfd, type: 3}
 --- !u!114 &189503095 stripped
