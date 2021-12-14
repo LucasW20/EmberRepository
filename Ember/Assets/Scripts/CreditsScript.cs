@@ -31,6 +31,7 @@ public class CreditsScript : MonoBehaviour {
         emberHealth.FreezeHealth();
         ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         ember.GetComponent<Transform>().position = new Vector3(0, 35, 0);
+        GameObject.Find("Main Camera").GetComponent<FollowPlayer>().setTrackPlayer(true);
         StartCoroutine(StartCreditsCoroutine());
     }
 
