@@ -12,11 +12,11 @@ public class StartButtonBehavior : MonoBehaviour{
     // Start is called before the first frame update
     void Start() {
         musicPlayer = GameObject.Find("Music").GetComponent<AudioSource>();
-        fadeImage.GetComponent<RectTransform>().position = new Vector3(-400,0,1);
+        fadeImage.enabled = false;
     }
     
     public void OnButtonPress() {
-        fadeImage.GetComponent<RectTransform>().position = new Vector3(734.5f, 413, -1);
+        fadeImage.enabled = true;
         StartCoroutine(StartGameCoroutine());
         
         //Debug.Log("Start button clicked " + n + " times.");

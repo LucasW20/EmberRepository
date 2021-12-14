@@ -51,7 +51,7 @@ public class TumbleweedMovement : MonoBehaviour
             Destroy(gameObject);
         }
        //If it doesn't hit the ember, it will delete after it hits a wall
-        else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breaker"))
+        else if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breaker") || collision.gameObject.CompareTag("Drip"))
         {
             Destroy(gameObject);
         }
