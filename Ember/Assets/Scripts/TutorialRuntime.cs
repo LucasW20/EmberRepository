@@ -18,6 +18,7 @@ public class TutorialRuntime : MonoBehaviour {
     [SerializeField] GameObject lives;
     [SerializeField] GameObject menuButt;
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject menuSkills;
     [SerializeField] GameObject windforce;
     [SerializeField] GameObject firstFire;
     [SerializeField] GameObject secondFire;
@@ -72,6 +73,10 @@ public class TutorialRuntime : MonoBehaviour {
         if (checking && ember.GetComponent<PlayerHealth>().getHealth() >= 23) {
             SetNewNotification("Looks like you ran out of health! In the game you would've lost a live, but we decided to be nice.", KeyCode.Space);
             ember.GetComponent<PlayerHealth>().resetTime();
+        }
+        if (checking && ember.GetComponent<PlayerLives>().getLives() <= 1) {
+            ember.GetComponent<PlayerLives>().adjustMaxLives(1);
+            SetNewNotification("Whoops. Here's another life. Right-click a fire to respawn!", KeyCode.Space);
         }
     }
 
@@ -197,6 +202,7 @@ public class TutorialRuntime : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
 
         secondFire.GetComponent<BoxCollider2D>().enabled = true;
+        ember.GetComponent<Transform>().position = new Vector3(37.5f, 12f, 0);
         SetNewNotification("You also have the ability to douse fires. Hover the mouse over the fire and press 'N'. Try now.", KeyCode.N);
         yield return WaitForKeyPress(KeyCode.N);
         yield return new WaitForSeconds(waitTime);
@@ -211,23 +217,40 @@ public class TutorialRuntime : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
 
         //freeze the player again
+        ember.GetComponent<Transform>().position = new Vector3(37.5f, 11f, 0);
         ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         ember.GetComponent<PlayerHealth>().FreezeHealth();
         secondFire.GetComponent<BoxCollider2D>().enabled = false;
-        ember.GetComponent<Transform>().position = new Vector3(37.5f, 11f, 0);
+
+        //enable menu
+        menuButt.SetActive(true);
 
         SetNewNotification("Nice! Next, the menu is used for various things like buying upgrades.", KeyCode.Space);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);
-        SetNewNotification("Press 'ESC' to open the menu. Press SPACE after you've checked the menu and ready to continue.", KeyCode.Escape);
+        SetNewNotification("Press 'ESC' to open the menu. Try now and press SPACE after you've checked the menu and ready to continue.", KeyCode.Escape);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);
+
+        menuSkills.SetActive(false);
+        menu.SetActive(false);
+        secondFire.GetComponent<BoxCollider2D>().enabled = true;
+
         SetNewNotification("While you're at a fire you can press 'Z' so see the entire level. Press 'Z' now.", KeyCode.Z);
         yield return WaitForKeyPress(KeyCode.Z);
         yield return new WaitForSeconds(waitTime);
+
+        secondFire.GetComponent<BoxCollider2D>().enabled = false;
+        firstFire.GetComponent<BoxCollider2D>().enabled = false;
         SetNewNotification("While you can see other fires you can right click them to move the ember to that fire. This will consume a life.", KeyCode.Space);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);
+
+        //unfreeze the player
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        ember.GetComponent<PlayerHealth>().UnfreezeHealth();
+
         SetNewNotification("If you run out of lives the level will restart. Move off of the fire to zoom back in.", KeyCode.Space);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);
@@ -236,6 +259,11 @@ public class TutorialRuntime : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
 
         passFinal = false; //unlock the last part
+        //freeze the player again
+        ember.GetComponent<Transform>().position = new Vector3(37.5f, 11f, 0);
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        ember.GetComponent<PlayerHealth>().FreezeHealth();
+        secondFire.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     //final coroutine
@@ -248,6 +276,14 @@ public class TutorialRuntime : MonoBehaviour {
         SetNewNotification("A light will apear at the pathway and you'll have to move to that area to finish the level.", KeyCode.Space);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);
+
+        //unfreeze the player
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        ember.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        ember.GetComponent<PlayerHealth>().UnfreezeHealth();
+        firstFire.GetComponent<BoxCollider2D>().enabled = true;
+        secondFire.GetComponent<BoxCollider2D>().enabled = true;
+
         SetNewNotification("Move to the lighted area to exit the tutorial.", KeyCode.Space);
         yield return WaitForKeyPress(KeyCode.Space);
         yield return new WaitForSeconds(waitTime);

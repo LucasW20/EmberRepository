@@ -1984,6 +1984,7 @@ MonoBehaviour:
   lives: {fileID: 5830521614306574461}
   menuButt: {fileID: 2594749338734203710}
   menu: {fileID: 5830521614924938908}
+  menuSkills: {fileID: 5830521613584932370}
   windforce: {fileID: 37056037}
   firstFire: {fileID: 1429121617}
   secondFire: {fileID: 1342330780}
@@ -2270,9 +2271,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5712376261685223613}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3701,7 +3702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 1'
+  m_text: 'Cost: 3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
   m_sharedMaterial: {fileID: 8976314367841518794, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
@@ -3764,7 +3765,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -8.086391, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3817,7 +3818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 1'
+  m_text: 'Cost: 2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
   m_sharedMaterial: {fileID: 8976314367841518794, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
@@ -3880,7 +3881,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -8.086391, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4090,9 +4091,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5672460019734264012}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4309,7 +4310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 1'
+  m_text: 'Cost: 5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
   m_sharedMaterial: {fileID: 8976314367841518794, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
@@ -4372,7 +4373,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -10.108028, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4629,9 +4630,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7441810555231919031}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4828,7 +4829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 2'
+  m_text: 'Cost: 5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
   m_sharedMaterial: {fileID: 8976314367841518794, guid: 4b05f447ed83c6d44b3d98977cf50974, type: 2}
@@ -5195,9 +5196,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3371508045936679061}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5270,10 +5271,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2165827581106216334}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
-        m_Mode: 3
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6450,7 +6451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9787,9 +9788,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4592593633373870044}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuButtonBehavior, Assembly-CSharp
-        m_MethodName: loadLevel
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
