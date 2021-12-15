@@ -260,6 +260,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void FreezeHealth() { freeze = true; }
+    public void UnfreezeHealth() { freeze = false; }
     public void toggleShield(bool tf) { shieldEnabled = tf; }
 
     // getter for frost resist
